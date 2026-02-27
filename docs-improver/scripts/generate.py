@@ -28,6 +28,8 @@ class DocsGenerator:
         install_steps = self._get_install_steps()
         usage_examples = self._get_usage_examples()
         
+        quick_start = install_steps if install_steps else '# Clone and install\ngit clone <repository-url>\nnpm install'
+        
         content = f"""# {project_name.title().replace('-', ' ')}
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -36,7 +38,7 @@ class DocsGenerator:
 ## 🚀 Quick Start
 
 ```bash
-{install_steps if install_steps else '# Clone and install\ngit clone <repository-url>\nnpm install  # or pip install -r requirements.txt'}
+{quick_start}
 ```
 
 ## 📝 About
@@ -108,7 +110,7 @@ This document describes the API endpoints available in this project.
 
 ## Base URL
 
-```
+```text
 {{base_url}}
 ```
 
