@@ -1,329 +1,211 @@
 ---
 name: docs-improver
-description: Comprehensive technical documentation improvement tool. Analyzes documentation quality (completeness, accuracy, clarity, structure, maintainability), generates missing docs (README, API docs), checks consistency between docs and code, and provides actionable improvement recommendations. Use when: (1) Auditing documentation quality, (2) Generating missing documentation, (3) Ensuring docs match code, (4) Improving doc structure, (5) Creating onboarding docs. Supports all programming languages.
+description: 专业技术文档提升工具。评估文档质量（完整性、准确性、清晰度、结构化、可维护性），自动生成缺失文档（README、API 文档），检查文档与代码一致性，提供可执行的改进建议。使用场景：文档质量审计、缺失文档生成、文档一致性检查、文档改进规划、新项目文档搭建、发布前检查。支持所有编程语言。
 ---
 
-# Docs Improver
+# Docs Improver - 技术文档专家
 
-Professional technical documentation analysis, generation, and improvement tool.
+专业的技术文档分析、生成和改进工具。
 
-## Features
-
-### 📊 Documentation Quality Assessment
-- **Completeness** - Coverage of essential topics
-- **Accuracy** - Alignment with actual code
-- **Clarity** - Readability and understandability
-- **Structure** - Organization and navigation
-- **Maintainability** - Ease of updates
-
-### 📝 Documentation Generation
-- **README.md** - Project overview and quick start
-- **API.md** - API endpoint documentation
-- **ARCHITECTURE.md** - System architecture
-- **INSTALL.md** - Installation guide
-- **CONTRIBUTING.md** - Contribution guidelines
-
-### 🔍 Consistency Checking
-- API docs vs actual endpoints
-- Code examples vs actual code
-- Broken link detection
-- Outdated information
-
-### 💡 Improvement Recommendations
-- Quick wins (hours)
-- Short term (days)
-- Long term (weeks)
-
-## Quick Start
+## 快速开始
 
 ```bash
-# Full analysis + generation + checking
-python3 scripts/docs-improver.py --path /path/to/project --mode all --output ./docs
+# 完整流程：分析 + 生成 + 检查 + 改进
+python3 scripts/docs-improver.py --path /path/to/project --mode all --report report.md
 
-# Quality assessment only
-python3 scripts/docs-improver.py --path . --mode analyze --report quality-report.md
+# 仅质量评估
+python3 scripts/analyze.py --path /path/to/project --output quality.md
 
-# Generate missing docs only
-python3 scripts/docs-improver.py --path . --mode generate --output ./docs
+# 仅文档生成
+python3 scripts/generate.py --path /path/to/project --type readme
 
-# Consistency check only
-python3 scripts/docs-improver.py --path . --mode check
+# 仅一致性检查
+python3 scripts/consistency-check.py --path /path/to/project --output issues.md
+
+# 仅改进建议
+python3 scripts/improve.py --path /path/to/project --output plan.md
 ```
 
-## Output Examples
+## 核心功能
 
-### Quality Report
+### 📊 文档质量评估
+
+| 维度 | 说明 |
+|------|------|
+| **完整性** | 覆盖关键内容（30% 权重） |
+| **清晰度** | 易读易懂（25% 权重） |
+| **结构化** | 组织清晰（20% 权重） |
+| **可维护性** | 易于更新（15% 权重） |
+| **准确性** | 与代码一致（10% 权重） |
+
+### 📝 文档生成
+
+| 文档类型 | 说明 |
+|----------|------|
+| **README.md** | 项目概述和快速开始 |
+| **API.md** | API 接口文档 |
+| **ARCHITECTURE.md** | 架构设计文档 |
+| **INSTALL.md** | 安装部署指南 |
+| **CONTRIBUTING.md** | 贡献指南 |
+| **CHANGELOG.md** | 变更日志 |
+
+### 🔍 一致性检查
+
+- API 文档 vs 实际接口
+- 示例代码 vs 实际代码
+- 架构图 vs 实际架构
+- 配置说明 vs 实际配置
+- 链接有效性检查
+
+### 💡 改进建议
+
+| 优先级 | 时间 | 说明 |
+|--------|------|------|
+| **快速获胜** | 几小时 | 立即可改的小问题 |
+| **短期** | 几天 | 需要一定工作量 |
+| **长期** | 几周 | 系统性改进 |
+
+## 输出示例
+
+### 质量评估报告
 
 ```markdown
-# Documentation Quality Report
+# 文档质量评估报告
 
-## Overall Score: 72/100
+## 总体评分：88/100 ✅
 
-## Dimension Scores
+| 维度 | 评分 | 状态 |
+|------|------|------|
+| 完整性 | 80/100 | ✅ 良好 |
+| 清晰度 | 100/100 | ✅ 优秀 |
+| 结构化 | 85/100 | ✅ 良好 |
+| 可维护性 | 100/100 | ✅ 优秀 |
 
-| Dimension | Score | Status |
-|-----------|-------|--------|
-| Completeness | 65/100 | ⚠️ Needs Work |
-| Accuracy | 80/100 | ✅ Good |
-| Clarity | 75/100 | ✅ Good |
-| Structure | 60/100 | ⚠️ Needs Work |
-| Maintainability | 70/100 | ⚠️ Needs Work |
+## 改进建议
 
-## Missing Documentation
-- API.md
-- ARCHITECTURE.md
-- CONTRIBUTING.md
+### 快速获胜（几小时）
+- [ ] 添加项目描述和徽章
+- [ ] 添加代码示例
 
-## Critical Issues
-- Missing project description
-- No code examples
-- No installation instructions
+### 短期（几天）
+- [ ] 创建 API 文档
+- [ ] 添加架构图
 
-## Recommendations
-
-### Quick Wins
-- [ ] Add project description and badges
-- [ ] Add code examples
-- [ ] Fix broken links
-
-### Short Term
-- [ ] Create API documentation
-- [ ] Add architecture diagram
-- [ ] Write contributing guide
-
-### Long Term
-- [ ] Set up automated doc generation
-- [ ] Create video tutorials
-- [ ] Establish doc review process
+### 长期（几周）
+- [ ] 建立自动化文档生成
+- [ ] 建立文档审查流程
 ```
 
-### Generated README
+### 一致性问题
 
 ```markdown
-# Project Name
+# 一致性检查报告
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+## 发现问题：5 个
 
-## 📖 Table of Contents
+### 严重 (1)
+1. API 端点 /api/users 存在于代码但未文档化
 
-- [About](#about)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API](#api)
-- [Development](#development)
+### 主要 (2)
+1. README 中的示例代码使用了过时的 API
+2. 架构图缺少新增的微服务
 
-## 📝 About
+### 次要 (2)
+1. 3 个外部链接失效
+2. 术语不统一（用户/客户混用）
+```
 
-Auto-generated project description based on package.json/setup.py
+## 使用场景
 
-## 🚀 Installation
-
+### 1. 文档质量审计
 ```bash
-# Install dependencies
-npm install
+python3 scripts/analyze.py --path . --output audit.md
 ```
 
-## 💡 Usage
+**适用：**
+- 接手新项目
+- 准备发布
+- 季度文档审查
 
-```python
-# Example usage
-from package import main
-main()
-```
-
-## 🔌 API
-
-See [API.md](API.md) for complete API documentation.
-
-## 🛠️ Development
-
+### 2. 生成缺失文档
 ```bash
-# Setup development environment
-npm install
-npm run dev
-```
+python3 scripts/generate.py --path . --output ./docs
 ```
 
-### Consistency Issues
+**适用：**
+- 新项目启动
+- 准备开源
+- 新成员入职
 
-```markdown
-## Consistency Issues Found: 5
-
-[MAJOR] api_mismatch
-Location: API.md
-Issue: API endpoint /api/users exists in code but not documented
-Fix: Add documentation for /api/users
-
-[MINOR] code_example_outdated
-Location: README.md
-Issue: Function process_data in code example may not exist
-Fix: Update or remove the code example
-
-[MINOR] broken_link
-Location: docs/guide.md
-Issue: Link to architecture.md may be broken
-Fix: Update or remove the link
-```
-
-## Use Cases
-
-### 1. Documentation Audit
-
+### 3. 发布前检查
 ```bash
-# Assess current documentation quality
-python3 scripts/docs-improver.py --path . --mode analyze --report audit.md
+python3 scripts/consistency-check.py --path . --output check.md
 ```
 
-**Use when:**
-- Taking over a project
-- Preparing for release
-- Quarterly documentation review
+**适用：**
+- 重大发布前
+- 大重构后
+- API 变更后
 
-### 2. Generate Missing Docs
-
+### 4. 完整文档 overhaul
 ```bash
-# Generate missing documentation
-python3 scripts/docs-improver.py --path . --mode generate --output ./docs
-```
-
-**Use when:**
-- Starting a new project
-- Preparing for open source
-- Onboarding new team members
-
-### 3. Consistency Check Before Release
-
-```bash
-# Check docs match code before release
-python3 scripts/docs-improver.py --path . --mode check
-```
-
-**Use when:**
-- Before major releases
-- After large refactoring
-- API changes
-
-### 4. Complete Documentation Overhaul
-
-```bash
-# Full analysis + generation + checking
 python3 scripts/docs-improver.py --path . --mode all --output ./docs --report report.md
 ```
 
-**Use when:**
-- Documentation is severely outdated
-- New project documentation setup
-- Technical debt sprint
+**适用：**
+- 文档严重过时
+- 新项目文档搭建
+- 技术债务冲刺
 
-## Integration
+## 文档模板
 
-### CI/CD Pipeline
+包含 6+ 专业模板：
 
-```yaml
-# GitHub Actions example
-- name: Documentation Check
-  run: |
-    python3 scripts/docs-improver.py --path . --mode check
-    # Fail if critical issues found
-```
+- README.md 模板
+- API.md 模板
+- ARCHITECTURE.md 模板
+- CONTRIBUTING.md 模板
+- CHANGELOG.md 模板
+- ADR（架构决策记录）模板
 
-### Pre-commit Hook
+## Mermaid 图表模板
 
-```bash
-#!/bin/bash
-# .git/hooks/pre-commit
-python3 scripts/docs-improver.py --path . --mode check --report /tmp/doc-check.md
-```
+包含 10+ 图表模板：
 
-### With AI Assistants
+- 系统架构图
+- 微服务架构
+- 分层架构
+- 事件驱动架构
+- 流程图
+- 序列图
+- 类图
+- 状态图
+- ER 图
+- 甘特图
+
+## 与 AI 助手配合
 
 **Claude/Codex:**
 ```
-"Analyze our documentation quality and suggest improvements"
+"评估我们的文档质量并提出改进建议"
 ```
 
-AI will:
-1. Run docs-improver
-2. Interpret the quality report
-3. Generate specific improvement plans
-4. Help implement recommendations
+AI 会：
+1. 运行 docs-improver
+2. 解读质量报告
+3. 生成具体改进计划
+4. 帮助实施建议
 
-## Quality Scoring
+## 最佳实践
 
-### Score Ranges
+详见 [references/best-practices.md](references/best-practices.md)：
+- 文档写作风格指南
+- 技术文档最佳实践
+- 模板使用指南
+- 图表绘制规范
 
-| Score | Rating | Action |
-|-------|--------|--------|
-| 90-100 | Excellent | Maintain |
-| 80-89 | Good | Minor improvements |
-| 70-79 | Fair | Needs work |
-| 60-69 | Poor | Major improvements |
-| 0-59 | Critical | Complete overhaul |
+## 参见
 
-### Dimension Weights
-
-- Completeness: 30%
-- Clarity: 25%
-- Structure: 20%
-- Maintainability: 15%
-- Accuracy: 10%
-
-## Best Practices
-
-### README.md
-- Clear project title and description
-- Installation instructions
-- Usage examples
-- Contribution guidelines
-- License information
-
-### API Documentation
-- All endpoints documented
-- Request/response examples
-- Error codes
-- Authentication requirements
-
-### Architecture Docs
-- System overview diagram
-- Component descriptions
-- Data flow
-- Technology stack
-
-## Limitations
-
-- **Static Analysis** - Does not execute code
-- **Language Coverage** - Best support for Python, JS/TS
-- **Context Understanding** - May miss nuanced requirements
-- **External Links** - Basic link checking only
-
-## Troubleshooting
-
-### "No documentation found"
-- Check if README exists
-- Verify file permissions
-- Ensure correct path
-
-### "False positives in consistency check"
-- Review manually
-- Add to ignore list
-- Update detection patterns
-
-### "Generated docs need manual review"
-- Always review generated content
-- Add project-specific details
-- Verify code examples work
-
-## See Also
-
-- [Best Practices Guide](references/best-practices.md)
-- [Documentation Templates](assets/templates/)
-- [OpenClaw Documentation](https://docs.openclaw.ai)
-
-## Contributing
-
-Contributions welcome! Especially:
-- Better detection patterns
-- Additional doc templates
-- Language support
-- Integration examples
+- [文档模板](scripts/templates/)
+- [Mermaid 图表](assets/diagrams/)
+- [OpenClaw 文档](https://docs.openclaw.ai)

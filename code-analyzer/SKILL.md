@@ -1,372 +1,159 @@
 ---
 name: code-analyzer
-description: Deep codebase analysis with DDD pattern recognition. Generates comprehensive reports with: architecture analysis, execution paths, data models, business rules, external dependencies, data flows, AND domain-driven design patterns (aggregates, entities, value objects, domain services, repositories, domain events, bounded contexts). Use when: (1) Onboarding to new codebases, (2) Architecture documentation, (3) DDD pattern detection, (4) Domain model understanding, (5) Technical debt assessment, (6) Code review preparation. Supports Python, JavaScript, TypeScript, Rust, Java, Go, and more.
+description: 深度代码分析工具。分析代码架构、执行流程、数据流、业务规则、外部依赖、数据模型，支持 DDD 模式识别（聚合根、实体、值对象、领域服务、仓储、领域事件、限界上下文）。使用场景：新代码库熟悉、架构文档生成、代码审查准备、技术债务评估、知识传承、DDD 模式识别。支持 Python、JavaScript、TypeScript、Rust、Java、Go 等 20+ 语言。
 ---
 
-# Code Analyzer Pro - Deep Codebase Understanding
+# Code Analyzer - 深度代码分析
 
-Professional tool for **deep codebase analysis** that goes beyond surface metrics to understand:
+专业的深度代码库分析工具，超越表面指标，深入理解：
 
-- 🏗️ **Architecture** - Style, layers, module organization
-- 🚀 **Execution Flow** - Entry points, call graphs, execution paths
-- 📊 **Data Models** - Entities, DTOs, value objects, relationships
-- 📜 **Business Rules** - Validation, constraints, workflows encoded in code
-- 🔗 **External Dependencies** - APIs, databases, services, libraries
-- 💧 **Data Flows** - How data moves through the system
+- 🏗️ **架构风格** - 识别 MVC、Clean Architecture、微服务等
+- 🚀 **执行流程** - 入口点、调用图、执行路径追踪
+- 💧 **数据流动** - 数据如何在系统中传输和转换
+- 📜 **业务规则** - 从代码中提取验证逻辑、业务约束
+- 🔗 **外部依赖** - API、数据库、第三方服务
+- 📊 **数据模型** - 实体、DTO、值对象及其关系
+- 🏛️ **DDD 模式** - 聚合根、实体、值对象、领域服务
 
-## Quick Start
+## 快速开始
 
 ```bash
-# Full deep analysis
-python3 scripts/analyze.py --path /path/to/code --output report.md
+# 完整深度分析
+python3 scripts/analyze.py --path /path/to/project --output report.md
 
-# Exclude directories
-python3 scripts/analyze.py --path /path/to/code --exclude "node_modules,vendor,target" --output report.md
+# DDD 专项分析
+python3 scripts/ddd-analyzer.py --path /path/to/project --output ddd-report.md
+
+# 排除特定目录
+python3 scripts/analyze.py --path . --exclude "node_modules,vendor,target" --output analysis.md
 ```
 
-## What You Get
+## 核心功能
 
-### 📋 Executive Summary
-- Total files and lines
-- Architecture style detection
-- Entry points count
-- Data models discovered
-- Business rules identified
-- External dependencies
+### 📊 代码质量评估
 
-### 🏗️ Architecture Analysis
-- Detected architecture style (MVC, Clean, Layered, Microservices, etc.)
-- Module/layer structure
-- Directory organization
+| 维度 | 说明 |
+|------|------|
+| **可维护性** | 代码结构、复杂度、可读性 |
+| **可测试性** | 单元测试覆盖率、可测试程度 |
+| **文档完整性** | 注释、文档覆盖率 |
+| **复杂度** | 圈复杂度、耦合度 |
 
-### 🚀 Entry Points & Execution Flow
-- All entry points (main, run, handle, process functions)
-- Function parameters and return types
-- Call relationships
-- Execution path tracing
+### 🏛️ DDD 模式识别
 
-### 📊 Data Models
-- **Core Entities** - Business domain objects
-- **DTOs** - Data transfer objects
-- **Value Objects** - Immutable value types
-- **Relationships** - Inheritance, composition, usage
+| 模式 | 识别能力 |
+|------|----------|
+| **聚合根** | ✅ 识别一致性边界 |
+| **实体** | ✅ 识别有身份的对象 |
+| **值对象** | ✅ 识别不可变对象 |
+| **领域服务** | ✅ 识别无状态业务逻辑 |
+| **仓储** | ✅ 识别持久化抽象 |
+| **领域事件** | ✅ 识别事件驱动模式 |
+| **限界上下文** | ✅ 识别模块边界 |
 
-### 📜 Business Rules
-Extracted from code:
-- **Validation Rules** - Input validation logic
-- **Constraints** - Business constraints and invariants
-- **Workflows** - State transitions and process flows
-- **Calculations** - Business logic formulas
+### 📝 报告生成
 
-### 🔗 External Dependencies
-- **Libraries** - Third-party packages
-- **APIs** - External service integrations
-- **Databases** - Data persistence layers
-- **Critical Dependencies** - Core functionality dependencies
+- 执行摘要
+- 质量评分
+- 问题清单（分级）
+- 改进建议（分优先级）
+- 架构图（Mermaid）
 
-### 💧 Data Flows
-- Source and destination
-- Data types being transferred
-- Transformations applied
-- Triggers for data movement
-
-### 🛤️ Execution Paths
-Key execution paths through the system:
-- Step-by-step function calls
-- Critical path identification
-- Flow visualization
-
-## Output Example
+## 输出示例
 
 ```markdown
-# Deep Code Analysis Report
+# 代码分析报告
 
-## Executive Summary
-- Total Files: 105
-- Total Lines: 24,780
-- Architecture: Layered
-- Entry Points: 5
-- Data Models: 45
-- Business Rules: 23
+## 执行摘要
+- 总文件数：105
+- 总代码行数：24,780
+- 架构风格：Layered
+- 入口点：5 个
+- 数据模型：45 个
+- 业务规则：23 个
 
-## Architecture
-Style: Layered
+## 质量指标
+| 指标 | 评分 | 状态 |
+|------|------|------|
+| 可维护性 | 75/100 | 👍 |
+| 可测试性 | 82/100 | ✅ |
+| 文档完整性 | 68/100 | ⚠️ |
+| 复杂度 | 71/100 | 👍 |
 
-Layers:
-- api/
-- service/
-- repository/
-- domain/
+## 发现的问题
+### 严重 (1)
+- 循环依赖：module_a ↔ module_b
 
-## Entry Points
-
-### process_message
-- Location: agent.rs
-- Parameters: components, context, user_input
-- Business Logic: ✅ Yes
-- Calls: validate, transform, execute, respond
-
-## Data Models
-
-### Core Entities
-
-**User** (domain/user.rs)
-Fields:
-- id
-- name
-- email
-- role
-
-**Message** (domain/message.rs)
-Fields:
-- id
-- content
-- timestamp
-- user_id
-
-## Business Rules
-
-### Validation Rules (15)
-
-**rule_1:** Validation on user input
-- Location: agent.rs:match
-- Priority: high
-- Condition: if input.is_empty() { return Err(...) }
-
-### Constraints (8)
-
-**rule_16:** Business constraint
-- Location: service/payment.rs
-- Priority: critical
-- Condition: amount must be positive
-
-## External Dependencies
-
-### Critical
-- serde - serialization
-- tokio - async runtime
-- sqlx - database
-
-### Other
-- reqwest, chrono, uuid, ...
-
-## Data Flows
-
-- external → process_message
-  Data: user_input
-  Trigger: API call
-
-- process_message → validate
-  Data: validated_input
-  Trigger: function_call
-
-## Key Execution Paths
-
-### process_message
-1. process_message
-2. validate
-3. transform
-4. execute
-5. respond
+### 主要 (3)
+- 高复杂度函数：calculate_score (复杂度=25)
+- 过大文件：admin.py (850 行)
 ```
 
-## Supported Languages
+## 支持语言
 
-| Language | Extensions | Analysis Depth |
-|----------|-----------|----------------|
-| Python | .py | Deep (AST-based) |
-| JavaScript | .js | Deep (regex + patterns) |
-| TypeScript | .ts | Deep |
-| Rust | .rs | Deep (structs, enums, functions, rules) |
-| Java | .java | Medium |
-| Go | .go | Medium |
-| C/C++ | .c, .cpp, .h | Basic |
+| 语言 | 扩展名 | 分析深度 |
+|------|--------|----------|
+| Python | .py | 深度 (AST) |
+| JavaScript | .js | 深度 |
+| TypeScript | .ts | 深度 |
+| Rust | .rs | 深度 |
+| Java | .java | 中等 |
+| Go | .go | 中等 |
+| C/C++ | .c, .cpp | 基础 |
 
-## Use Cases
+## 使用场景
 
-### 1. New Codebase Onboarding
+### 1. 新项目熟悉
 ```bash
-# Understand a new project in minutes
 python3 scripts/analyze.py --path /new/project --output onboarding.md
 ```
 
-**Benefits:**
-- Identify entry points quickly
-- Understand data models
-- Learn business rules
-- Map dependencies
-
-### 2. Architecture Documentation
+### 2. 架构文档生成
 ```bash
-# Generate architecture docs
 python3 scripts/analyze.py --path . --output architecture.md
 ```
 
-**Outputs:**
-- Architecture style
-- Module structure
-- Data flows
-- Execution paths
-
-### 3. Technical Debt Assessment
+### 3. 代码审查准备
 ```bash
-# Quarterly debt review
-python3 scripts/analyze.py --path . --exclude "tests" --output debt-review.md
-```
-
-**Identifies:**
-- Complex code areas
-- Tight coupling
-- Missing documentation
-- Critical dependencies
-
-### 4. Code Review Preparation
-```bash
-# Pre-PR analysis
 python3 scripts/analyze.py --path ./feature --output pr-analysis.md
 ```
 
-**Provides:**
-- Changed business rules
-- New dependencies
-- Modified data flows
-- Impact analysis
-
-### 5. Knowledge Transfer
+### 4. 技术债务评估
 ```bash
-# Document for team handoff
-python3 scripts/analyze.py --path . --output knowledge-base.md
+python3 scripts/analyze.py --path . --exclude "tests" --output debt-review.md
 ```
 
-**Captures:**
-- Core business logic
-- Key execution paths
-- Critical dependencies
-- Architecture decisions
-
-## Advanced Usage
-
-### Analyze Specific Directories
+### 5. DDD 模式识别
 ```bash
-# Focus on core business logic
-python3 scripts/analyze.py --path ./src --output core-analysis.md
+python3 scripts/ddd-analyzer.py --path . --output ddd-analysis.md
 ```
 
-### Exclude Test Code
-```bash
-python3 scripts/analyze.py --path . --exclude "tests,specs,__tests__" --output prod-analysis.md
+## 与 AI 助手配合
+
+**Claude/Codex:**
+```
+"分析这个代码库并解释：
+1. 主要入口点是什么？
+2. 核心数据模型有哪些？
+3. 编码了哪些业务规则？
+4. 数据如何在系统中流动？"
 ```
 
-### Compare Versions
-```bash
-# Before and after comparison
-python3 scripts/analyze.py --path ./before --output before.md
-python3 scripts/analyze.py --path ./after --output after.md
-diff before.md after.md
-```
+AI 会：
+1. 运行 code-analyzer
+2. 解读分析报告
+3. 提供针对性解释
+4. 回答具体问题
 
-## Integration with AI Assistants
+## 最佳实践
 
-### Claude/Codex Usage
-```
-"Analyze this codebase and explain:
-1. What are the main entry points?
-2. What are the core data models?
-3. What business rules are encoded?
-4. How does data flow through the system?"
-```
+详见 [references/best-practices.md](references/best-practices.md)：
+- 代码分析方法论
+- 架构识别技巧
+- DDD 模式识别指南
+- 质量改进建议
 
-AI will:
-1. Run the analyzer
-2. Interpret the deep report
-3. Provide context-specific explanations
-4. Answer questions about architecture
+## 参见
 
-### Automated Documentation
-```bash
-# Generate docs for each module
-for dir in src/*/; do
-  python3 scripts/analyze.py --path $dir --output docs/$(basename $dir).md
-done
-```
-
-## Interpreting Results
-
-### Architecture Styles
-
-**MVC** - Model-View-Controller
-- Look for: controllers/, models/, views/
-- Good for: Web applications
-
-**Clean Architecture**
-- Look for: domain/, application/, infrastructure/
-- Good for: Enterprise applications
-
-**Layered**
-- Look for: api/, service/, repository/, data/
-- Good for: Traditional enterprise apps
-
-**Microservices**
-- Look for: service/, gateway/, client/
-- Good for: Distributed systems
-
-### Business Rule Types
-
-**Validation** - Input/data validation
-**Constraint** - Business invariants
-**Workflow** - Process flows
-**Calculation** - Business formulas
-
-### Dependency Criticality
-
-**Critical** - Core functionality depends on it
-**Important** - Used in key features
-**Optional** - Nice to have, not critical
-
-## Limitations
-
-- **Static Analysis Only** - Does not execute code
-- **Language Coverage** - Deep support for Python, JS/TS, Rust; basic for others
-- **Heuristic Detection** - Architecture and rules detected via patterns
-- **No Runtime Info** - Does not capture runtime behavior
-- **Complementary** - Does not replace manual code review
-
-## Best Practices
-
-See [references/best-practices.md](references/best-practices.md) for:
-- How to interpret analysis results
-- Common architecture patterns
-- Business rule extraction techniques
-- Dependency management strategies
-- Documentation guidelines
-
-## Troubleshooting
-
-### "No entry points found"
-- Check if your language is supported
-- Entry points named differently (try custom patterns)
-- Code might be library/framework, not application
-
-### "No business rules detected"
-- Rules may be in configuration files
-- Business logic might be implicit
-- Try analyzing specific business logic files
-
-### Slow analysis
-- Large codebases (>10k files) take time
-- Use `--exclude` to focus on relevant code
-- Analyze specific directories instead
-
-## See Also
-
-- [Best Practices Guide](references/best-practices.md)
-- [OpenClaw Documentation](https://docs.openclaw.ai)
+- [OpenClaw 文档](https://docs.openclaw.ai)
 - [ClawHub Skills](https://clawhub.com)
-
-## Contributing
-
-Contributions welcome! Especially:
-- Additional language support
-- Better business rule detection
-- Architecture pattern recognition
-- Data flow visualization
