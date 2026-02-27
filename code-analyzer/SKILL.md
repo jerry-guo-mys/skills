@@ -1,217 +1,372 @@
 ---
 name: code-analyzer
-description: Professional code analysis with AI-powered insights. Generates comprehensive reports with quality scores, issue detection, and actionable recommendations. Use when: (1) Analyzing code quality and architecture, (2) Identifying technical debt and refactoring opportunities, (3) Preparing code reviews, (4) Onboarding to new codebases, (5) Generating documentation. Supports 20+ languages including Python, JavaScript, Java, Go, Rust, and more.
+description: Deep codebase analysis for understanding architecture, business logic, data flows, and dependencies. Generates comprehensive reports with: execution paths, data models, business rules, external integrations, and data flow diagrams. Use when: (1) Onboarding to new codebases, (2) Architecture documentation, (3) Technical debt assessment, (4) Code review preparation, (5) Knowledge transfer. Supports Python, JavaScript, TypeScript, Rust, Java, Go, and more.
 ---
 
-# Code Analyzer Pro
+# Code Analyzer Pro - Deep Codebase Understanding
 
-Professional codebase analysis tool that generates comprehensive reports with:
-- Quality scores (maintainability, testability, documentation, complexity)
-- Issue detection with severity levels
-- Actionable recommendations
-- Architecture insights
+Professional tool for **deep codebase analysis** that goes beyond surface metrics to understand:
+
+- 🏗️ **Architecture** - Style, layers, module organization
+- 🚀 **Execution Flow** - Entry points, call graphs, execution paths
+- 📊 **Data Models** - Entities, DTOs, value objects, relationships
+- 📜 **Business Rules** - Validation, constraints, workflows encoded in code
+- 🔗 **External Dependencies** - APIs, databases, services, libraries
+- 💧 **Data Flows** - How data moves through the system
 
 ## Quick Start
 
 ```bash
-# Full analysis with report
+# Full deep analysis
 python3 scripts/analyze.py --path /path/to/code --output report.md
 
-# Quick summary
-python3 scripts/analyze.py --path /path/to/code
-
 # Exclude directories
-python3 scripts/analyze.py --path /path/to/code --exclude "node_modules,vendor,.git"
+python3 scripts/analyze.py --path /path/to/code --exclude "node_modules,vendor,target" --output report.md
 ```
 
-## Features
+## What You Get
 
-### 📊 Quality Metrics
-- **Maintainability Score** - How easy to maintain
-- **Testability Score** - How easy to test
-- **Documentation Score** - Documentation coverage
-- **Complexity Score** - Code complexity assessment
-- **Overall Score** - Weighted average
+### 📋 Executive Summary
+- Total files and lines
+- Architecture style detection
+- Entry points count
+- Data models discovered
+- Business rules identified
+- External dependencies
 
-### ⚠️ Issue Detection
-- **Critical** - Circular dependencies, architectural issues
-- **Major** - High complexity, tight coupling
-- **Minor** - Large files, code smells
+### 🏗️ Architecture Analysis
+- Detected architecture style (MVC, Clean, Layered, Microservices, etc.)
+- Module/layer structure
+- Directory organization
 
-### 🎯 Recommendations
-- **Quick Wins** - Fixable in hours
-- **Short Term** - 1-2 weeks
-- **Long Term** - 1-3 months
+### 🚀 Entry Points & Execution Flow
+- All entry points (main, run, handle, process functions)
+- Function parameters and return types
+- Call relationships
+- Execution path tracing
+
+### 📊 Data Models
+- **Core Entities** - Business domain objects
+- **DTOs** - Data transfer objects
+- **Value Objects** - Immutable value types
+- **Relationships** - Inheritance, composition, usage
+
+### 📜 Business Rules
+Extracted from code:
+- **Validation Rules** - Input validation logic
+- **Constraints** - Business constraints and invariants
+- **Workflows** - State transitions and process flows
+- **Calculations** - Business logic formulas
+
+### 🔗 External Dependencies
+- **Libraries** - Third-party packages
+- **APIs** - External service integrations
+- **Databases** - Data persistence layers
+- **Critical Dependencies** - Core functionality dependencies
+
+### 💧 Data Flows
+- Source and destination
+- Data types being transferred
+- Transformations applied
+- Triggers for data movement
+
+### 🛤️ Execution Paths
+Key execution paths through the system:
+- Step-by-step function calls
+- Critical path identification
+- Flow visualization
 
 ## Output Example
 
 ```markdown
-# Code Analysis Report
+# Deep Code Analysis Report
 
 ## Executive Summary
-- Overall Score: 73/100
-- Issues Found: 5
+- Total Files: 105
+- Total Lines: 24,780
+- Architecture: Layered
+- Entry Points: 5
+- Data Models: 45
+- Business Rules: 23
 
-## Quality Metrics
-| Metric | Score | Status |
-|--------|-------|--------|
-| Maintainability | 62/100 | ⚠️ Needs Improvement |
-| Testability | 89/100 | ✅ Excellent |
+## Architecture
+Style: Layered
 
-## Issues Found
-### CRITICAL
-- Circular dependency: module_a → module_b → module_a
+Layers:
+- api/
+- service/
+- repository/
+- domain/
 
-### MAJOR  
-- High complexity in calculate_score (complexity=25)
+## Entry Points
 
-## Recommendations
-### Quick Wins
-- [ ] Add type hints
-- [ ] Remove unused imports
-```
+### process_message
+- Location: agent.rs
+- Parameters: components, context, user_input
+- Business Logic: ✅ Yes
+- Calls: validate, transform, execute, respond
 
-## Analysis Modes
+## Data Models
 
-### Full Analysis (Default)
-Complete analysis with all metrics and recommendations.
+### Core Entities
 
-```bash
-python3 scripts/analyze.py --path . --output full-report.md
-```
+**User** (domain/user.rs)
+Fields:
+- id
+- name
+- email
+- role
 
-### Quick Summary
-Console output with key metrics only.
+**Message** (domain/message.rs)
+Fields:
+- id
+- content
+- timestamp
+- user_id
 
-```bash
-python3 scripts/analyze.py --path .
-```
+## Business Rules
 
-### JSON Output
-For programmatic processing.
+### Validation Rules (15)
 
-```bash
-python3 scripts/analyze.py --path . --json --output report.json
+**rule_1:** Validation on user input
+- Location: agent.rs:match
+- Priority: high
+- Condition: if input.is_empty() { return Err(...) }
+
+### Constraints (8)
+
+**rule_16:** Business constraint
+- Location: service/payment.rs
+- Priority: critical
+- Condition: amount must be positive
+
+## External Dependencies
+
+### Critical
+- serde - serialization
+- tokio - async runtime
+- sqlx - database
+
+### Other
+- reqwest, chrono, uuid, ...
+
+## Data Flows
+
+- external → process_message
+  Data: user_input
+  Trigger: API call
+
+- process_message → validate
+  Data: validated_input
+  Trigger: function_call
+
+## Key Execution Paths
+
+### process_message
+1. process_message
+2. validate
+3. transform
+4. execute
+5. respond
 ```
 
 ## Supported Languages
 
 | Language | Extensions | Analysis Depth |
 |----------|-----------|----------------|
-| Python | .py | Full (imports, functions, classes, complexity) |
-| JavaScript | .js | Full |
-| TypeScript | .ts | Full |
-| Java | .java | Full |
-| Go | .go | Full |
-| Rust | .rs | Full |
+| Python | .py | Deep (AST-based) |
+| JavaScript | .js | Deep (regex + patterns) |
+| TypeScript | .ts | Deep |
+| Rust | .rs | Deep (structs, enums, functions, rules) |
+| Java | .java | Medium |
+| Go | .go | Medium |
 | C/C++ | .c, .cpp, .h | Basic |
-| C# | .cs | Basic |
-| Ruby | .rb | Basic |
-| PHP | .php | Basic |
-| Swift | .swift | Basic |
-| Shell | .sh | Basic |
-| SQL | .sql | Basic |
-| YAML/JSON | .yaml, .yml, .json | Structure only |
 
 ## Use Cases
 
-### 1. Code Review Preparation
+### 1. New Codebase Onboarding
 ```bash
-# Analyze before PR review
-python3 scripts/analyze.py --path ./feature-branch --output pr-analysis.md
-```
-
-### 2. Technical Debt Assessment
-```bash
-# Quarterly debt assessment
-python3 scripts/analyze.py --path . --output debt-report-q1.md
-```
-
-### 3. New Codebase Onboarding
-```bash
-# Understand a new project
+# Understand a new project in minutes
 python3 scripts/analyze.py --path /new/project --output onboarding.md
 ```
 
-### 4. Architecture Review
+**Benefits:**
+- Identify entry points quickly
+- Understand data models
+- Learn business rules
+- Map dependencies
+
+### 2. Architecture Documentation
 ```bash
-# Focus on architecture
-python3 scripts/analyze.py --path . --exclude "tests,docs" --output arch-review.md
+# Generate architecture docs
+python3 scripts/analyze.py --path . --output architecture.md
 ```
 
-## Integration
+**Outputs:**
+- Architecture style
+- Module structure
+- Data flows
+- Execution paths
 
-### With AI Assistants
-
-**Claude/Codex:**
+### 3. Technical Debt Assessment
+```bash
+# Quarterly debt review
+python3 scripts/analyze.py --path . --exclude "tests" --output debt-review.md
 ```
-"Analyze this codebase and identify the top 3 issues"
+
+**Identifies:**
+- Complex code areas
+- Tight coupling
+- Missing documentation
+- Critical dependencies
+
+### 4. Code Review Preparation
+```bash
+# Pre-PR analysis
+python3 scripts/analyze.py --path ./feature --output pr-analysis.md
 ```
 
-The AI will:
-1. Run the analyzer
-2. Interpret the report
-3. Provide context-specific recommendations
+**Provides:**
+- Changed business rules
+- New dependencies
+- Modified data flows
+- Impact analysis
 
-### With CI/CD
-
-```yaml
-# GitHub Actions example
-- name: Code Analysis
-  run: |
-    python3 scripts/analyze.py --path . --output report.md
-    # Fail if score < 60
+### 5. Knowledge Transfer
+```bash
+# Document for team handoff
+python3 scripts/analyze.py --path . --output knowledge-base.md
 ```
+
+**Captures:**
+- Core business logic
+- Key execution paths
+- Critical dependencies
+- Architecture decisions
 
 ## Advanced Usage
 
-### Custom Exclude Patterns
+### Analyze Specific Directories
 ```bash
-# Exclude test and vendor directories
-python3 scripts/analyze.py --path . --exclude "tests,vendor,node_modules,.git"
+# Focus on core business logic
+python3 scripts/analyze.py --path ./src --output core-analysis.md
 ```
 
-### Analyze Specific Language
+### Exclude Test Code
 ```bash
-# Only Python files
-python3 scripts/analyze.py --path . --include "*.py"
+python3 scripts/analyze.py --path . --exclude "tests,specs,__tests__" --output prod-analysis.md
 ```
 
-### Compare Two Versions
+### Compare Versions
 ```bash
 # Before and after comparison
 python3 scripts/analyze.py --path ./before --output before.md
 python3 scripts/analyze.py --path ./after --output after.md
+diff before.md after.md
 ```
+
+## Integration with AI Assistants
+
+### Claude/Codex Usage
+```
+"Analyze this codebase and explain:
+1. What are the main entry points?
+2. What are the core data models?
+3. What business rules are encoded?
+4. How does data flow through the system?"
+```
+
+AI will:
+1. Run the analyzer
+2. Interpret the deep report
+3. Provide context-specific explanations
+4. Answer questions about architecture
+
+### Automated Documentation
+```bash
+# Generate docs for each module
+for dir in src/*/; do
+  python3 scripts/analyze.py --path $dir --output docs/$(basename $dir).md
+done
+```
+
+## Interpreting Results
+
+### Architecture Styles
+
+**MVC** - Model-View-Controller
+- Look for: controllers/, models/, views/
+- Good for: Web applications
+
+**Clean Architecture**
+- Look for: domain/, application/, infrastructure/
+- Good for: Enterprise applications
+
+**Layered**
+- Look for: api/, service/, repository/, data/
+- Good for: Traditional enterprise apps
+
+**Microservices**
+- Look for: service/, gateway/, client/
+- Good for: Distributed systems
+
+### Business Rule Types
+
+**Validation** - Input/data validation
+**Constraint** - Business invariants
+**Workflow** - Process flows
+**Calculation** - Business formulas
+
+### Dependency Criticality
+
+**Critical** - Core functionality depends on it
+**Important** - Used in key features
+**Optional** - Nice to have, not critical
+
+## Limitations
+
+- **Static Analysis Only** - Does not execute code
+- **Language Coverage** - Deep support for Python, JS/TS, Rust; basic for others
+- **Heuristic Detection** - Architecture and rules detected via patterns
+- **No Runtime Info** - Does not capture runtime behavior
+- **Complementary** - Does not replace manual code review
 
 ## Best Practices
 
 See [references/best-practices.md](references/best-practices.md) for:
-- How to interpret scores
-- Common issue patterns
-- Refactoring strategies
-- Quality improvement roadmap
-
-## Limitations
-
-- Does not execute code (static analysis only)
-- Some languages have limited support
-- Architecture detection is heuristic-based
-- Does not replace manual code review
+- How to interpret analysis results
+- Common architecture patterns
+- Business rule extraction techniques
+- Dependency management strategies
+- Documentation guidelines
 
 ## Troubleshooting
 
-### "No files found"
-Check exclude patterns - they might be too aggressive.
+### "No entry points found"
+- Check if your language is supported
+- Entry points named differently (try custom patterns)
+- Code might be library/framework, not application
 
-### "Permission denied"
-Run with appropriate permissions or exclude protected directories.
+### "No business rules detected"
+- Rules may be in configuration files
+- Business logic might be implicit
+- Try analyzing specific business logic files
 
 ### Slow analysis
-Large codebases (>10k files) may take time. Use `--exclude` to focus.
+- Large codebases (>10k files) take time
+- Use `--exclude` to focus on relevant code
+- Analyze specific directories instead
 
 ## See Also
 
 - [Best Practices Guide](references/best-practices.md)
 - [OpenClaw Documentation](https://docs.openclaw.ai)
 - [ClawHub Skills](https://clawhub.com)
+
+## Contributing
+
+Contributions welcome! Especially:
+- Additional language support
+- Better business rule detection
+- Architecture pattern recognition
+- Data flow visualization
