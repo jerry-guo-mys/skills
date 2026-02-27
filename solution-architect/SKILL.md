@@ -1,118 +1,122 @@
 ---
 name: solution-architect
-description: PRD to Technical Solution Generator. Converts product requirements (PRD) into comprehensive technical solution documents including: background, product goals, system goals, architecture, business flow, payment flow, data flow, data models, API design, database schema, impact analysis, and task breakdown. Use when: (1) Converting PRD to technical design, (2) Writing technical solution documents, (3) System architecture design, (4) Development planning.
+description: 技术方案文档生成与优化工具。支持从 PRD 生成完整技术方案，或对现有技术方案进行质量评估和优化。生成内容包括：需求背景、产品目标、系统目标、系统架构、业务流程、资金流程、数据流程、数据模型、API 设计、表设计、影响面分析、任务拆分。使用场景：PRD 转技术方案、技术方案评审、文档质量优化、架构设计审查、开发任务规划。
 ---
 
-# Solution Architect - PRD to Technical Solution
+# Solution Architect - 技术方案专家
 
-Professional tool for converting PRD into complete technical solution documents.
+专业的技术方案文档生成与优化工具，支持从 PRD 生成或对现有方案进行优化。
 
-## Quick Start
+## 快速开始
 
 ```bash
-# Generate complete technical solution from PRD
+# 从 PRD 生成完整技术方案
 python3 scripts/prd-to-solution.py \
-  --prd requirements.md \
-  --output technical-solution.md \
+  --prd 需求文档.md \
+  --output 技术方案.md \
   --type full
 
-# Generate specific sections
-python3 scripts/architecture-design.py --prd requirements.md --output architecture.md
-python3 scripts/api-design.py --prd requirements.md --output api-docs.md
-python3 scripts/database-design.py --prd requirements.md --output database.md
+# 优化现有技术方案
+python3 scripts/optimize-solution.py \
+  --input 现有方案.md \
+  --output 优化方案.md \
+  --level deep
+
+# 评估技术方案质量
+python3 scripts/evaluate-solution.py \
+  --input 技术方案.md \
+  --output 评估报告.md
 ```
 
-## Features
+## 核心功能
 
-### 📋 Complete Document Structure
+### 📝 PRD 转技术方案
 
-1. **需求背景** - Business background and context
-2. **产品目标** - Product goals and success metrics
-3. **系统目标** - System goals and non-functional requirements
-4. **系统架构** - System architecture with diagrams
-5. **业务流程** - Business process flows
-6. **资金流程** - Payment and fund flows
-7. **数据流程** - Data flow diagrams
-8. **数据模型** - Entity relationship models
-9. **API 设计** - API specifications
-10. **表设计** - Database schema design
-11. **影响面分析** - Impact analysis (mindmap)
-12. **任务拆分** - Development task breakdown
+将产品需求文档转换为完整技术方案，包含：
 
-### 🎯 PRD Analysis
+1. **需求背景** - 业务背景、用户痛点、项目范围
+2. **产品目标** - 核心目标、成功指标、优先级
+3. **系统目标** - 功能目标、性能目标、可用性目标、安全目标
+4. **系统架构** - 系统上下文、组件架构、技术栈
+5. **业务流程** - 主流程、分支流程、异常流程
+6. **资金流程** - 支付流程、退款流程、对账流程
+7. **数据流程** - 数据采集、处理、存储
+8. **数据模型** - 实体关系、核心实体、数据字典
+9. **API 设计** - API 概览、接口详情、错误码
+10. **表设计** - 表结构、索引设计、数据迁移
+11. **影响面分析** - 系统影响、依赖系统、风险评估
+12. **任务拆分** - 开发任务、时间估算、里程碑
 
-- Extract functional requirements
-- Identify user stories
-- Map business processes
-- Define success metrics
+### 🔧 技术方案优化
 
-### 🏗️ Architecture Generation
+对现有技术方案进行深度优化：
 
-- System context diagrams
-- Component architecture
-- Integration points
-- Technology recommendations
+**优化维度：**
+- ✅ 结构完整性检查
+- ✅ 内容深度评估
+- ✅ 图表规范性
+- ✅ 技术选型合理性
+- ✅ 风险评估充分性
+- ✅ 任务拆分可执行性
 
-### 📊 Design Artifacts
+**优化输出：**
+- 质量评分报告
+- 问题清单
+- 优化建议
+- 优化后的完整文档
 
-- Business flow diagrams (Mermaid)
-- Payment flow diagrams
-- Data flow diagrams
-- ER diagrams
-- API specifications
-- Database schema
+### 📊 技术方案评审
 
-### 📝 Impact Analysis
+评估技术方案质量：
 
-- System impact assessment
-- Dependency mapping
-- Risk identification
-- Mitigation strategies
+| 维度 | 权重 | 评估项 |
+|------|------|--------|
+| **完整性** | 25% | 章节覆盖、内容完整 |
+| **准确性** | 20% | 技术选型、架构设计 |
+| **可行性** | 20% | 任务拆分、时间估算 |
+| **清晰度** | 15% | 图表质量、文档结构 |
+| **风险控制** | 10% | 风险识别、缓解措施 |
+| **成本控制** | 10% | 资源估算、ROI 分析 |
 
-### 📋 Task Breakdown
+## 使用示例
 
-- Development tasks
-- Estimated effort
-- Dependencies
-- Milestone definition
-
-## Usage Examples
-
-### Example 1: E-commerce Feature
+### 示例 1: 从 PRD 生成
 
 ```bash
 python3 scripts/prd-to-solution.py \
-  --prd "Shopping cart feature PRD" \
-  --output cart-solution.md \
+  --prd "电商购物车功能 PRD" \
+  --output 购物车技术方案.md \
   --type full
 ```
 
-### Example 2: Payment Integration
+### 示例 2: 优化现有方案
 
 ```bash
-python3 scripts/prd-to-solution.py \
-  --prd "Payment gateway integration PRD" \
-  --output payment-solution.md \
-  --type payment
+python3 scripts/optimize-solution.py \
+  --input 初版技术方案.md \
+  --output 优化版技术方案.md \
+  --level deep \
+  --report 优化报告.md
 ```
 
-### Example 3: API Development
+### 示例 3: 方案质量评估
 
 ```bash
-python3 scripts/api-design.py \
-  --prd "User management API PRD" \
-  --output user-api.md
+python3 scripts/evaluate-solution.py \
+  --input 技术方案.md \
+  --output 评审报告.md \
+  --strict
 ```
 
-## Output Structure
+## 输出结构
 
 ```markdown
-# Technical Solution Document
+# 技术方案文档
 
 ## 1. 需求背景
 ### 1.1 业务背景
 ### 1.2 用户痛点
-### 1.3 市场分析
+### 1.3 项目范围
 
 ## 2. 产品目标
 ### 2.1 核心目标
@@ -171,37 +175,105 @@ python3 scripts/api-design.py \
 ### 12.3 里程碑
 ```
 
-## Integration
+## 优化功能详解
 
-### With AI Assistants
+### 优化级别
 
-**Claude/Codex:**
+| 级别 | 说明 | 适用场景 |
+|------|------|----------|
+| **light** | 轻量优化 | 文档结构微调、格式规范 |
+| **standard** | 标准优化 | 内容补充、图表优化 |
+| **deep** | 深度优化 | 架构重构、技术选型优化 |
+
+### 优化检查项
+
+**结构检查：**
+- [ ] 12 个核心章节是否完整
+- [ ] 章节层次是否清晰
+- [ ] 目录导航是否正确
+
+**内容检查：**
+- [ ] 需求背景是否充分
+- [ ] 系统目标是否 SMART
+- [ ] 架构图是否规范
+- [ ] API 设计是否完整
+- [ ] 表设计是否合理
+
+**质量检查：**
+- [ ] 技术选型是否有对比
+- [ ] 风险评估是否充分
+- [ ] 任务拆分是否可执行
+- [ ] 时间估算是否合理
+
+### 优化输出
+
+```markdown
+# 优化报告
+
+## 质量评分：75/100 → 90/100
+
+## 发现的问题 (15 个)
+
+### 严重问题 (2)
+1. 缺少系统架构图
+2. 风险评估缺失
+
+### 主要问题 (5)
+1. API 设计不完整，缺少错误码
+2. 表设计缺少索引说明
+3. 任务拆分粒度过粗
+...
+
+### 优化建议
+1. 添加系统上下文架构图
+2. 补充风险评估章节
+3. 完善 API 错误码定义
+...
+
+## 优化后文档
+[完整优化后的技术方案]
 ```
-"Based on this PRD, generate a complete technical solution document 
-including architecture, API design, database schema, and task breakdown."
-```
 
-### With docs-improver
+## 与其他技能配合
+
+### 与 docs-improver 配合
 
 ```bash
-# Generate solution
-python3 prd-to-solution.py --prd prd.md --output solution.md
+# 生成技术方案
+python3 solution-architect/scripts/prd-to-solution.py \
+  --prd prd.md --output solution.md
 
-# Improve quality
-python3 docs-improver/scripts/analyze.py --path solution.md --output quality.md
+# 优化文档质量
+python3 docs-improver/scripts/docs-improver.py \
+  --path solution.md --mode all --report quality.md
 ```
 
-## Best Practices
+### 与 code-analyzer 配合
 
-See [references/best-practices.md](references/best-practices.md) for:
-- PRD analysis techniques
-- Architecture design principles
-- API design guidelines
-- Database design best practices
-- Task estimation methods
+```bash
+# 分析现有代码库
+python3 code-analyzer/scripts/analyze.py \
+  --path ./src --output code-analysis.md
 
-## See Also
+# 基于代码分析生成优化方案
+python3 solution-architect/scripts/optimize-solution.py \
+  --input solution.md \
+  --code-analysis code-analysis.md \
+  --output optimized-solution.md
+```
 
-- [Architecture Templates](assets/templates/)
-- [Mermaid Diagrams](assets/diagrams/)
-- [OpenClaw Documentation](https://docs.openclaw.ai)
+## 最佳实践
+
+详见 [references/best-practices.md](references/best-practices.md)：
+- PRD 分析技巧
+- 架构设计原则
+- API 设计规范
+- 数据库设计最佳实践
+- 任务估算方法
+- 技术选型框架
+
+## 参见
+
+- [架构模板](assets/templates/)
+- [Mermaid 图表](assets/diagrams/)
+- [OpenClaw 文档](https://docs.openclaw.ai)
