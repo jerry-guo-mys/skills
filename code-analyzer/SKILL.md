@@ -1,6 +1,6 @@
 ---
 name: code-analyzer
-description: Deep codebase analysis for understanding architecture, business logic, data flows, and dependencies. Generates comprehensive reports with: execution paths, data models, business rules, external integrations, and data flow diagrams. Use when: (1) Onboarding to new codebases, (2) Architecture documentation, (3) Technical debt assessment, (4) Code review preparation, (5) Knowledge transfer. Supports Python, JavaScript, TypeScript, Rust, Java, Go, and more.
+description: Deep codebase analysis with DDD pattern recognition. Generates comprehensive reports with: architecture analysis, execution paths, data models, business rules, external dependencies, data flows, AND domain-driven design patterns (aggregates, entities, value objects, domain services, repositories, domain events, bounded contexts). Use when: (1) Onboarding to new codebases, (2) Architecture documentation, (3) DDD pattern detection, (4) Domain model understanding, (5) Technical debt assessment, (6) Code review preparation. Supports Python, JavaScript, TypeScript, Rust, Java, Go, and more.
 ---
 
 # Code Analyzer Pro - Deep Codebase Understanding
