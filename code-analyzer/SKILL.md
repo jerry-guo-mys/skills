@@ -1,94 +1,217 @@
 ---
 name: code-analyzer
-description: Fast and accurate code analysis for any codebase. Use when: (1) Analyzing code structure and architecture, (2) Understanding unfamiliar codebases, (3) Reviewing code for issues or patterns, (4) Generating code summaries or documentation, (5) Identifying dependencies and relationships, (6) Analyzing code complexity or metrics. Supports all major programming languages and frameworks.
+description: Professional code analysis with AI-powered insights. Generates comprehensive reports with quality scores, issue detection, and actionable recommendations. Use when: (1) Analyzing code quality and architecture, (2) Identifying technical debt and refactoring opportunities, (3) Preparing code reviews, (4) Onboarding to new codebases, (5) Generating documentation. Supports 20+ languages including Python, JavaScript, Java, Go, Rust, and more.
 ---
 
-# Code Analyzer
+# Code Analyzer Pro
 
-A comprehensive code analysis tool for fast and accurate codebase understanding.
+Professional codebase analysis tool that generates comprehensive reports with:
+- Quality scores (maintainability, testability, documentation, complexity)
+- Issue detection with severity levels
+- Actionable recommendations
+- Architecture insights
 
 ## Quick Start
 
-Analyze a codebase:
 ```bash
-# Basic analysis
-scripts/analyze.py --path /path/to/code --output summary.md
+# Full analysis with report
+python3 scripts/analyze.py --path /path/to/code --output report.md
 
-# Deep analysis with dependencies
-scripts/analyze.py --path /path/to/code --deep --output analysis.md
+# Quick summary
+python3 scripts/analyze.py --path /path/to/code
 
-# Specific file analysis
-scripts/analyze.py --file /path/to/file.py --output file-analysis.md
+# Exclude directories
+python3 scripts/analyze.py --path /path/to/code --exclude "node_modules,vendor,.git"
 ```
 
-## Analysis Types
+## Features
 
-### 1. Structure Analysis
-Map the codebase structure:
-```bash
-scripts/analyze.py --path . --mode structure
+### 📊 Quality Metrics
+- **Maintainability Score** - How easy to maintain
+- **Testability Score** - How easy to test
+- **Documentation Score** - Documentation coverage
+- **Complexity Score** - Code complexity assessment
+- **Overall Score** - Weighted average
+
+### ⚠️ Issue Detection
+- **Critical** - Circular dependencies, architectural issues
+- **Major** - High complexity, tight coupling
+- **Minor** - Large files, code smells
+
+### 🎯 Recommendations
+- **Quick Wins** - Fixable in hours
+- **Short Term** - 1-2 weeks
+- **Long Term** - 1-3 months
+
+## Output Example
+
+```markdown
+# Code Analysis Report
+
+## Executive Summary
+- Overall Score: 73/100
+- Issues Found: 5
+
+## Quality Metrics
+| Metric | Score | Status |
+|--------|-------|--------|
+| Maintainability | 62/100 | ⚠️ Needs Improvement |
+| Testability | 89/100 | ✅ Excellent |
+
+## Issues Found
+### CRITICAL
+- Circular dependency: module_a → module_b → module_a
+
+### MAJOR  
+- High complexity in calculate_score (complexity=25)
+
+## Recommendations
+### Quick Wins
+- [ ] Add type hints
+- [ ] Remove unused imports
 ```
-- Directory tree
-- File organization
-- Module relationships
 
-### 2. Dependency Analysis
-Find dependencies and imports:
+## Analysis Modes
+
+### Full Analysis (Default)
+Complete analysis with all metrics and recommendations.
+
 ```bash
-scripts/analyze.py --path . --mode dependencies
+python3 scripts/analyze.py --path . --output full-report.md
 ```
-- Import chains
-- External dependencies
-- Circular dependencies
 
-### 3. Complexity Analysis
-Calculate code metrics:
+### Quick Summary
+Console output with key metrics only.
+
 ```bash
-scripts/analyze.py --path . --mode complexity
+python3 scripts/analyze.py --path .
 ```
-- Cyclomatic complexity
-- Lines of code
-- Function lengths
 
-### 4. Pattern Analysis
-Identify code patterns:
+### JSON Output
+For programmatic processing.
+
 ```bash
-scripts/analyze.py --path . --mode patterns
+python3 scripts/analyze.py --path . --json --output report.json
 ```
-- Design patterns
-- Code smells
-- Best practices
 
-## Analysis Workflow
+## Supported Languages
 
-1. **Discover** - Map the codebase structure
-2. **Analyze** - Deep dive into key files
-3. **Summarize** - Generate human-readable summary
-4. **Report** - Output findings with recommendations
+| Language | Extensions | Analysis Depth |
+|----------|-----------|----------------|
+| Python | .py | Full (imports, functions, classes, complexity) |
+| JavaScript | .js | Full |
+| TypeScript | .ts | Full |
+| Java | .java | Full |
+| Go | .go | Full |
+| Rust | .rs | Full |
+| C/C++ | .c, .cpp, .h | Basic |
+| C# | .cs | Basic |
+| Ruby | .rb | Basic |
+| PHP | .php | Basic |
+| Swift | .swift | Basic |
+| Shell | .sh | Basic |
+| SQL | .sql | Basic |
+| YAML/JSON | .yaml, .yml, .json | Structure only |
 
-## Language Support
+## Use Cases
 
-- Python, JavaScript/TypeScript, Java, Go, Rust
-- C/C++, C#, Ruby, PHP, Swift
-- Shell scripts, SQL, YAML/JSON
+### 1. Code Review Preparation
+```bash
+# Analyze before PR review
+python3 scripts/analyze.py --path ./feature-branch --output pr-analysis.md
+```
 
-## Best Practices
+### 2. Technical Debt Assessment
+```bash
+# Quarterly debt assessment
+python3 scripts/analyze.py --path . --output debt-report-q1.md
+```
 
-- Start with structure analysis for large codebases
-- Use file filters to focus on relevant code
-- Combine multiple analysis modes for comprehensive review
-- See [references/best-practices.md](references/best-practices.md) for detailed guidelines
+### 3. New Codebase Onboarding
+```bash
+# Understand a new project
+python3 scripts/analyze.py --path /new/project --output onboarding.md
+```
+
+### 4. Architecture Review
+```bash
+# Focus on architecture
+python3 scripts/analyze.py --path . --exclude "tests,docs" --output arch-review.md
+```
+
+## Integration
+
+### With AI Assistants
+
+**Claude/Codex:**
+```
+"Analyze this codebase and identify the top 3 issues"
+```
+
+The AI will:
+1. Run the analyzer
+2. Interpret the report
+3. Provide context-specific recommendations
+
+### With CI/CD
+
+```yaml
+# GitHub Actions example
+- name: Code Analysis
+  run: |
+    python3 scripts/analyze.py --path . --output report.md
+    # Fail if score < 60
+```
 
 ## Advanced Usage
 
-### Filtering
+### Custom Exclude Patterns
 ```bash
-# Exclude tests and vendor directories
-scripts/analyze.py --path . --exclude "tests/,vendor/,node_modules/"
-
-# Focus on specific extensions
-scripts/analyze.py --path . --include "*.py,*.js"
+# Exclude test and vendor directories
+python3 scripts/analyze.py --path . --exclude "tests,vendor,node_modules,.git"
 ```
 
-### Custom Rules
-Add custom analysis rules in `references/custom-rules.md`
+### Analyze Specific Language
+```bash
+# Only Python files
+python3 scripts/analyze.py --path . --include "*.py"
+```
+
+### Compare Two Versions
+```bash
+# Before and after comparison
+python3 scripts/analyze.py --path ./before --output before.md
+python3 scripts/analyze.py --path ./after --output after.md
+```
+
+## Best Practices
+
+See [references/best-practices.md](references/best-practices.md) for:
+- How to interpret scores
+- Common issue patterns
+- Refactoring strategies
+- Quality improvement roadmap
+
+## Limitations
+
+- Does not execute code (static analysis only)
+- Some languages have limited support
+- Architecture detection is heuristic-based
+- Does not replace manual code review
+
+## Troubleshooting
+
+### "No files found"
+Check exclude patterns - they might be too aggressive.
+
+### "Permission denied"
+Run with appropriate permissions or exclude protected directories.
+
+### Slow analysis
+Large codebases (>10k files) may take time. Use `--exclude` to focus.
+
+## See Also
+
+- [Best Practices Guide](references/best-practices.md)
+- [OpenClaw Documentation](https://docs.openclaw.ai)
+- [ClawHub Skills](https://clawhub.com)
