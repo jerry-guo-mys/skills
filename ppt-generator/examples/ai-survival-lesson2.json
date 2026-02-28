@@ -1,0 +1,204 @@
+{
+  "title": "AI 时代程序员的生存指南 - 第 02 节",
+  "slides": [
+    {
+      "type": "title",
+      "emoji": "🎯",
+      "title": "程序员的不可替代性",
+      "subtitle": "第 02 节：Core Competency 深度解析",
+      "author": "Jerry",
+      "year": "2026"
+    },
+    {
+      "type": "quote",
+      "text": "代码贬值的时代，",
+      "highlight": "什么能力在疯狂升值？"
+    },
+    {
+      "type": "grid",
+      "title": "🤖 AI 能替代什么？",
+      "description": "清醒认识 AI 的能力范围",
+      "cards": [
+        {
+          "title": "✅ 可替代的工作",
+          "type": "negative",
+          "items": [
+            "CRUD 代码编写",
+            "样板代码生成",
+            "基础单元测试",
+            "API 文档编写",
+            "简单 Bug 修复"
+          ]
+        },
+        {
+          "title": "❌ 不可替代的能力",
+          "type": "positive",
+          "items": [
+            "系统架构设计",
+            "业务需求洞察",
+            "技术选型决策",
+            "复杂问题拆解",
+            "团队协作沟通"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "📊 2026 年程序员能力价值榜",
+      "items": [
+        "<span class=\"highlight\">T0 级</span> - 业务架构能力（年薪 80-150w）",
+        "<span class=\"highlight\">T0 级</span> - 技术判断力（年薪 80-150w）",
+        "<span class=\"highlight\">T1 级</span> - 领域专业知识（年薪 50-100w）",
+        "<span class=\"success\">T2 级</span> - 工程实现能力（年薪 30-60w）",
+        "<span class=\"error\">T3 级</span> - 纯代码实现（年薪 15-30w，最危险）"
+      ]
+    },
+    {
+      "type": "grid",
+      "title": "🎯 四大核心竞争力详解",
+      "description": "每项能力都决定你的薪资上限",
+      "cards": [
+        {
+          "title": "🧠 顶层技术判断力",
+          "type": "positive",
+          "items": [
+            "技术趋势预判",
+            "技术选型权衡",
+            "架构演进规划",
+            "技术风险评估"
+          ]
+        },
+        {
+          "title": "🏗️ 业务架构设计力",
+          "type": "positive",
+          "items": [
+            "业务模型抽象",
+            "系统边界划分",
+            "扩展性设计",
+            "技术债管理"
+          ]
+        },
+        {
+          "title": "💰 商业逻辑洞察力",
+          "type": "positive",
+          "items": [
+            "理解商业模式",
+            "识别核心价值",
+            "成本收益分析",
+            "优先级判断"
+          ]
+        },
+        {
+          "title": "👑 领域专家级品味",
+          "type": "positive",
+          "items": [
+            "代码质量品味",
+            "设计模式运用",
+            "最佳实践坚持",
+            "技术细节把控"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "grid",
+      "title": "💼 真实案例：35 岁老张的逆袭",
+      "description": "从可被替代到不可或缺的蜕变",
+      "cards": [
+        {
+          "title": "😓 32 岁的危机",
+          "type": "negative",
+          "items": [
+            "每天写业务代码到 9 点",
+            "技术栈只有 Spring Boot",
+            "被领导说可替代性强",
+            "面试屡遭拒绝"
+          ]
+        },
+        {
+          "title": "🚀 35 岁的转折",
+          "type": "positive",
+          "items": [
+            "主导系统重构，节省 50% 服务器成本",
+            "设计新架构，支撑 10 倍流量增长",
+            "培养 3 个初级工程师",
+            "成为团队技术负责人"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "title": "📋 核心竞争力提升路径",
+      "tasks": [
+        {
+          "title": "Phase 1: 夯实基础（1-2 年）",
+          "desc": "深入理解设计模式、数据结构、算法原理，写出高质量代码"
+        },
+        {
+          "title": "Phase 2: 拓展视野（2-3 年）",
+          "desc": "学习系统架构、阅读开源项目、参与技术社区"
+        },
+        {
+          "title": "Phase 3: 深耕领域（3-5 年）",
+          "desc": "选择垂直领域深耕，成为该领域的专家"
+        },
+        {
+          "title": "Phase 4: 商业思维（5 年+）",
+          "desc": "理解业务、理解商业、理解人性，从技术走向价值创造"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "🔥 立即行动清单",
+      "items": [
+        "<span class=\"highlight\">本周</span> - 画出你负责系统的架构图，找出 3 个可优化点",
+        "<span class=\"highlight\">本月</span> - 阅读一本架构设计书籍（推荐《架构整洁之道》）",
+        "<span class=\"highlight\">本季</span> - 主导一个技术改进项目，量化业务价值",
+        "<span class=\"highlight\">今年</span> - 在团队/公司做一次技术分享，建立影响力"
+      ]
+    },
+    {
+      "type": "quote",
+      "text": "不要做写代码的人，",
+      "highlight": "要做解决问题的人。"
+    },
+    {
+      "type": "grid",
+      "title": "👉 下集高能预告",
+      "description": "实战：用 AI 提升 10 倍开发效率",
+      "cards": [
+        {
+          "title": "🎁 你将获得",
+          "type": "positive",
+          "items": [
+            "完整的 AI 工作流",
+            "10+ 实战案例",
+            "Prompt 模板库",
+            "效率提升秘籍"
+          ]
+        },
+        {
+          "title": "📝 课前准备",
+          "type": "positive",
+          "items": [
+            "安装 Cursor 编辑器",
+            "注册 GitHub Copilot",
+            "准备一个实际项目",
+            "带着问题来上课"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "title": "Invest in Yourself.",
+      "subtitle": "投资自己，永远是最划算的买卖。",
+      "author": "Jerry",
+      "email": "jerry@example.com",
+      "contact": "Wechat: jerry_tech"
+    }
+  ]
+}
