@@ -1,0 +1,150 @@
+{
+  "title": "AI 时代程序员的生存指南 - 第 01 节",
+  "slides": [
+    {
+      "type": "title",
+      "emoji": "🚀",
+      "title": "AI 时代程序员的生存指南",
+      "subtitle": "第 01 节：AI 的能力边界与实战",
+      "author": "Jerry",
+      "year": "2026"
+    },
+    {
+      "type": "list",
+      "title": "🎯 课程目标",
+      "items": [
+        "<span class=\"success\">✓</span> 深刻理解 AI 的能力边界（能做什么/不能做什么）",
+        "<span class=\"success\">✓</span> 掌握将 AI 融入日常开发的工作流",
+        "<span class=\"success\">✓</span> 消除技术更迭带来的不必要焦虑",
+        "<span class=\"success\">✓</span> 建立个人的"AI 赋能兵器谱”"
+      ]
+    },
+    {
+      "type": "grid",
+      "title": "🤖 AI 真正擅长什么？",
+      "description": "",
+      "cards": [
+        {
+          "title": "⚡ 重复性构建",
+          "type": "positive",
+          "items": [
+            "样板代码生成 (Boilerplate)",
+            "API 文档与注释编写",
+            "测试用例快速补全",
+            "数据格式清洗与转换"
+          ]
+        },
+        {
+          "title": "🔍 高效信息聚合",
+          "type": "positive",
+          "items": [
+            "精准查找晦涩的 API 属性",
+            "替代 StackOverflow 搜索方案",
+            "长篇技术文档的核心提取",
+            "报错日志的病理分析"
+          ]
+        },
+        {
+          "title": "👁️ 模式识别与审查",
+          "type": "positive",
+          "items": [
+            "基础 Code Review",
+            "潜在内存泄漏/Bug 预警",
+            "算法复杂度优化建议",
+            "代码风格统一校验"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "grid",
+      "title": "🚫 AI 当前的"软肋”在哪里？",
+      "description": "",
+      "cards": [
+        {
+          "title": "🧠 从 0 到 1 的创造",
+          "type": "negative",
+          "items": [
+            "全局系统架构设计",
+            "贴合特定业务的技术选型",
+            "颠覆性的创新交互方案"
+          ]
+        },
+        {
+          "title": "⚖️ 极其复杂的决策",
+          "type": "negative",
+          "items": [
+            "技术债与业务迭代的权衡",
+            "非标需求的边界界定",
+            "涉及合规/安全的高危评估"
+          ]
+        },
+        {
+          "title": "🤝 深度的人际共情",
+          "type": "negative",
+          "items": [
+            "跨部门沟通与甩锅防范",
+            "挖掘 PM 隐藏的真实需求",
+            "安抚暴躁的甲方爸爸"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "text": "AI 永远不会取代优秀的程序员，",
+      "highlight": "但会用 AI 的程序员，一定会取代不会用的。"
+    },
+    {
+      "type": "grid",
+      "title": "💼 降维打击：真实学员案例",
+      "description": "后端开发小王（32 岁）的职场转折点",
+      "cards": [
+        {
+          "title": "😓 拥抱 AI 前的泥潭",
+          "type": "negative",
+          "items": [
+            "每天机械式 CRUD 搬砖到晚上 9 点",
+            "写正则、SQL 查询常卡住半小时",
+            "代码缺乏单测，上线提心吊胆"
+          ]
+        },
+        {
+          "title": "🚀 接入 AI 工作流后",
+          "type": "positive",
+          "items": [
+            "利用 Copilot 自动补全 40% 业务代码",
+            "自然语言生成复杂 SQL 和正则",
+            "5 分钟生成完整单元测试，准点下班"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tasks",
+      "title": "📋 破局者的行动清单",
+      "tasks": [
+        {
+          "title": "重塑开发习惯",
+          "desc": "遇到问题：先问 AI ➔ 再查文档 ➔ 最后求助搜素引擎。"
+        },
+        {
+          "title": "组建 AI 专属兵器谱",
+          "desc": "编码辅助：Cursor / GitHub Copilot | 疑难解答：ChatGPT Plus / Claude 3.5 | 终端提效：Warp"
+        },
+        {
+          "title": "保持 Prompt (提示词) 迭代",
+          "desc": "每天花 15 分钟阅读优秀的 Prompt 模板，学会精准表达意图。"
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "title": "Keep Hacking, Keep Evolving.",
+      "subtitle": "我们下节课见！",
+      "author": "Jerry",
+      "email": "jerry@example.com",
+      "contact": "💬 Wechat: jerry_tech"
+    }
+  ]
+}

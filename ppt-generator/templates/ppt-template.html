@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}}</title>
+    <style>
+        :root {
+            --bg-color-1: #0f172a;
+            --bg-color-2: #1e1b4b;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #f43f5e;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: radial-gradient(circle at center, var(--bg-color-2) 0%, var(--bg-color-1) 100%);
+            color: var(--text-main);
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+        }
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .slide {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            padding: 40px 8vw;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 { font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 24px; text-align: center; letter-spacing: 2px; }
+        h2 { font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 40px; text-align: center; letter-spacing: 1px; color: var(--accent-cyan); text-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+        ul, ol { font-size: clamp(1.2rem, 2vw, 1.6rem); line-height: 2; max-width: 1000px; }
+        li { margin-bottom: 16px; opacity: 0; animation: slideInRight 0.6s ease-out forwards; }
+        li:nth-child(1) { animation-delay: 0.2s; }
+        li:nth-child(2) { animation-delay: 0.35s; }
+        li:nth-child(3) { animation-delay: 0.5s; }
+        li:nth-child(4) { animation-delay: 0.65s; }
+        li:nth-child(5) { animation-delay: 0.8s; }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .highlight { color: var(--accent-warning); font-weight: bold; }
+        .success { color: var(--accent-green); }
+        .error { color: var(--accent-danger); }
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .quote {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 300;
+            text-align: center;
+            line-height: 1.6;
+            padding: 60px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), transparent);
+        }
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 6rem;
+            color: var(--accent-cyan);
+            opacity: 0.2;
+            position: absolute;
+            font-family: serif;
+        }
+        .quote::before { top: 10px; left: 20px; }
+        .quote::after { bottom: -30px; right: 20px; }
+        .page-number { position: absolute; bottom: 30px; left: 40px; font-size: 16px; color: var(--text-muted); letter-spacing: 2px; font-family: monospace; }
+        .progress-container { position: fixed; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.05); z-index: 1001; }
+        .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green)); box-shadow: 0 0 10px var(--accent-cyan); transition: width 0.4s ease-out; }
+        .emoji { font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); }
+        .gradient-text { background: linear-gradient(135deg, #e0e7ff 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 1400px; margin-top: 20px; }
+        .grid-layout h3 { font-size: 1.8rem; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+        .controls-hint { position: fixed; bottom: 30px; right: 40px; font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 15px; z-index: 100; }
+        .key { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); font-family: monospace; }
+    </style>
+</head>
+<body>
+    <canvas id="particles"></canvas>
+    <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
+    
+    <!-- SLIDES_PLACEHOLDER -->
+    
+    <div class="page-number" id="pageCounter">1 / {{TOTAL_SLIDES}}</div>
+    <div class="controls-hint">
+        <span>上一页：<span class="key">←</span> <span class="key">↑</span></span>
+        <span>下一页：<span class="key">→</span> <span class="key">↓</span> <span class="key">Space</span></span>
+        <span>全屏：<span class="key">F11</span></span>
+    </div>
+    
+    <script>
+        // 神经网络粒子效果
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+        const particles = [];
+        const particleCount = Math.min(Math.floor(window.innerWidth / 15), 80);
+        const maxDistance = 150;
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(14, 165, 233, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < maxDistance) {
+                        const opacity = 1 - (distance / maxDistance);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(14, 165, 233, ${opacity * 0.2})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+        
+        // 幻灯片控制
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const progress = document.getElementById('progress');
+        const pageCounter = document.getElementById('pageCounter');
+        const totalSlides = slides.length;
+        
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) slide.classList.add('active');
+            });
+            const progressPercent = ((currentSlide + 1) / totalSlides) * 100;
+            progress.style.width = `${progressPercent}%`;
+            pageCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+        
+        function nextSlide() { if (currentSlide < totalSlides - 1) { currentSlide++; updateSlide(); } }
+        function prevSlide() { if (currentSlide > 0) { currentSlide--; updateSlide(); } }
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(`全屏请求被拒绝：${err.message}`));
+            } else { document.exitFullscreen(); }
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowDown') { e.preventDefault(); nextSlide(); }
+            else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
+            else if (e.key === 'F11') { e.preventDefault(); toggleFullscreen(); }
+        });
+        
+        document.addEventListener('click', (e) => {
+            if(e.target.tagName.toLowerCase() === 'a') return;
+            const clickX = e.clientX;
+            const screenWidth = window.innerWidth;
+            if (clickX > screenWidth * 0.7) nextSlide();
+            else if (clickX < screenWidth * 0.3) prevSlide();
+        });
+        
+        let scrollTimeout = false;
+        window.addEventListener('wheel', (e) => {
+            if (scrollTimeout) return;
+            if (e.deltaY > 0) nextSlide();
+            else if (e.deltaY < 0) prevSlide();
+            scrollTimeout = true;
+            setTimeout(() => { scrollTimeout = false; }, 500);
+        });
+        
+        let touchStartX = 0, touchEndX = 0;
+        window.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+        window.addEventListener('touchend', e => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); });
+        function handleSwipe() {
+            const threshold = 50;
+            if (touchEndX < touchStartX - threshold) nextSlide();
+            if (touchEndX > touchStartX + threshold) prevSlide();
+        }
+        
+        updateSlide();
+    </script>
+</body>
+</html>
