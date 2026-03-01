@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mermaid 图表演示 | 现代可视化</title>
+    <title>Mermaid 图表演示</title>
     <style>
         :root {
             --bg-color-1: #0f172a;
@@ -12,7 +12,6 @@
             --accent-green: #10b981;
             --accent-warning: #f59e0b;
             --accent-danger: #f43f5e;
-            --accent-purple: #8b5cf6;
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
             --text-main: #f8fafc;
@@ -20,7 +19,7 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            font-family: -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif;
             background: radial-gradient(circle at center, var(--bg-color-2) 0%, var(--bg-color-1) 100%);
             color: var(--text-main);
             overflow: hidden;
@@ -28,7 +27,6 @@
             height: 100vh;
         }
         #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        
         .slide {
             display: none;
             width: 100vw;
@@ -51,50 +49,22 @@
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        h1 { font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 16px; text-align: center; letter-spacing: 2px; }
-        h2 { font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 30px; text-align: center; letter-spacing: 1px; color: var(--accent-cyan); text-shadow: 0 0 20px rgba(6, 182, 212, 0.4); }
-        .subtitle { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px; text-align: center; font-weight: 300; letter-spacing: 1px; }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px 40px;
-            list-style: none;
-            padding: 20px;
-        }
-        .feature-grid li {
-            font-size: clamp(1.1rem, 1.5vw, 1.4rem);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 12px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: slideInRight 0.6s ease-out forwards;
-        }
-        .feature-grid li:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(6, 182, 212, 0.3);
-            transform: translateX(10px);
-        }
-        .feature-grid li:nth-child(1) { animation-delay: 0.1s; }
-        .feature-grid li:nth-child(2) { animation-delay: 0.2s; }
-        .feature-grid li:nth-child(3) { animation-delay: 0.3s; }
-        .feature-grid li:nth-child(4) { animation-delay: 0.4s; }
-        .feature-grid li:nth-child(5) { animation-delay: 0.5s; }
-        .feature-grid li:nth-child(6) { animation-delay: 0.6s; }
-        .feature-grid li:nth-child(7) { animation-delay: 0.7s; }
-        .feature-grid li:nth-child(8) { animation-delay: 0.8s; }
-
+        h1 { font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 24px; text-align: center; letter-spacing: 2px; }
+        h2 { font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 40px; text-align: center; letter-spacing: 1px; color: var(--accent-cyan); text-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+        ul, ol { font-size: clamp(1.2rem, 2vw, 1.6rem); line-height: 2; max-width: 1000px; }
+        li { margin-bottom: 16px; opacity: 0; animation: slideInRight 0.6s ease-out forwards; }
+        li:nth-child(1) { animation-delay: 0.2s; }
+        li:nth-child(2) { animation-delay: 0.35s; }
+        li:nth-child(3) { animation-delay: 0.5s; }
+        li:nth-child(4) { animation-delay: 0.65s; }
+        li:nth-child(5) { animation-delay: 0.8s; }
         @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(-30px); }
+            from { opacity: 0; transform: translateX(-20px); }
             to { opacity: 1; transform: translateX(0); }
         }
-
+        .highlight { color: var(--accent-warning); font-weight: bold; }
+        .success { color: var(--accent-green); }
+        .error { color: var(--accent-danger); }
         .glass-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -102,16 +72,40 @@
             padding: 40px;
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
-            width: 100%;
         }
         .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(6, 182, 212, 0.1), inset 0 1px 0 rgba(255,255,255,0.2);
-            border-color: rgba(6, 182, 212, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            border-color: rgba(255, 255, 255, 0.15);
         }
-
+        .quote {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 300;
+            text-align: center;
+            line-height: 1.6;
+            padding: 60px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), transparent);
+        }
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 6rem;
+            color: var(--accent-cyan);
+            opacity: 0.2;
+            position: absolute;
+            font-family: serif;
+        }
+        .quote::before { top: 10px; left: 20px; }
+        .quote::after { bottom: -30px; right: 20px; }
+        .page-number { position: absolute; bottom: 30px; left: 40px; font-size: 16px; color: var(--text-muted); letter-spacing: 2px; font-family: monospace; }
+        .progress-container { position: fixed; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.05); z-index: 1001; }
+        .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green)); box-shadow: 0 0 10px var(--accent-cyan); transition: width 0.4s ease-out; }
+        .emoji { font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); }
+        .gradient-text { background: linear-gradient(135deg, #e0e7ff 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 1400px; margin-top: 20px; }
+        .grid-layout h3 { font-size: 1.8rem; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
         .mermaid-wrapper { 
             width: 100%; 
             max-width: 1000px; 
@@ -134,249 +128,258 @@
             height: auto; 
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
-
-        .gradient-text { background: linear-gradient(135deg, #e0e7ff 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .success { color: var(--accent-green); text-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
-        
-        .page-number { position: absolute; bottom: 30px; left: 40px; font-size: 16px; color: var(--text-muted); letter-spacing: 2px; font-family: monospace; z-index: 100; }
-        .progress-container { position: fixed; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.05); z-index: 1001; }
-        .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan)); box-shadow: 0 0 15px var(--accent-cyan); transition: width 0.4s ease-out; }
         .controls-hint { position: fixed; bottom: 30px; right: 40px; font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 15px; z-index: 100; }
-        .key { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); font-family: monospace; box-shadow: 0 2px 0 rgba(0,0,0,0.2); }
-
+        .key { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); font-family: monospace; }
     </style>
 </head>
 <body>
     <canvas id="particles"></canvas>
     <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
+    
+    
+            <div class="slide">
+                <div class="emoji">📊</div>
+                <h1 class="gradient-text">Mermaid 图表集成</h1>
+                <h2>在 PPT 中绘制流程图、时序图、类图</h2>
+                <div style="margin-top: 50px; text-align: center; color: var(--text-muted);">
+                    <p style="font-size: 1.5rem; color: #fff; margin-bottom: 8px;">PPT Generator</p>
+                    <p style="letter-spacing: 2px;">2026</p>
+                </div>
+            </div>
+            
 
-    <div class="slide">
-        <div style="font-size: 5rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.4));">✨</div>
-        <h1 class="gradient-text">Mermaid 动态图表集成</h1>
-        <h2>用纯文本构建专业级可视化</h2>
-        <p class="subtitle">告别繁琐的拖拽，拥抱 Code as Diagram</p>
-    </div>
-    
-    <div class="slide">
-        <h2>全矩阵图表支持</h2>
-        <div class="glass-card" style="max-width: 900px;">
-            <ul class="feature-grid">
-                <li><span class="success">✦</span> 流程图 (Flowchart)</li>
-                <li><span class="success">✦</span> 时序图 (Sequence Diagram)</li>
-                <li><span class="success">✦</span> 类图 (Class Diagram)</li>
-                <li><span class="success">✦</span> 状态图 (State Diagram)</li>
-                <li><span class="success">✦</span> 甘特图 (Gantt Chart)</li>
-                <li><span class="success">✦</span> 饼图 (Pie Chart)</li>
-                <li><span class="success">✦</span> 思维导图 (Mindmap)</li>
-                <li><span class="success">✦</span> 架构图 (Architecture)</li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="slide">
-        <h2>流程图：高可用云架构</h2>
-        <p class="subtitle">展示复杂的条件分支与集群部署</p>
-        <div class="mermaid-wrapper">
-            <pre class="mermaid" style="display:none;">
-flowchart LR
-    Client([客户端]) --> CDN[CDN 边缘节点]
-    CDN --> WAF{Web 验证}
-    WAF -->|非法请求| Reject[拦截丢弃]
-    WAF -->|合法请求| LB((负载均衡))
-    
-    subgraph cluster_vpc [VPC 私有网络]
-        API1[API 网关 A]
-        API2[API 网关 B]
-        Redis[(Redis 缓存)]
-        DB[(主从数据库)]
-    end
-    
-    LB --> API1
-    LB --> API2
-    API1 --> Redis
-    API2 --> Redis
-    API1 --> DB
-    API2 --> DB
-    
-    style Client fill:#1e1b4b,stroke:#06b6d4,stroke-width:2px
-    style CDN fill:#0f172a,stroke:#8b5cf6
-    style Reject fill:#f43f5e,stroke:#fff
-    style cluster_vpc fill:#0f172a,stroke:#06b6d4,stroke-dasharray: 5 5
-            </pre>
-        </div>
-    </div>
-    
-    <div class="slide">
-        <h2>时序图：OAuth 2.0 授权</h2>
-        <p class="subtitle">清晰描绘系统间的交互与时序关系</p>
-        <div class="mermaid-wrapper">
-            <pre class="mermaid" style="display:none;">
+            <div class="slide">
+                <h2>支持的图表类型</h2>
+                <div class="glass-card" style="width: 100%; max-width: 800px;">
+                    <ul style="list-style: none; padding: 0;"><li><span class="success">✓</span> 流程图 (Flowchart)</li><li><span class="success">✓</span> 时序图 (Sequence Diagram)</li><li><span class="success">✓</span> 类图 (Class Diagram)</li><li><span class="success">✓</span> 状态图 (State Diagram)</li><li><span class="success">✓</span> 甘特图 (Gantt Chart)</li><li><span class="success">✓</span> 饼图 (Pie Chart)</li><li><span class="success">✓</span> 思维导图 (Mindmap)</li><li><span class="success">✓</span> 用户旅程图 (User Journey)</li></ul>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>流程图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    系统架构流程图
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
+flowchart TD
+    A[用户请求] --> B{认证？}
+    B -->|是 | C[API 网关]
+    B -->|否 | D[返回 401]
+    C --> E[微服务 A]
+    C --> F[微服务 B]
+    E --> G[数据库]
+    F --> G
+    G --> H[返回结果]
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>时序图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    用户登录流程
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
 sequenceDiagram
-    autonumber
-    participant User as 用户
-    participant App as 第三方应用
-    participant Auth as 授权服务器
-    participant Res as 资源服务器
-
-    User->>App: 点击微信登录
-    App->>Auth: 重定向至授权页面(携带 client_id)
-    Auth-->>User: 展示授权同意书
-    User->>Auth: 用户点击同意
-    Auth-->>App: 返回授权码
-    App->>Auth: 携带 Code 和 Secret 请求 Token
-    Auth-->>App: 下发 Access Token
-    App->>Res: 携带 Token 请求用户信息
-    Res-->>App: 返回头像与昵称
-    App-->>User: 登录成功并展示首页
-            </pre>
-        </div>
-    </div>
+    participant U as 用户
+    participant F as 前端
+    participant A as API
+    participant D as 数据库
     
-    <div class="slide">
-        <h2>类图：电商核心领域模型</h2>
-        <p class="subtitle">定义系统实体的属性、方法及对应关系</p>
-        <div class="mermaid-wrapper">
-            <pre class="mermaid" style="display:none;">
+    U->>F: 输入账号密码
+    F->>A: POST /login
+    A->>D: 查询用户
+    D-->>A: 返回用户信息
+    A-->>F: 返回 Token
+    F-->>U: 登录成功
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>类图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    领域模型类图
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
 classDiagram
-    class Customer {
-        +String customerId
+    class User {
+        +String id
+        +String name
         +String email
-        +verifyAccount() bool
+        +login()
+        +logout()
     }
     class Order {
-        +String orderId
+        +String id
         +Date createdAt
-        +OrderStatus status
-        +calculateTotal() decimal
+        +List~Item~ items
+        +checkout()
     }
-    class Payment {
-        &lt;&lt;Interface&gt;&gt;
-        +process(amount) bool
+    class Item {
+        +String productId
+        +int quantity
+        +decimal price
     }
-    class AliPay {
-        +generateQR() string
-    }
-    class WeChatPay {
-        +invokeApp() void
-    }
-
-    Customer "1" *-- "0..n" Order : owns
-    Order "1" --&gt; "1" Payment : uses
-    Payment &lt;|.. AliPay : implements
-    Payment &lt;|.. WeChatPay : implements
-            </pre>
-        </div>
-    </div>
-    
-    <div class="slide">
-        <h2>状态图：交易生命周期</h2>
-        <div class="mermaid-wrapper">
-            <pre class="mermaid" style="display:none;">
-stateDiagram-v2
-    direction LR
-    [*] --> 待支付 : 创建订单
-    
-    待支付 --> 已支付 : 用户付款完成
-    待支付 --> 已取消 : 超时未付 / 主动取消
-    
-    state 履约中 {
-        已支付 --> 备货中
-        备货中 --> 已发货 : 物流揽收
-        已发货 --> 派送中
-    }
-    
-    履约中 --> 交易成功 : 用户签收
-    交易成功 --> [*]
-    已取消 --> [*]
-            </pre>
-        </div>
-    </div>
-    
-    <div class="slide">
-        <h2>甘特图：敏捷迭代计划</h2>
-        <div class="mermaid-wrapper">
-            <pre class="mermaid" style="display:none;">
-gantt
-    title V2.0 冲刺迭代 (Sprint 12)
-    dateFormat  YYYY-MM-DD
-    axisFormat  %m-%d
-    
-    section 需求与设计
-    PRD 评审          :done,    des1, 2026-03-01, 2d
-    UI 视觉输出       :active,  des2, after des1, 3d
-    
-    section 核心开发
-    基础设施搭建      :crit,    dev1, 2026-03-04, 3d
-    后端 API 开发     :         dev2, after dev1, 5d
-    前端页面对接      :         dev3, after dev2, 4d
-    
-    section 测试上线
-    集成联调          :         test1, after dev3, 3d
-    灰度发布          :milestone, m1, after test1, 0d
-            </pre>
-        </div>
-    </div>
-    
-    <div class="slide">
-        <div style="font-size: 5rem; margin-bottom: 20px;">🚀</div>
-        <h1 class="gradient-text">Thank You!</h1>
-        <h2 style="color: var(--text-muted); text-shadow: none;">现在，开始你的数据可视化之旅</h2>
-    </div>
+    User --> Order : places
+    Order --> Item : contains
+                    </pre>
+                </div>
+            </div>
             
-    <div class="page-number" id="pageCounter">1 / 8</div>
+
+            <div class="slide">
+                <h2>状态图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    订单状态流转
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
+stateDiagram-v2
+    [*] --> Pending : 创建订单
+    Pending --> Paid : 支付成功
+    Pending --> Cancelled : 取消订单
+    Paid --> Shipping : 发货
+    Shipping --> Delivered : 签收
+    Delivered --> [*]
+    Paid --> Refunded : 申请退款
+    Refunded --> [*]
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>甘特图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    项目进度计划
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
+gantt
+    title 项目开发计划
+    dateFormat  YYYY-MM-DD
+    section 需求
+    需求分析 :a1, 2026-03-01, 7d
+    原型设计 :after a1, 5d
+    section 开发
+    前端开发 :2026-03-10, 14d
+    后端开发 :2026-03-10, 14d
+    section 测试
+    单元测试 :2026-03-20, 7d
+    集成测试 :2026-03-25, 5d
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>饼图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    时间分配比例
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
+pie title 工作日时间分配
+    "工作" : 8
+    "学习" : 3
+    "运动" : 1
+    "娱乐" : 2
+    "睡眠" : 8
+    "其他" : 2
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <div class="glass-card quote">
+                    <span style="display:block; margin-bottom: 20px; color: var(--text-main);">图表胜千言，</span>
+                    <span class="gradient-text" style="font-weight: 600; font-size: 1.2em;">让数据可视化更简单</span>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <div class="emoji" style="font-size: 5rem;">🎉</div>
+                <h1 class="gradient-text">Thank You!</h1>
+                <h2 style="color: var(--text-muted); text-shadow: none;">开始制作你的图表演示文稿</h2>
+                <div class="glass-card" style="margin-top: 40px; padding: 30px 60px; text-align: center;">
+                    <p style="font-size: 1.8rem; margin-bottom: 10px; font-weight: bold;">PPT Generator</p>
+                    <p style="color: var(--text-muted); margin-bottom: 10px;">📧 ppt@example.com</p>
+                    <p style="color: var(--accent-cyan);">💬 GitHub: @openclaw</p>
+                </div>
+            </div>
+            
+    
+    <div class="page-number" id="pageCounter">1 / 10</div>
     <div class="controls-hint">
-        <span>切换：<span class="key">←</span> <span class="key">→</span></span>
+        <span>上一页：<span class="key">←</span> <span class="key">↑</span></span>
+        <span>下一页：<span class="key">→</span> <span class="key">↓</span> <span class="key">Space</span></span>
         <span>全屏：<span class="key">F11</span></span>
     </div>
     
+    <!-- Mermaid 图表支持 -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
     <script>
+        // 初始化 Mermaid
         mermaid.initialize({ 
             startOnLoad: false,
-            theme: 'base',
+            theme: 'dark',
             themeVariables: {
-                background: 'transparent',
-                primaryColor: 'rgba(6, 182, 212, 0.1)', 
+                primaryColor: '#06b6d4',
                 primaryTextColor: '#f8fafc',
                 primaryBorderColor: '#06b6d4',
-                lineColor: '#8b5cf6', 
-                secondaryColor: 'rgba(139, 92, 246, 0.2)',
-                tertiaryColor: '#1e1b4b',
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "16px"
+                lineColor: '#94a3b8',
+                secondaryColor: '#1e1b4b',
+                tertiaryColor: '#0f172a'
             },
-            flowchart: { curve: 'basis', padding: 25 },
-            sequence: { actorMargin: 50, messageMargin: 40 },
-            gantt: { barHeight: 30, barGap: 8 }
+            flowchart: {
+                curve: 'basis',
+                padding: 20
+            }
         });
-
-        async function renderActiveMermaid(slideElement) {
-            if (!slideElement) return;
-            const preElement = slideElement.querySelector('pre.mermaid');
-            
-            if (preElement && preElement.getAttribute('data-processed') !== 'true') {
-                // 使用 textContent 确保转义后的 &lt; 能被正确提取为 <
-                const graphDefinition = preElement.textContent.trim();
-                const id = 'mermaid-svg-' + Math.random().toString(36).substr(2, 9);
-                
-                try {
-                    const { svg } = await mermaid.render(id, graphDefinition);
-                    const container = document.createElement('div');
-                    container.innerHTML = svg;
-                    container.style.width = '100%';
-                    container.style.display = 'flex';
-                    container.style.justifyContent = 'center';
+    </script>
+    
+    <script>
+        // 初始化 Mermaid 图表
+        async function initMermaid() {
+            if (window.mermaid) {
+                // 只处理 pre.mermaid 元素
+                const elements = document.querySelectorAll('pre.mermaid');
+                for (let i = 0; i < elements.length; i++) {
+                    const element = elements[i];
+                    // 跳过已渲染的
+                    if (element.getAttribute('data-processed') === 'true') continue;
                     
-                    preElement.parentNode.replaceChild(container, preElement);
-                } catch (e) {
-                    console.error('Mermaid 渲染失败:', e);
-                    preElement.innerHTML = `<span style="color:#f43f5e; font-weight:bold;">图表渲染失败：${e.message}</span>`;
-                    preElement.style.display = 'block';
+                    const graphDefinition = element.textContent.trim();
+                    try {
+                        const { svg } = await mermaid.render('mermaid-' + i, graphDefinition);
+                        // 创建容器包裹 SVG
+                        const container = document.createElement('div');
+                        container.className = 'mermaid-wrapper';
+                        container.innerHTML = svg;
+                        container.style.display = 'flex';
+                        container.style.justifyContent = 'center';
+                        // 替换 pre 标签
+                        element.parentNode.replaceChild(container, element);
+                        element.setAttribute('data-processed', 'true');
+                    } catch (e) {
+                        console.error('Mermaid 渲染失败:', e);
+                        element.innerHTML = '<span class="error">图表渲染失败：' + e.message + '</span>';
+                        element.style.display = 'block';
+                    }
                 }
             }
         }
         
-        // --- 背景粒子动画 ---
+        // 神经网络粒子效果
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -421,7 +424,7 @@ gantt
                     if (distance < maxDistance) {
                         const opacity = 1 - (distance / maxDistance);
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(139, 92, 246, ${opacity * 0.2})`; 
+                        ctx.strokeStyle = `rgba(14, 165, 233, ${opacity * 0.2})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -433,38 +436,45 @@ gantt
         }
         animateParticles();
         
-        // --- 幻灯片控制 ---
+        // 幻灯片控制
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const progress = document.getElementById('progress');
         const pageCounter = document.getElementById('pageCounter');
         const totalSlides = slides.length;
         
-        function updateSlide() {
+        async function updateSlide() {
             slides.forEach((slide, index) => {
                 slide.classList.remove('active');
-                if (index === currentSlide) {
-                    slide.classList.add('active');
-                    setTimeout(() => renderActiveMermaid(slide), 50); 
-                }
+                if (index === currentSlide) slide.classList.add('active');
             });
             const progressPercent = ((currentSlide + 1) / totalSlides) * 100;
             progress.style.width = `${progressPercent}%`;
             pageCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            // 初始化当前幻灯片的 Mermaid 图表
+            await initMermaid();
         }
         
         function nextSlide() { if (currentSlide < totalSlides - 1) { currentSlide++; updateSlide(); } }
         function prevSlide() { if (currentSlide > 0) { currentSlide--; updateSlide(); } }
         function toggleFullscreen() {
             if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => console.log(`全屏失败：${err.message}`));
+                document.documentElement.requestFullscreen().catch(err => console.log(`全屏请求被拒绝：${err.message}`));
             } else { document.exitFullscreen(); }
         }
         
         document.addEventListener('keydown', (e) => {
-            if (['ArrowRight', ' ', 'Enter', 'ArrowDown'].includes(e.key)) { e.preventDefault(); nextSlide(); }
-            else if (['ArrowLeft', 'ArrowUp'].includes(e.key)) { e.preventDefault(); prevSlide(); }
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowDown') { e.preventDefault(); nextSlide(); }
+            else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
             else if (e.key === 'F11') { e.preventDefault(); toggleFullscreen(); }
+        });
+        
+        document.addEventListener('click', (e) => {
+            if(e.target.tagName.toLowerCase() === 'a') return;
+            const clickX = e.clientX;
+            const screenWidth = window.innerWidth;
+            if (clickX > screenWidth * 0.7) nextSlide();
+            else if (clickX < screenWidth * 0.3) prevSlide();
         });
         
         let scrollTimeout = false;
@@ -473,16 +483,17 @@ gantt
             if (e.deltaY > 0) nextSlide();
             else if (e.deltaY < 0) prevSlide();
             scrollTimeout = true;
-            setTimeout(() => { scrollTimeout = false; }, 600);
+            setTimeout(() => { scrollTimeout = false; }, 500);
         });
         
         let touchStartX = 0, touchEndX = 0;
         window.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
-        window.addEventListener('touchend', e => { 
-            touchEndX = e.changedTouches[0].screenX; 
-            if (touchEndX < touchStartX - 50) nextSlide();
-            if (touchEndX > touchStartX + 50) prevSlide();
-        });
+        window.addEventListener('touchend', e => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); });
+        function handleSwipe() {
+            const threshold = 50;
+            if (touchEndX < touchStartX - threshold) nextSlide();
+            if (touchEndX > touchStartX + threshold) prevSlide();
+        }
         
         updateSlide();
     </script>
