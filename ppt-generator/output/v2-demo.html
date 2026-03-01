@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{TITLE}}</title>
+    <title>PPT Generator v2.0 功能演示</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
     <style>
-        /* THEME_CSS_PLACEHOLDER */
+        
+        :root {
+            --bg-color-1: #0f172a;
+            --bg-color-2: #1e1b4b;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #f43f5e;
+            --accent-purple: #8b5cf6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+    
         :root {
             --bg-color-1: #0f172a;
             --bg-color-2: #1e1b4b;
@@ -567,9 +579,240 @@
     <canvas id="particles"></canvas>
     <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
     
-    <!-- SLIDES_PLACEHOLDER -->
     
-    <div class="page-number" id="pageCounter">1 / {{TOTAL_SLIDES}}</div>
+            <div class="slide" data-notes="欢迎词：今天为大家介绍 PPT Generator v2.0 的全新功能。">
+                <div class="emoji">🚀</div>
+                <h1 class="gradient-text">PPT Generator v2.0</h1>
+                <h2>专业级 HTML 演示文稿生成工具</h2>
+                <div style="margin-top: 50px; text-align: center; color: var(--text-muted);">
+                    <p style="font-size: 1.5rem; color: #fff; margin-bottom: 8px;">OpenClaw Skills</p>
+                    <p style="letter-spacing: 2px;">2026</p>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="逐个介绍新功能，演示分步显示效果。">
+                <h2>v2.0 新增功能</h2>
+                <div class="glass-card" style="width: 100%; max-width: 800px;">
+                    <ul style="list-style: none; padding: 0;"><li class="fragment"><span class="success">✦</span> 图片展示页 (image)</li><li class="fragment"><span class="success">✦</span> 代码高亮页 (code) - Prism.js</li><li class="fragment"><span class="success">✦</span> 双列布局页 (two-column)</li><li class="fragment"><span class="success">✦</span> 时间线页 (timeline)</li><li class="fragment"><span class="success">✦</span> 统计卡片页 (stats)</li><li class="fragment"><span class="success">✦</span> 视频嵌入页 (video)</li><li class="fragment"><span class="success">✦</span> 分步显示 (fragments)</li><li class="fragment"><span class="success">✦</span> 演讲者笔记 (按 S)</li></ul>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="演示代码高亮功能，支持多种编程语言。">
+                <h2>代码高亮演示</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    支持 JavaScript、Python、TypeScript、Go、Rust 等语言
+                </p>
+                <div class="code-wrapper">
+                    <div class="code-filename"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="filename-text">example.ts</span></div>
+                    <pre class="code-block"><code class="language-typescript">interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+async function fetchUser(id: string): Promise&lt;User&gt; {
+  const response = await fetch(`/api/users/${id}`);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json();
+}
+
+const user = await fetchUser(&#x27;123&#x27;);
+console.log(`Hello, ${user.name}!`);</code></pre>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="展示双列布局，左边代码右边说明。">
+                <h2>双列布局：图文对比</h2>
+                <div class="two-column-layout">
+                    <div class="column left-column glass-card">
+                        <h3>代码示例</h3>
+                        <pre class="column-code"><code class="language-python">def fibonacci(n: int) -&gt; int:
+    if n &lt;= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(10))</code></pre>
+                    </div>
+                    <div class="column right-column glass-card">
+                        <h3>功能说明</h3>
+                        <ul class="column-list"><li>递归实现斐波那契数列</li><li>时间复杂度 O(2^n)</li><li>空间复杂度 O(n)</li><li>可优化为动态规划</li></ul>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="slide slide-timeline" data-notes="时间线展示项目发展历程。">
+                <h2>项目里程碑</h2>
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                <div class="timeline-item left" class="fragment">
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">2026-01</span>
+                        <h3>项目启动</h3>
+                        <p>完成技术选型和架构设计</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right" class="fragment">
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">2026-02</span>
+                        <h3>v1.0 发布</h3>
+                        <p>基础幻灯片功能上线</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left" class="fragment">
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">2026-03</span>
+                        <h3>v2.0 发布</h3>
+                        <p>新增 6 种幻灯片类型，演讲者功能</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right" class="fragment">
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">2026-Q2</span>
+                        <h3>v3.0 规划</h3>
+                        <p>协作编辑、云端存储</p>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="展示统计卡片布局，适合数据展示场景。">
+                <h2>项目数据统计</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px;">
+                    v2.0 核心指标一览
+                </p>
+                <div class="stats-grid">
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value gradient-text">12</div>
+                    <div class="stat-label">幻灯片类型</div>
+                </div>
+                
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🎨</div>
+                    <div class="stat-value gradient-text">4</div>
+                    <div class="stat-label">内置主题</div>
+                </div>
+                
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">⌨️</div>
+                    <div class="stat-value gradient-text">15+</div>
+                    <div class="stat-label">快捷键</div>
+                </div>
+                
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">📱</div>
+                    <div class="stat-value gradient-text">100%</div>
+                    <div class="stat-label">响应式适配</div>
+                </div>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="介绍主题系统，展示四种内置主题。">
+                <h2>主题系统</h2>
+                <p style="text-align: center; font-size: 1.4rem; color: var(--text-muted); margin-bottom: 30px;">
+                    4 种内置主题 + 自定义颜色
+                </p>
+                <div class="grid-layout" style="max-width: 1000px;">
+                <div class="glass-card" style="border-top: 4px solid var(--accent-cyan);">
+                    <h3 class="">🌙 Dark</h3>
+                    <ul><li>深邃夜空背景</li><li>青色紫色渐变</li><li>适合技术演示</li></ul>
+                </div>
+                
+                <div class="glass-card" style="border-top: 4px solid var(--accent-green);">
+                    <h3 class="success">☀️ Light</h3>
+                    <ul><li>明亮简洁背景</li><li>商务蓝绿配色</li><li>适合白天演示</li></ul>
+                </div>
+                
+                <div class="glass-card" style="border-top: 4px solid var(--accent-cyan);">
+                    <h3 class="">🌊 Ocean</h3>
+                    <ul><li>深海蓝调背景</li><li>清新透亮配色</li><li>适合创意展示</li></ul>
+                </div>
+                
+                <div class="glass-card" style="border-top: 4px solid var(--accent-green);">
+                    <h3 class="success">🌲 Forest</h3>
+                    <ul><li>森林绿调背景</li><li>自然舒适配色</li><li>适合环保主题</li></ul>
+                </div>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="演示各种快捷键功能。">
+                <h2>快捷键一览</h2>
+                <div class="glass-card" style="width: 100%; max-width: 800px;">
+                    <ul style="list-style: none; padding: 0;"><li><span class="highlight">← →</span> 或 <span class="highlight">空格</span> - 翻页</li><li><span class="highlight">O</span> - 幻灯片概览模式</li><li><span class="highlight">S</span> - 演讲者笔记</li><li><span class="highlight">B</span> - 黑屏暂停</li><li><span class="highlight">T</span> - 演讲计时器</li><li><span class="highlight">F11</span> - 全屏模式</li><li><span class="highlight">1-9</span> - 快速跳转</li><li><span class="highlight">Home/End</span> - 首页/末页</li></ul>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="展示 Mermaid 架构图的渲染效果。">
+                <h2>架构图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    Mermaid 图表完美集成
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
+flowchart TB
+    subgraph Frontend[前端]
+        JSON[JSON 配置]
+        CLI[命令行工具]
+    end
+    subgraph Core[核心引擎]
+        Parser[配置解析]
+        Generator[HTML 生成]
+        Theme[主题系统]
+    end
+    subgraph Output[输出]
+        HTML[HTML 文件]
+        PDF[PDF 导出]
+    end
+    JSON --> Parser
+    CLI --> Parser
+    Parser --> Generator
+    Theme --> Generator
+    Generator --> HTML
+    HTML --> PDF
+    style Frontend fill:#1e1b4b,stroke:#8b5cf6
+    style Core fill:#0f172a,stroke:#06b6d4
+    style Output fill:#14231a,stroke:#10b981
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="金句页，强调产品理念。">
+                <div class="glass-card quote">
+                    <span style="display:block; margin-bottom: 20px; color: var(--text-main);">好的演示工具，</span>
+                    <span class="gradient-text" style="font-weight: 600; font-size: 1.2em;">让每一次分享都成为艺术</span>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="感谢观看，引导观众开始使用。">
+                <div class="emoji" style="font-size: 5rem;">🎉</div>
+                <h1 class="gradient-text">Thank You!</h1>
+                <h2 style="color: var(--text-muted); text-shadow: none;">开始制作你的专业演示文稿</h2>
+                <div class="glass-card" style="margin-top: 40px; padding: 30px 60px; text-align: center;">
+                    <p style="font-size: 1.8rem; margin-bottom: 10px; font-weight: bold;">PPT Generator v2.0</p>
+                    <p style="color: var(--text-muted); margin-bottom: 10px;">📧 ppt@example.com</p>
+                    <p style="color: var(--accent-cyan);">💬 GitHub: @openclaw</p>
+                </div>
+            </div>
+            
+    
+    <div class="page-number" id="pageCounter">1 / 11</div>
     <div class="controls-hint" id="controlsHint">
         <span>切换：<span class="key">←</span> <span class="key">→</span></span>
         <span>概览：<span class="key">O</span></span>
@@ -602,7 +845,7 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-go.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.min.js"></script>
     <script>
-        /* NOTES_JSON_PLACEHOLDER */
+        const speakerNotes = ["欢迎词：今天为大家介绍 PPT Generator v2.0 的全新功能。", "逐个介绍新功能，演示分步显示效果。", "演示代码高亮功能，支持多种编程语言。", "展示双列布局，左边代码右边说明。", "时间线展示项目发展历程。", "展示统计卡片布局，适合数据展示场景。", "介绍主题系统，展示四种内置主题。", "演示各种快捷键功能。", "展示 Mermaid 架构图的渲染效果。", "金句页，强调产品理念。", "感谢观看，引导观众开始使用。"];
         
         mermaid.initialize({
             startOnLoad: false,

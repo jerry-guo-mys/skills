@@ -1,0 +1,185 @@
+{
+  "title": "PPT Generator v2.0 功能演示",
+  "theme": {
+    "preset": "dark"
+  },
+  "slides": [
+    {
+      "type": "title",
+      "emoji": "🚀",
+      "title": "PPT Generator v2.0",
+      "subtitle": "专业级 HTML 演示文稿生成工具",
+      "author": "OpenClaw Skills",
+      "year": "2026",
+      "notes": "欢迎词：今天为大家介绍 PPT Generator v2.0 的全新功能。"
+    },
+    {
+      "type": "list",
+      "title": "v2.0 新增功能",
+      "fragments": true,
+      "items": [
+        "<span class=\"success\">✦</span> 图片展示页 (image)",
+        "<span class=\"success\">✦</span> 代码高亮页 (code) - Prism.js",
+        "<span class=\"success\">✦</span> 双列布局页 (two-column)",
+        "<span class=\"success\">✦</span> 时间线页 (timeline)",
+        "<span class=\"success\">✦</span> 统计卡片页 (stats)",
+        "<span class=\"success\">✦</span> 视频嵌入页 (video)",
+        "<span class=\"success\">✦</span> 分步显示 (fragments)",
+        "<span class=\"success\">✦</span> 演讲者笔记 (按 S)"
+      ],
+      "notes": "逐个介绍新功能，演示分步显示效果。"
+    },
+    {
+      "type": "code",
+      "title": "代码高亮演示",
+      "description": "支持 JavaScript、Python、TypeScript、Go、Rust 等语言",
+      "filename": "example.ts",
+      "language": "typescript",
+      "code": "interface User {\n  id: string;\n  name: string;\n  email: string;\n}\n\nasync function fetchUser(id: string): Promise<User> {\n  const response = await fetch(`/api/users/${id}`);\n  if (!response.ok) {\n    throw new Error(`HTTP error! status: ${response.status}`);\n  }\n  return response.json();\n}\n\nconst user = await fetchUser('123');\nconsole.log(`Hello, ${user.name}!`);",
+      "notes": "演示代码高亮功能，支持多种编程语言。"
+    },
+    {
+      "type": "two-column",
+      "title": "双列布局：图文对比",
+      "left": {
+        "title": "代码示例",
+        "type": "code",
+        "language": "python",
+        "code": "def fibonacci(n: int) -> int:\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\nprint(fibonacci(10))"
+      },
+      "right": {
+        "title": "功能说明",
+        "type": "list",
+        "items": [
+          "递归实现斐波那契数列",
+          "时间复杂度 O(2^n)",
+          "空间复杂度 O(n)",
+          "可优化为动态规划"
+        ]
+      },
+      "notes": "展示双列布局，左边代码右边说明。"
+    },
+    {
+      "type": "timeline",
+      "title": "项目里程碑",
+      "fragments": true,
+      "events": [
+        {
+          "date": "2026-01",
+          "title": "项目启动",
+          "description": "完成技术选型和架构设计"
+        },
+        {
+          "date": "2026-02",
+          "title": "v1.0 发布",
+          "description": "基础幻灯片功能上线"
+        },
+        {
+          "date": "2026-03",
+          "title": "v2.0 发布",
+          "description": "新增 6 种幻灯片类型，演讲者功能"
+        },
+        {
+          "date": "2026-Q2",
+          "title": "v3.0 规划",
+          "description": "协作编辑、云端存储"
+        }
+      ],
+      "notes": "时间线展示项目发展历程。"
+    },
+    {
+      "type": "stats",
+      "title": "项目数据统计",
+      "description": "v2.0 核心指标一览",
+      "stats": [
+        {
+          "icon": "📊",
+          "value": "12",
+          "label": "幻灯片类型"
+        },
+        {
+          "icon": "🎨",
+          "value": "4",
+          "label": "内置主题"
+        },
+        {
+          "icon": "⌨️",
+          "value": "15+",
+          "label": "快捷键"
+        },
+        {
+          "icon": "📱",
+          "value": "100%",
+          "label": "响应式适配"
+        }
+      ],
+      "notes": "展示统计卡片布局，适合数据展示场景。"
+    },
+    {
+      "type": "grid",
+      "title": "主题系统",
+      "description": "4 种内置主题 + 自定义颜色",
+      "cards": [
+        {
+          "title": "🌙 Dark",
+          "type": "default",
+          "items": ["深邃夜空背景", "青色紫色渐变", "适合技术演示"]
+        },
+        {
+          "title": "☀️ Light",
+          "type": "positive",
+          "items": ["明亮简洁背景", "商务蓝绿配色", "适合白天演示"]
+        },
+        {
+          "title": "🌊 Ocean",
+          "type": "default",
+          "items": ["深海蓝调背景", "清新透亮配色", "适合创意展示"]
+        },
+        {
+          "title": "🌲 Forest",
+          "type": "positive",
+          "items": ["森林绿调背景", "自然舒适配色", "适合环保主题"]
+        }
+      ],
+      "notes": "介绍主题系统，展示四种内置主题。"
+    },
+    {
+      "type": "list",
+      "title": "快捷键一览",
+      "items": [
+        "<span class=\"highlight\">← →</span> 或 <span class=\"highlight\">空格</span> - 翻页",
+        "<span class=\"highlight\">O</span> - 幻灯片概览模式",
+        "<span class=\"highlight\">S</span> - 演讲者笔记",
+        "<span class=\"highlight\">B</span> - 黑屏暂停",
+        "<span class=\"highlight\">T</span> - 演讲计时器",
+        "<span class=\"highlight\">F11</span> - 全屏模式",
+        "<span class=\"highlight\">1-9</span> - 快速跳转",
+        "<span class=\"highlight\">Home/End</span> - 首页/末页"
+      ],
+      "notes": "演示各种快捷键功能。"
+    },
+    {
+      "type": "mermaid",
+      "title": "架构图示例",
+      "description": "Mermaid 图表完美集成",
+      "chart": "flowchart",
+      "code": "flowchart TB\n    subgraph Frontend[前端]\n        JSON[JSON 配置]\n        CLI[命令行工具]\n    end\n    subgraph Core[核心引擎]\n        Parser[配置解析]\n        Generator[HTML 生成]\n        Theme[主题系统]\n    end\n    subgraph Output[输出]\n        HTML[HTML 文件]\n        PDF[PDF 导出]\n    end\n    JSON --> Parser\n    CLI --> Parser\n    Parser --> Generator\n    Theme --> Generator\n    Generator --> HTML\n    HTML --> PDF\n    style Frontend fill:#1e1b4b,stroke:#8b5cf6\n    style Core fill:#0f172a,stroke:#06b6d4\n    style Output fill:#14231a,stroke:#10b981",
+      "notes": "展示 Mermaid 架构图的渲染效果。"
+    },
+    {
+      "type": "quote",
+      "text": "好的演示工具，",
+      "highlight": "让每一次分享都成为艺术",
+      "notes": "金句页，强调产品理念。"
+    },
+    {
+      "type": "end",
+      "title": "Thank You!",
+      "subtitle": "开始制作你的专业演示文稿",
+      "author": "PPT Generator v2.0",
+      "email": "ppt@example.com",
+      "contact": "GitHub: @openclaw",
+      "notes": "感谢观看，引导观众开始使用。"
+    }
+  ]
+}
