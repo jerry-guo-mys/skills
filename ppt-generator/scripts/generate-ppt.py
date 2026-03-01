@@ -109,15 +109,16 @@ def generate_slides(content: list) -> str:
         elif slide_type == 'mermaid':
             chart_type = slide.get('chart', 'flowchart')
             code = slide.get('code', '')
+            # 使用 pre 标签保持代码原样，避免浏览器解析
             html = f"""
             <div class="slide">
                 <h2>{slide.get('title', '')}</h2>
                 <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
                     {slide.get('description', '')}
                 </p>
-                <div class="mermaid">
+                <pre class="mermaid" style="display:none;">
 {code}
-                </div>
+                </pre>
             </div>
             """
         

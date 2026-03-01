@@ -162,18 +162,29 @@
         // 初始化 Mermaid 图表
         async function initMermaid() {
             if (window.mermaid) {
-                const elements = document.querySelectorAll('.mermaid');
+                // 只处理 pre.mermaid 元素
+                const elements = document.querySelectorAll('pre.mermaid');
                 for (let i = 0; i < elements.length; i++) {
                     const element = elements[i];
+                    // 跳过已渲染的
+                    if (element.getAttribute('data-processed') === 'true') continue;
+                    
                     const graphDefinition = element.textContent.trim();
                     try {
                         const { svg } = await mermaid.render('mermaid-' + i, graphDefinition);
-                        element.innerHTML = svg;
-                        element.style.display = 'flex';
-                        element.style.justifyContent = 'center';
+                        // 创建容器包裹 SVG
+                        const container = document.createElement('div');
+                        container.className = 'mermaid';
+                        container.innerHTML = svg;
+                        container.style.display = 'flex';
+                        container.style.justifyContent = 'center';
+                        // 替换 pre 标签
+                        element.parentNode.replaceChild(container, element);
+                        element.setAttribute('data-processed', 'true');
                     } catch (e) {
                         console.error('Mermaid 渲染失败:', e);
-                        element.innerHTML = '<span class="error">图表渲染失败</span>';
+                        element.innerHTML = '<span class="error">图表渲染失败：' + e.message + '</span>';
+                        element.style.display = 'block';
                     }
                 }
             }

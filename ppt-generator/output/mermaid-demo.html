@@ -152,7 +152,7 @@
                 <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
                     系统架构流程图
                 </p>
-                <div class="mermaid">
+                <pre class="mermaid" style="display:none;">
 flowchart TD
     A[用户请求] --> B{认证？}
     B -->|是 | C[API 网关]
@@ -162,7 +162,7 @@ flowchart TD
     E --> G[数据库]
     F --> G
     G --> H[返回结果]
-                </div>
+                </pre>
             </div>
             
 
@@ -171,7 +171,7 @@ flowchart TD
                 <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
                     用户登录流程
                 </p>
-                <div class="mermaid">
+                <pre class="mermaid" style="display:none;">
 sequenceDiagram
     participant U as 用户
     participant F as 前端
@@ -184,7 +184,7 @@ sequenceDiagram
     D-->>A: 返回用户信息
     A-->>F: 返回 Token
     F-->>U: 登录成功
-                </div>
+                </pre>
             </div>
             
 
@@ -193,7 +193,7 @@ sequenceDiagram
                 <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
                     领域模型类图
                 </p>
-                <div class="mermaid">
+                <pre class="mermaid" style="display:none;">
 classDiagram
     class User {
         +String id
@@ -215,7 +215,7 @@ classDiagram
     }
     User --> Order : places
     Order --> Item : contains
-                </div>
+                </pre>
             </div>
             
 
@@ -224,7 +224,7 @@ classDiagram
                 <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
                     订单状态流转
                 </p>
-                <div class="mermaid">
+                <pre class="mermaid" style="display:none;">
 stateDiagram-v2
     [*] --> Pending : 创建订单
     Pending --> Paid : 支付成功
@@ -234,7 +234,7 @@ stateDiagram-v2
     Delivered --> [*]
     Paid --> Refunded : 申请退款
     Refunded --> [*]
-                </div>
+                </pre>
             </div>
             
 
@@ -243,7 +243,7 @@ stateDiagram-v2
                 <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
                     项目进度计划
                 </p>
-                <div class="mermaid">
+                <pre class="mermaid" style="display:none;">
 gantt
     title 项目开发计划
     dateFormat  YYYY-MM-DD
@@ -256,7 +256,7 @@ gantt
     section 测试
     单元测试 :2026-03-20, 7d
     集成测试 :2026-03-25, 5d
-                </div>
+                </pre>
             </div>
             
 
@@ -265,7 +265,7 @@ gantt
                 <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
                     时间分配比例
                 </p>
-                <div class="mermaid">
+                <pre class="mermaid" style="display:none;">
 pie title 工作日时间分配
     "工作" : 8
     "学习" : 3
@@ -273,7 +273,7 @@ pie title 工作日时间分配
     "娱乐" : 2
     "睡眠" : 8
     "其他" : 2
-                </div>
+                </pre>
             </div>
             
 
@@ -330,18 +330,29 @@ pie title 工作日时间分配
         // 初始化 Mermaid 图表
         async function initMermaid() {
             if (window.mermaid) {
-                const elements = document.querySelectorAll('.mermaid');
+                // 只处理 pre.mermaid 元素
+                const elements = document.querySelectorAll('pre.mermaid');
                 for (let i = 0; i < elements.length; i++) {
                     const element = elements[i];
+                    // 跳过已渲染的
+                    if (element.getAttribute('data-processed') === 'true') continue;
+                    
                     const graphDefinition = element.textContent.trim();
                     try {
                         const { svg } = await mermaid.render('mermaid-' + i, graphDefinition);
-                        element.innerHTML = svg;
-                        element.style.display = 'flex';
-                        element.style.justifyContent = 'center';
+                        // 创建容器包裹 SVG
+                        const container = document.createElement('div');
+                        container.className = 'mermaid';
+                        container.innerHTML = svg;
+                        container.style.display = 'flex';
+                        container.style.justifyContent = 'center';
+                        // 替换 pre 标签
+                        element.parentNode.replaceChild(container, element);
+                        element.setAttribute('data-processed', 'true');
                     } catch (e) {
                         console.error('Mermaid 渲染失败:', e);
-                        element.innerHTML = '<span class="error">图表渲染失败</span>';
+                        element.innerHTML = '<span class="error">图表渲染失败：' + e.message + '</span>';
+                        element.style.display = 'block';
                     }
                 }
             }
