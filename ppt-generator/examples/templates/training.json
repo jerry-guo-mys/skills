@@ -1,0 +1,208 @@
+{
+  "title": "培训课程模板",
+  "theme": {
+    "preset": "forest"
+  },
+  "style": "minimal",
+  "slides": [
+    {
+      "type": "title",
+      "emoji": "📚",
+      "title": "{{课程名称}}",
+      "subtitle": "{{课程副标题}}",
+      "author": "{{讲师姓名}}",
+      "year": "2026",
+      "notes": "自我介绍，课程背景"
+    },
+    {
+      "type": "list",
+      "title": "学习目标",
+      "fragments": true,
+      "items": [
+        "<span class=\"success\">🎯</span> 掌握 {{技能一}}",
+        "<span class=\"success\">🎯</span> 理解 {{概念一}}",
+        "<span class=\"success\">🎯</span> 能够 {{能力一}}",
+        "<span class=\"success\">🎯</span> 学会 {{技能二}}"
+      ],
+      "notes": "明确学习目标，让学员有预期"
+    },
+    {
+      "type": "timeline",
+      "title": "课程大纲",
+      "events": [
+        {
+          "date": "Part 1",
+          "title": "{{章节一}}",
+          "description": "{{章节内容概述}}"
+        },
+        {
+          "date": "Part 2",
+          "title": "{{章节二}}",
+          "description": "{{章节内容概述}}"
+        },
+        {
+          "date": "Part 3",
+          "title": "{{章节三}}",
+          "description": "{{章节内容概述}}"
+        },
+        {
+          "date": "Part 4",
+          "title": "实践练习",
+          "description": "动手操作，巩固所学"
+        }
+      ],
+      "notes": "介绍课程结构"
+    },
+    {
+      "type": "grid",
+      "title": "核心概念",
+      "description": "本节课的关键知识点",
+      "cards": [
+        {
+          "title": "📖 概念一",
+          "type": "default",
+          "items": [
+            "{{定义}}",
+            "{{特点}}",
+            "{{应用场景}}"
+          ]
+        },
+        {
+          "title": "📖 概念二",
+          "type": "default",
+          "items": [
+            "{{定义}}",
+            "{{特点}}",
+            "{{应用场景}}"
+          ]
+        }
+      ],
+      "notes": "讲解核心概念"
+    },
+    {
+      "type": "mermaid",
+      "title": "知识体系",
+      "description": "概念之间的关系",
+      "chart": "flowchart",
+      "code": "flowchart TD\n    A[基础概念] --> B[进阶概念]\n    A --> C[核心技能]\n    B --> D[高级应用]\n    C --> D\n    D --> E[实战项目]\n    style A fill:#14231a,stroke:#4ade80\n    style E fill:#14231a,stroke:#4ade80",
+      "notes": "展示知识结构"
+    },
+    {
+      "type": "two-column",
+      "title": "正确 vs 错误",
+      "left": {
+        "title": "✅ 正确做法",
+        "type": "list",
+        "items": [
+          "{{正确示例一}}",
+          "{{正确示例二}}",
+          "{{正确示例三}}"
+        ]
+      },
+      "right": {
+        "title": "❌ 常见错误",
+        "type": "list",
+        "items": [
+          "{{错误示例一}}",
+          "{{错误示例二}}",
+          "{{错误示例三}}"
+        ]
+      },
+      "notes": "对比讲解，加深印象"
+    },
+    {
+      "type": "code",
+      "title": "代码示例",
+      "description": "{{示例说明}}",
+      "filename": "example.py",
+      "language": "python",
+      "code": "# {{替换为你的示例代码}}\ndef example_function():\n    \"\"\"\n    这是一个示例函数\n    \"\"\"\n    # 步骤一\n    data = get_data()\n    \n    # 步骤二\n    result = process(data)\n    \n    # 步骤三\n    return result",
+      "notes": "逐行讲解代码"
+    },
+    {
+      "type": "tasks",
+      "title": "课堂练习",
+      "fragments": true,
+      "tasks": [
+        {
+          "title": "练习一：{{练习标题}}",
+          "desc": "{{练习要求和说明}}"
+        },
+        {
+          "title": "练习二：{{练习标题}}",
+          "desc": "{{练习要求和说明}}"
+        },
+        {
+          "title": "练习三：{{练习标题}}",
+          "desc": "{{练习要求和说明}}"
+        }
+      ],
+      "notes": "给学员时间完成练习"
+    },
+    {
+      "type": "list",
+      "title": "常见问题",
+      "items": [
+        "<span class=\"highlight\">Q:</span> {{问题一}}？<br><span class=\"success\">A:</span> {{答案一}}",
+        "<span class=\"highlight\">Q:</span> {{问题二}}？<br><span class=\"success\">A:</span> {{答案二}}",
+        "<span class=\"highlight\">Q:</span> {{问题三}}？<br><span class=\"success\">A:</span> {{答案三}}"
+      ],
+      "notes": "解答常见疑问"
+    },
+    {
+      "type": "list",
+      "title": "本节小结",
+      "items": [
+        "✅ {{要点一}}",
+        "✅ {{要点二}}",
+        "✅ {{要点三}}",
+        "✅ {{要点四}}"
+      ],
+      "notes": "回顾本节内容"
+    },
+    {
+      "type": "grid",
+      "title": "课后作业",
+      "description": "巩固学习成果",
+      "cards": [
+        {
+          "title": "📝 必做",
+          "type": "positive",
+          "items": [
+            "{{作业一}}",
+            "{{作业二}}"
+          ]
+        },
+        {
+          "title": "🌟 选做",
+          "type": "default",
+          "items": [
+            "{{拓展任务一}}",
+            "{{拓展任务二}}"
+          ]
+        }
+      ],
+      "notes": "布置作业"
+    },
+    {
+      "type": "list",
+      "title": "学习资源",
+      "items": [
+        "📚 {{推荐书籍}}",
+        "🔗 {{推荐网站}}",
+        "🎬 {{推荐视频}}",
+        "💻 {{练习平台}}"
+      ],
+      "notes": "推荐学习资源"
+    },
+    {
+      "type": "end",
+      "title": "下节预告",
+      "subtitle": "{{下节课主题}}",
+      "author": "{{讲师姓名}}",
+      "email": "{{联系方式}}",
+      "contact": "有问题随时联系",
+      "notes": "预告下节内容，感谢学员"
+    }
+  ]
+}

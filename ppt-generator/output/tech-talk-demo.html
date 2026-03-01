@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{TITLE}}</title>
+    <title>技术分享模板</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
     <style>
-        /* THEME_CSS_PLACEHOLDER */
+        
+        :root {
+            --bg-color-1: #0f172a;
+            --bg-color-2: #1e1b4b;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #f43f5e;
+            --accent-purple: #8b5cf6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+    
         :root {
             --bg-color-1: #0f172a;
             --bg-color-2: #1e1b4b;
@@ -755,13 +767,217 @@
         }
     </style>
 </head>
-<body class="style-{{STYLE_CLASS}}">
+<body class="style-neon">
     <canvas id="particles"></canvas>
     <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
     
-    <!-- SLIDES_PLACEHOLDER -->
     
-    <div class="page-number" id="pageCounter">1 / {{TOTAL_SLIDES}}</div>
+            <div class="slide" data-notes="开场白，自我介绍，引出话题">
+                <div class="emoji">⚡</div>
+                <h1 class="gradient-text">{{技术主题}}</h1>
+                <h2>{{副标题：一句话概括}}</h2>
+                <div style="margin-top: 50px; text-align: center; color: var(--text-muted);">
+                    <p style="font-size: 1.5rem; color: #fff; margin-bottom: 8px;">{{演讲者}}</p>
+                    <p style="letter-spacing: 2px;">2026</p>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="介绍整体结构，让听众有预期">
+                <h2>今天的议程</h2>
+                <div class="glass-card" style="width: 100%; max-width: 800px;">
+                    <ul style="list-style: none; padding: 0;"><li class="fragment"><span class="success">01</span> 背景与问题</li><li class="fragment"><span class="success">02</span> 技术方案</li><li class="fragment"><span class="success">03</span> 核心实现</li><li class="fragment"><span class="success">04</span> 效果与收益</li><li class="fragment"><span class="success">05</span> 总结与展望</li></ul>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="详细描述问题，用数据说话">
+                <h2>背景与问题</h2>
+                <p style="text-align: center; font-size: 1.4rem; color: var(--text-muted); margin-bottom: 30px;">
+                    我们面临的挑战
+                </p>
+                <div class="grid-layout" style="max-width: 1000px;">
+                <div class="glass-card" style="border-top: 4px solid var(--accent-danger);">
+                    <h3 class="error">😫 痛点一</h3>
+                    <ul><li>{{具体问题描述}}</li><li>{{影响范围}}</li><li>{{量化指标}}</li></ul>
+                </div>
+                
+                <div class="glass-card" style="border-top: 4px solid var(--accent-danger);">
+                    <h3 class="error">😩 痛点二</h3>
+                    <ul><li>{{具体问题描述}}</li><li>{{影响范围}}</li><li>{{量化指标}}</li></ul>
+                </div>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="讲解架构设计思路">
+                <h2>技术架构</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    整体解决方案
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
+flowchart TB
+    subgraph Input[输入层]
+        A[数据源 A]
+        B[数据源 B]
+    end
+    subgraph Process[处理层]
+        C[核心服务]
+        D[缓存层]
+    end
+    subgraph Output[输出层]
+        E[API 接口]
+        F[消息队列]
+    end
+    A --> C
+    B --> C
+    C --> D
+    C --> E
+    C --> F
+    style Input fill:#1e1b4b,stroke:#8b5cf6
+    style Process fill:#0f172a,stroke:#06b6d4
+    style Output fill:#14231a,stroke:#10b981
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="讲解核心代码，解释设计决策">
+                <h2>核心代码实现</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    关键算法 / 核心逻辑
+                </p>
+                <div class="code-wrapper">
+                    <div class="code-filename"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="filename-text">core.ts</span></div>
+                    <pre class="code-block"><code class="language-typescript">// {{替换为你的核心代码}}
+async function processData&lt;T&gt;(input: T[]): Promise&lt;Result&lt;T&gt;&gt; {
+  const validated = await validate(input);
+  
+  if (!validated.success) {
+    return { error: validated.error };
+  }
+  
+  const result = await transform(validated.data);
+  
+  await cache.set(result.id, result);
+  
+  return { data: result };
+}</code></pre>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="用数据对比展示效果">
+                <h2>Before vs After</h2>
+                <div class="two-column-layout">
+                    <div class="column left-column glass-card">
+                        <h3>❌ 优化前</h3>
+                        <ul class="column-list"><li>响应时间 500ms</li><li>QPS 上限 1000</li><li>错误率 2%</li><li>资源占用高</li></ul>
+                    </div>
+                    <div class="column right-column glass-card">
+                        <h3>✅ 优化后</h3>
+                        <ul class="column-list"><li>响应时间 50ms</li><li>QPS 上限 10000</li><li>错误率 0.01%</li><li>资源占用降低 60%</li></ul>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="强调核心收益数据">
+                <h2>核心收益</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px;">
+                    量化的改进效果
+                </p>
+                <div class="stats-grid">
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-value gradient-text">10x</div>
+                    <div class="stat-label">性能提升</div>
+                </div>
+                
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-value gradient-text">60%</div>
+                    <div class="stat-label">成本降低</div>
+                </div>
+                
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-value gradient-text">99.99%</div>
+                    <div class="stat-label">可用性</div>
+                </div>
+                
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-value gradient-text">100万+</div>
+                    <div class="stat-label">用户受益</div>
+                </div>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="分享实践中的经验教训">
+                <h2>踩坑与经验</h2>
+                <div class="glass-card" style="width: 100%; max-width: 800px;">
+                    <ul style="list-style: none; padding: 0;"><li class="fragment"><span class="warning">⚠️</span> {{踩坑一}}：{{解决方案}}</li><li class="fragment"><span class="warning">⚠️</span> {{踩坑二}}：{{解决方案}}</li><li class="fragment"><span class="warning">⚠️</span> {{踩坑三}}：{{解决方案}}</li></ul>
+                </div>
+            </div>
+            
+
+            <div class="slide slide-timeline" data-notes="介绍后续迭代计划">
+                <h2>后续规划</h2>
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                <div class="timeline-item left" class="fragment">
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">Q1</span>
+                        <h3>阶段一</h3>
+                        <p>{{短期目标}}</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right" class="fragment">
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">Q2</span>
+                        <h3>阶段二</h3>
+                        <p>{{中期目标}}</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left" class="fragment">
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">Q3-Q4</span>
+                        <h3>阶段三</h3>
+                        <p>{{长期目标}}</p>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="金句收尾">
+                <div class="glass-card quote">
+                    <span style="display:block; margin-bottom: 20px; color: var(--text-main);">技术的价值在于，</span>
+                    <span class="gradient-text" style="font-weight: 600; font-size: 1.2em;">解决真实的问题</span>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="感谢听众，进入问答环节">
+                <div class="emoji" style="font-size: 5rem;">🎉</div>
+                <h1 class="gradient-text">Q & A</h1>
+                <h2 style="color: var(--text-muted); text-shadow: none;">欢迎提问与交流</h2>
+                <div class="glass-card" style="margin-top: 40px; padding: 30px 60px; text-align: center;">
+                    <p style="font-size: 1.8rem; margin-bottom: 10px; font-weight: bold;">{{演讲者}}</p>
+                    <p style="color: var(--text-muted); margin-bottom: 10px;">📧 {{邮箱}}</p>
+                    <p style="color: var(--accent-cyan);">💬 {{微信/GitHub}}</p>
+                </div>
+            </div>
+            
+    
+    <div class="page-number" id="pageCounter">1 / 11</div>
     <div class="controls-hint" id="controlsHint">
         <span>切换：<span class="key">←</span> <span class="key">→</span></span>
         <span>概览：<span class="key">O</span></span>
@@ -794,7 +1010,7 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-go.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.min.js"></script>
     <script>
-        /* NOTES_JSON_PLACEHOLDER */
+        const speakerNotes = ["开场白，自我介绍，引出话题", "介绍整体结构，让听众有预期", "详细描述问题，用数据说话", "讲解架构设计思路", "讲解核心代码，解释设计决策", "用数据对比展示效果", "强调核心收益数据", "分享实践中的经验教训", "介绍后续迭代计划", "金句收尾", "感谢听众，进入问答环节"];
         
         mermaid.initialize({
             startOnLoad: false,

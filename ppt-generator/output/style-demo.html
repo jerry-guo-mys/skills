@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{TITLE}}</title>
+    <title>风格演示 - Neon</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
     <style>
-        /* THEME_CSS_PLACEHOLDER */
+        
+        :root {
+            --bg-color-1: #0f172a;
+            --bg-color-2: #1e1b4b;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #f43f5e;
+            --accent-purple: #8b5cf6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+    
         :root {
             --bg-color-1: #0f172a;
             --bg-color-2: #1e1b4b;
@@ -755,13 +767,117 @@
         }
     </style>
 </head>
-<body class="style-{{STYLE_CLASS}}">
+<body class="style-neon">
     <canvas id="particles"></canvas>
     <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
     
-    <!-- SLIDES_PLACEHOLDER -->
     
-    <div class="page-number" id="pageCounter">1 / {{TOTAL_SLIDES}}</div>
+            <div class="slide" data-notes="">
+                <div class="emoji">💫</div>
+                <h1 class="gradient-text">Neon 霓虹风格</h1>
+                <h2>炫酷发光效果，适合科技演示</h2>
+                <div style="margin-top: 50px; text-align: center; color: var(--text-muted);">
+                    <p style="font-size: 1.5rem; color: #fff; margin-bottom: 8px;">PPT Generator</p>
+                    <p style="letter-spacing: 2px;">2026</p>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="">
+                <h2>可选风格</h2>
+                <div class="glass-card" style="width: 100%; max-width: 800px;">
+                    <ul style="list-style: none; padding: 0;"><li class="fragment"><span class="success">✦</span> <span class="highlight">default</span> - 默认风格，平衡美观</li><li class="fragment"><span class="success">✦</span> <span class="highlight">minimal</span> - 简约风格，无阴影无动画</li><li class="fragment"><span class="success">✦</span> <span class="highlight">gradient</span> - 渐变风格，流动渐变色</li><li class="fragment"><span class="success">✦</span> <span class="highlight">neon</span> - 霓虹风格，发光效果</li><li class="fragment"><span class="success">✦</span> <span class="highlight">corporate</span> - 商务风格，专业简洁</li><li class="fragment"><span class="success">✦</span> <span class="highlight">playful</span> - 活泼风格，有趣动感</li></ul>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="">
+                <h2>风格 + 主题组合</h2>
+                <p style="text-align: center; font-size: 1.4rem; color: var(--text-muted); margin-bottom: 30px;">
+                    6 种风格 × 6 种主题 = 36 种组合
+                </p>
+                <div class="grid-layout" style="max-width: 1000px;">
+                <div class="glass-card" style="border-top: 4px solid var(--accent-green);">
+                    <h3 class="success">🎨 内置主题</h3>
+                    <ul><li>dark - 深色</li><li>light - 亮色</li><li>ocean - 海洋</li><li>forest - 森林</li><li>sunset - 日落</li><li>mono - 单色</li></ul>
+                </div>
+                
+                <div class="glass-card" style="border-top: 4px solid var(--accent-cyan);">
+                    <h3 class="">✨ 视觉风格</h3>
+                    <ul><li>default - 默认</li><li>minimal - 简约</li><li>gradient - 渐变</li><li>neon - 霓虹</li><li>corporate - 商务</li><li>playful - 活泼</li></ul>
+                </div>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="">
+                <h2>配置方式</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    在 JSON 中指定 theme 和 style
+                </p>
+                <div class="code-wrapper">
+                    <div class="code-filename"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="filename-text">config.json</span></div>
+                    <pre class="code-block"><code class="language-json">{
+  &quot;title&quot;: &quot;我的演示&quot;,
+  &quot;theme&quot;: {
+    &quot;preset&quot;: &quot;ocean&quot;,
+    &quot;custom&quot;: {
+      &quot;accent-cyan&quot;: &quot;#00ff88&quot;
+    }
+  },
+  &quot;style&quot;: &quot;neon&quot;,
+  &quot;slides&quot;: [...]
+}</code></pre>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="">
+                <h2>风格特性</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px;">
+                    
+                </p>
+                <div class="stats-grid">
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🌙</div>
+                    <div class="stat-value gradient-text">6</div>
+                    <div class="stat-label">主题预设</div>
+                </div>
+                
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">✨</div>
+                    <div class="stat-value gradient-text">6</div>
+                    <div class="stat-label">视觉风格</div>
+                </div>
+                
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🎨</div>
+                    <div class="stat-value gradient-text">36+</div>
+                    <div class="stat-label">组合效果</div>
+                </div>
+                
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🔧</div>
+                    <div class="stat-value gradient-text">∞</div>
+                    <div class="stat-label">自定义颜色</div>
+                </div>
+                </div>
+            </div>
+            
+
+            <div class="slide" data-notes="">
+                <div class="emoji" style="font-size: 5rem;">🎉</div>
+                <h1 class="gradient-text">选择你的风格</h1>
+                <h2 style="color: var(--text-muted); text-shadow: none;">让演示更具个性</h2>
+                <div class="glass-card" style="margin-top: 40px; padding: 30px 60px; text-align: center;">
+                    <p style="font-size: 1.8rem; margin-bottom: 10px; font-weight: bold;">PPT Generator</p>
+                    <p style="color: var(--text-muted); margin-bottom: 10px;">📧 ppt@example.com</p>
+                    <p style="color: var(--accent-cyan);">💬 GitHub: @openclaw</p>
+                </div>
+            </div>
+            
+    
+    <div class="page-number" id="pageCounter">1 / 6</div>
     <div class="controls-hint" id="controlsHint">
         <span>切换：<span class="key">←</span> <span class="key">→</span></span>
         <span>概览：<span class="key">O</span></span>
@@ -794,7 +910,7 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-go.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.min.js"></script>
     <script>
-        /* NOTES_JSON_PLACEHOLDER */
+        const speakerNotes = ["", "", "", "", "", ""];
         
         mermaid.initialize({
             startOnLoad: false,

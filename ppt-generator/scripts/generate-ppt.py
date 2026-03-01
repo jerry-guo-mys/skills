@@ -386,6 +386,28 @@ def get_theme_css(theme: dict) -> str:
             'text-main': '#f0fdf4',
             'text-muted': '#86efac',
         },
+        'sunset': {
+            'bg-color-1': '#1a1423',
+            'bg-color-2': '#2d1f3d',
+            'accent-cyan': '#f472b6',
+            'accent-green': '#fb923c',
+            'accent-warning': '#fbbf24',
+            'accent-danger': '#f43f5e',
+            'accent-purple': '#c084fc',
+            'text-main': '#fdf4ff',
+            'text-muted': '#e879f9',
+        },
+        'mono': {
+            'bg-color-1': '#18181b',
+            'bg-color-2': '#27272a',
+            'accent-cyan': '#a1a1aa',
+            'accent-green': '#d4d4d8',
+            'accent-warning': '#fafafa',
+            'accent-danger': '#ef4444',
+            'accent-purple': '#71717a',
+            'text-main': '#fafafa',
+            'text-muted': '#a1a1aa',
+        },
     }
     
     base_colors = presets.get(preset, presets['dark']).copy()
@@ -399,6 +421,12 @@ def get_theme_css(theme: dict) -> str:
 {css_vars}
         }}
     """
+
+
+def get_style_class(style: str) -> str:
+    """返回风格 CSS 类名"""
+    valid_styles = ['default', 'minimal', 'gradient', 'neon', 'corporate', 'playful']
+    return style if style in valid_styles else 'default'
 
 
 def generate_ppt(config_path: str, output_path: str):
@@ -420,8 +448,12 @@ def generate_ppt(config_path: str, output_path: str):
     
     notes_json = json.dumps(notes_list, ensure_ascii=False)
     
+    style = config.get('style', 'default')
+    style_class = get_style_class(style)
+    
     html_output = template.replace('{{TITLE}}', config.get('title', 'Presentation'))
     html_output = html_output.replace('{{TOTAL_SLIDES}}', str(len(config.get('slides', []))))
+    html_output = html_output.replace('{{STYLE_CLASS}}', style_class)
     html_output = html_output.replace('<!-- SLIDES_PLACEHOLDER -->', slides_html)
     html_output = html_output.replace('/* THEME_CSS_PLACEHOLDER */', theme_css)
     html_output = html_output.replace('/* NOTES_JSON_PLACEHOLDER */', f'const speakerNotes = {notes_json};')

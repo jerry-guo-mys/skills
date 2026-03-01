@@ -1,10 +1,35 @@
 # OpenClaw Skills
 
-🚀 专业的代码分析和文档生成技能集合 - Professional Code Analysis & Documentation Skills for OpenClaw
+🚀 专业的 AI 编程助手技能集合 - 代码分析、文档改进、PPT 生成
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Skill-green.svg)](https://docs.openclaw.ai)
+[![Cursor](https://img.shields.io/badge/Cursor-Compatible-purple.svg)](https://cursor.sh)
+[![Claude](https://img.shields.io/badge/Claude-Compatible-orange.svg)](https://claude.ai)
 [![Stars](https://img.shields.io/github/stars/jerry-guo-mys/skills)](https://github.com/jerry-guo-mys/skills)
+
+> 支持 **Cursor** | **Claude** | **OpenClaw** | **opencode** 等 AI 编程助手
+
+---
+
+## 📋 技能总览
+
+| 技能 | 功能 | 版本 |
+|------|------|------|
+| 🎯 [code-analyzer](#-code-analyzer-旗舰技能) | 深度代码分析、架构识别、DDD 分析 | v1.0.0 |
+| 📝 [docs-improver](#-docs-improver-旗舰技能) | 文档质量评估、生成、改进 | v1.0.0 |
+| 🎨 [ppt-generator](#-ppt-generator-旗舰技能) | HTML 演示文稿生成、12 种幻灯片类型 | v2.1.0 |
+
+### 平台兼容性
+
+| 平台 | 安装方式 | 使用方式 |
+|------|----------|----------|
+| **Cursor** | 克隆到本地 + .cursor/rules 配置 | @技能名 对话调用 |
+| **Claude** | 上传 SKILL.md 或 Project Knowledge | 提示词调用 |
+| **OpenClaw** | openclaw.json 配置 | @技能名 或命令行 |
+| **opencode** | config.yaml 配置 | /skill 命令或内联 |
+
+👉 [详细安装和使用说明](#️-在不同-ai-助手中使用)
 
 ---
 
@@ -161,12 +186,56 @@ python3 docs-improver/scripts/improve.py --path /path/to/project --output plan.m
 
 ---
 
+### 🎨 ppt-generator (旗舰技能)
+
+**专业级 HTML 演示文稿生成工具 - 炫酷科技感 PPT**
+
+[![Version](https://img.shields.io/badge/version-2.1.0-blue)](https://github.com/jerry-guo-mys/skills/tree/main/ppt-generator)
+
+#### 核心功能
+
+| 功能 | 描述 |
+|------|------|
+| 📐 **12 种幻灯片** | title, list, grid, quote, code, mermaid, timeline, stats 等 |
+| 🎨 **6 种主题** | dark, light, ocean, forest, sunset, mono |
+| ✨ **6 种风格** | default, minimal, gradient, neon, corporate, playful |
+| 📋 **4 种模板** | 技术分享、产品发布、培训课程、项目汇报 |
+| 💻 **代码高亮** | Prism.js 支持 15+ 编程语言 |
+| 📊 **Mermaid 图表** | 流程图、时序图、类图、甘特图等 |
+| ✨ **分步显示** | fragments 逐个显示列表项 |
+| 📝 **演讲者笔记** | 按 S 键查看笔记 |
+| 🖨️ **PDF 导出** | 打印样式优化 |
+
+#### 快速开始
+
+```bash
+# 使用模板
+cp ppt-generator/examples/templates/tech-talk.json my-ppt.json
+
+# 编辑 JSON（替换 {{占位符}}）
+
+# 生成 PPT
+python3 ppt-generator/scripts/generate-ppt.py -c my-ppt.json -o output/my-ppt.html
+```
+
+#### 输出示例
+
+生成带有神经网络粒子背景、玻璃拟物卡片的炫酷 HTML 演示文稿，支持：
+- ⌨️ 键盘控制（方向键/空格）
+- 🖱️ 鼠标点击翻页
+- 📱 触摸滑动（移动端）
+- 🎮 快捷键（O 概览、S 笔记、T 计时器）
+
+📖 **[完整文档](ppt-generator/SKILL.md)** | **[使用指南](ppt-generator/USAGE.md)**
+
+---
+
 ## 🚀 安装方法
 
 ### 方法 1: 克隆仓库（推荐）
 
 ```bash
-git clone https://github.com/jerry-guo-mys/skills.git ~/.openclaw/skills/my-skills
+git clone https://github.com/jerry-guo-mys/skills.git ~/.openclaw/skills
 ```
 
 ### 方法 2: 下载单个 Skill
@@ -193,7 +262,242 @@ clawhub sync
 
 ---
 
-## 📝 配置
+## 🖥️ 在不同 AI 助手中使用
+
+### 在 Cursor 中使用
+
+**安装配置：**
+
+1. 将 skills 仓库克隆到 Cursor 可访问的目录：
+
+```bash
+git clone https://github.com/jerry-guo-mys/skills.git ~/.openclaw/skills
+```
+
+2. 在 Cursor 项目中创建 `.cursor/rules/skills.mdc`：
+
+```markdown
+---
+description: OpenClaw Skills - 代码分析、文档改进、PPT 生成
+globs: ["**/*"]
+alwaysApply: true
+---
+
+可用技能：
+- @code-analyzer: 深度代码分析
+- @docs-improver: 文档质量评估和改进
+- @ppt-generator: HTML 演示文稿生成
+
+技能目录：~/.openclaw/skills/
+```
+
+**使用示例：**
+
+```
+@code-analyzer 分析这个项目的架构
+
+@docs-improver 评估 README.md 的质量并给出改进建议
+
+@ppt-generator 创建一个关于微服务架构的技术分享 PPT
+```
+
+---
+
+### 在 Claude 中使用
+
+**方式 1：直接提供 SKILL.md 内容**
+
+```
+我有一个代码分析技能，以下是说明文档：
+
+[粘贴 code-analyzer/SKILL.md 内容]
+
+请使用这个技能分析我的项目...
+```
+
+**方式 2：使用 Claude Projects**
+
+1. 创建新 Project
+2. 上传 skills 文件夹作为 Project Knowledge
+3. 在对话中直接使用技能
+
+**使用示例：**
+
+```
+使用 code-analyzer 技能分析以下代码的架构：
+[粘贴代码]
+
+使用 ppt-generator 技能，帮我创建一个产品发布 PPT 的 JSON 配置：
+- 主题：AI 编程助手
+- 风格：neon + ocean
+- 包含：产品介绍、核心功能、竞品对比、定价方案
+```
+
+**提示词模板：**
+
+```
+你是一个专业的 [代码分析师/文档专家/PPT 设计师]。
+
+请按照以下结构生成输出：
+[参考 SKILL.md 中的输出格式]
+
+分析/生成的内容：
+[用户输入]
+```
+
+---
+
+### 在 OpenClaw 中使用
+
+**安装配置：**
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/jerry-guo-mys/skills.git ~/.openclaw/skills
+
+# 2. 配置 openclaw.json
+cat >> ~/.openclaw/openclaw.json << 'EOF'
+{
+  "skills": {
+    "entries": {
+      "code-analyzer": { "path": "~/.openclaw/skills/code-analyzer" },
+      "docs-improver": { "path": "~/.openclaw/skills/docs-improver" },
+      "ppt-generator": { "path": "~/.openclaw/skills/ppt-generator" }
+    }
+  }
+}
+EOF
+
+# 3. 重启 Gateway
+openclaw-cn gateway restart
+```
+
+**使用示例：**
+
+```bash
+# 命令行调用
+openclaw run code-analyzer --path /path/to/project --output report.md
+
+openclaw run docs-improver --path /path/to/project --mode all
+
+openclaw run ppt-generator --template tech-talk --output my-ppt.html
+```
+
+**对话模式：**
+
+```
+@code-analyzer 深度分析当前项目
+
+@docs-improver 评估并改进 README.md
+
+@ppt-generator 使用培训课程模板创建 Python 入门教程
+```
+
+**YAML 配置调用：**
+
+```yaml
+skill: ppt-generator
+action: create
+params:
+  template: tech-talk
+  title: "微服务架构分享"
+  theme: ocean
+  style: neon
+```
+
+---
+
+### 在 opencode 中使用
+
+**安装配置：**
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/jerry-guo-mys/skills.git ~/.openclaw/skills
+
+# 2. 配置 opencode（~/.config/opencode/config.yaml）
+cat >> ~/.config/opencode/config.yaml << 'EOF'
+skills:
+  path: ~/.openclaw/skills
+  autoload: true
+EOF
+```
+
+**内联命令：**
+
+```bash
+# 代码分析
+opencode "使用 code-analyzer 分析 ./src 目录的架构"
+
+# 文档改进
+opencode "使用 docs-improver 评估 README.md 并生成改进建议"
+
+# PPT 生成
+opencode "使用 ppt-generator 创建一个 Docker 入门的培训 PPT"
+```
+
+**交互模式：**
+
+```
+> /skill code-analyzer
+analyzer> analyze --path ./src --focus architecture
+analyzer> export report.md
+
+> /skill ppt-generator
+ppt> create --template tech-talk
+ppt> set title "容器化最佳实践"
+ppt> set theme ocean --style neon
+ppt> generate output/docker-ppt.html
+```
+
+**配置文件模式：**
+
+创建 `.opencode/skills.yaml`：
+
+```yaml
+code-analyzer:
+  default-output: ./reports
+  exclude: ["node_modules", "vendor"]
+
+ppt-generator:
+  default-theme: dark
+  default-style: neon
+  output-dir: ./presentations
+```
+
+---
+
+### 跨平台通用脚本
+
+无论使用哪个 AI 助手，都可以直接运行脚本：
+
+```bash
+# 代码分析
+python3 ~/.openclaw/skills/code-analyzer/scripts/analyze.py \
+  --path /path/to/project \
+  --output report.md
+
+# DDD 分析
+python3 ~/.openclaw/skills/code-analyzer/scripts/ddd-analyzer.py \
+  --path /path/to/project \
+  --output ddd-report.md
+
+# 文档评估
+python3 ~/.openclaw/skills/docs-improver/scripts/analyze.py \
+  --path /path/to/project \
+  --output quality.md
+
+# PPT 生成
+python3 ~/.openclaw/skills/ppt-generator/scripts/generate-ppt.py \
+  --config config.json \
+  --output presentation.html
+```
+
+---
+
+## 📝 配置参考
+
+### OpenClaw 配置
 
 在 `~/.openclaw/openclaw.json` 中添加：
 
@@ -206,6 +510,9 @@ clawhub sync
       },
       "docs-improver": {
         "path": "~/.openclaw/skills/docs-improver"
+      },
+      "ppt-generator": {
+        "path": "~/.openclaw/skills/ppt-generator"
       }
     }
   }
@@ -216,6 +523,50 @@ clawhub sync
 
 ```bash
 openclaw-cn gateway restart
+```
+
+### Cursor 配置
+
+创建 `.cursor/rules/openclaw-skills.mdc`：
+
+```markdown
+---
+description: OpenClaw Skills Collection
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# 可用技能
+
+## @code-analyzer
+深度代码分析工具，支持架构分析、DDD 分析、质量评估。
+路径：~/.openclaw/skills/code-analyzer/SKILL.md
+
+## @docs-improver
+文档质量评估和改进工具。
+路径：~/.openclaw/skills/docs-improver/SKILL.md
+
+## @ppt-generator
+HTML 演示文稿生成工具。
+路径：~/.openclaw/skills/ppt-generator/SKILL.md
+
+使用方式：@技能名 + 任务描述
+```
+
+### opencode 配置
+
+编辑 `~/.config/opencode/config.yaml`：
+
+```yaml
+skills:
+  path: ~/.openclaw/skills
+  autoload: true
+  defaults:
+    code-analyzer:
+      exclude: ["node_modules", "vendor", ".git"]
+    ppt-generator:
+      theme: dark
+      style: default
 ```
 
 ---

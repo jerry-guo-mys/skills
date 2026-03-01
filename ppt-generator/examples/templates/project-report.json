@@ -1,0 +1,212 @@
+{
+  "title": "项目汇报模板",
+  "theme": {
+    "preset": "dark"
+  },
+  "style": "corporate",
+  "slides": [
+    {
+      "type": "title",
+      "emoji": "📊",
+      "title": "{{项目名称}}",
+      "subtitle": "{{汇报类型：周报/月报/结项报告}}",
+      "author": "{{汇报人}}",
+      "year": "2026",
+      "notes": "开场，说明汇报目的"
+    },
+    {
+      "type": "list",
+      "title": "汇报提纲",
+      "items": [
+        "<span class=\"success\">01</span> 项目概况",
+        "<span class=\"success\">02</span> 本期进展",
+        "<span class=\"success\">03</span> 关键成果",
+        "<span class=\"success\">04</span> 问题与风险",
+        "<span class=\"success\">05</span> 下期计划"
+      ],
+      "notes": "介绍汇报结构"
+    },
+    {
+      "type": "stats",
+      "title": "项目概况",
+      "description": "关键指标一览",
+      "stats": [
+        {
+          "icon": "📅",
+          "value": "{{天数}}",
+          "label": "已进行天数"
+        },
+        {
+          "icon": "📈",
+          "value": "{{百分比}}",
+          "label": "整体进度"
+        },
+        {
+          "icon": "👥",
+          "value": "{{人数}}",
+          "label": "团队成员"
+        },
+        {
+          "icon": "💰",
+          "value": "{{金额}}",
+          "label": "已用预算"
+        }
+      ],
+      "notes": "快速了解项目状态"
+    },
+    {
+      "type": "timeline",
+      "title": "本期进展",
+      "fragments": true,
+      "events": [
+        {
+          "date": "Week 1",
+          "title": "{{里程碑一}}",
+          "description": "{{完成情况}}"
+        },
+        {
+          "date": "Week 2",
+          "title": "{{里程碑二}}",
+          "description": "{{完成情况}}"
+        },
+        {
+          "date": "Week 3",
+          "title": "{{里程碑三}}",
+          "description": "{{完成情况}}"
+        },
+        {
+          "date": "Week 4",
+          "title": "{{里程碑四}}",
+          "description": "{{完成情况}}"
+        }
+      ],
+      "notes": "详细介绍每周进展"
+    },
+    {
+      "type": "mermaid",
+      "title": "任务完成情况",
+      "description": "甘特图展示",
+      "chart": "gantt",
+      "code": "gantt\n    title 项目进度\n    dateFormat YYYY-MM-DD\n    axisFormat %m-%d\n    section 阶段一\n    需求分析 :done, a1, 2026-01-01, 14d\n    设计评审 :done, a2, after a1, 7d\n    section 阶段二\n    开发实现 :active, b1, after a2, 21d\n    测试验收 :b2, after b1, 14d\n    section 阶段三\n    部署上线 :c1, after b2, 7d",
+      "notes": "展示项目时间线"
+    },
+    {
+      "type": "grid",
+      "title": "关键成果",
+      "description": "本期交付物",
+      "cards": [
+        {
+          "title": "✅ 已完成",
+          "type": "positive",
+          "items": [
+            "{{成果一}}",
+            "{{成果二}}",
+            "{{成果三}}"
+          ]
+        },
+        {
+          "title": "🔄 进行中",
+          "type": "warning",
+          "items": [
+            "{{任务一}} - {{进度}}",
+            "{{任务二}} - {{进度}}"
+          ]
+        }
+      ],
+      "notes": "展示具体成果"
+    },
+    {
+      "type": "two-column",
+      "title": "数据对比",
+      "left": {
+        "title": "📊 计划值",
+        "type": "list",
+        "items": [
+          "进度：{{计划进度}}",
+          "预算：{{计划预算}}",
+          "人力：{{计划人力}}",
+          "质量：{{计划指标}}"
+        ]
+      },
+      "right": {
+        "title": "📈 实际值",
+        "type": "list",
+        "items": [
+          "进度：{{实际进度}}",
+          "预算：{{实际预算}}",
+          "人力：{{实际人力}}",
+          "质量：{{实际指标}}"
+        ]
+      },
+      "notes": "对比计划与实际"
+    },
+    {
+      "type": "grid",
+      "title": "问题与风险",
+      "description": "需要关注的事项",
+      "cards": [
+        {
+          "title": "⚠️ 当前问题",
+          "type": "warning",
+          "items": [
+            "{{问题一}}",
+            "{{问题二}}"
+          ]
+        },
+        {
+          "title": "🚨 潜在风险",
+          "type": "negative",
+          "items": [
+            "{{风险一}} - {{应对措施}}",
+            "{{风险二}} - {{应对措施}}"
+          ]
+        }
+      ],
+      "notes": "如实汇报问题，提出解决方案"
+    },
+    {
+      "type": "tasks",
+      "title": "需要支持",
+      "tasks": [
+        {
+          "title": "{{支持事项一}}",
+          "desc": "{{具体需求和期望}}"
+        },
+        {
+          "title": "{{支持事项二}}",
+          "desc": "{{具体需求和期望}}"
+        }
+      ],
+      "notes": "明确需要的支持"
+    },
+    {
+      "type": "list",
+      "title": "下期计划",
+      "fragments": true,
+      "items": [
+        "<span class=\"success\">🎯</span> {{目标一}}",
+        "<span class=\"success\">🎯</span> {{目标二}}",
+        "<span class=\"success\">🎯</span> {{目标三}}",
+        "<span class=\"success\">🎯</span> {{目标四}}"
+      ],
+      "notes": "介绍下期工作计划"
+    },
+    {
+      "type": "mermaid",
+      "title": "下期里程碑",
+      "description": "关键节点规划",
+      "chart": "flowchart",
+      "code": "flowchart LR\n    A[当前] --> B[里程碑 1]\n    B --> C[里程碑 2]\n    C --> D[里程碑 3]\n    D --> E[目标]\n    style A fill:#0f172a,stroke:#8b5cf6\n    style E fill:#14231a,stroke:#10b981",
+      "notes": "展示下期关键节点"
+    },
+    {
+      "type": "end",
+      "title": "谢谢",
+      "subtitle": "欢迎提问与建议",
+      "author": "{{汇报人}}",
+      "email": "{{邮箱}}",
+      "contact": "{{联系方式}}",
+      "notes": "感谢领导关注，进入问答"
+    }
+  ]
+}

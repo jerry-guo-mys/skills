@@ -1,0 +1,211 @@
+{
+  "title": "产品发布模板",
+  "theme": {
+    "preset": "ocean"
+  },
+  "style": "gradient",
+  "slides": [
+    {
+      "type": "title",
+      "emoji": "🎉",
+      "title": "{{产品名称}}",
+      "subtitle": "{{产品定位：一句话说明}}",
+      "author": "{{公司/团队}}",
+      "year": "2026",
+      "notes": "震撼开场，制造期待"
+    },
+    {
+      "type": "quote",
+      "text": "我们相信，",
+      "highlight": "{{产品愿景/理念}}",
+      "notes": "传递产品理念"
+    },
+    {
+      "type": "grid",
+      "title": "用户痛点",
+      "description": "我们发现了这些问题",
+      "cards": [
+        {
+          "title": "😤 痛点一",
+          "type": "negative",
+          "items": [
+            "{{问题描述}}",
+            "{{用户反馈}}"
+          ]
+        },
+        {
+          "title": "😫 痛点二",
+          "type": "negative",
+          "items": [
+            "{{问题描述}}",
+            "{{用户反馈}}"
+          ]
+        },
+        {
+          "title": "😩 痛点三",
+          "type": "negative",
+          "items": [
+            "{{问题描述}}",
+            "{{用户反馈}}"
+          ]
+        }
+      ],
+      "notes": "引起共鸣，让用户感同身受"
+    },
+    {
+      "type": "image",
+      "title": "产品展示",
+      "src": "{{产品截图/效果图 URL}}",
+      "alt": "产品界面",
+      "caption": "全新设计的用户界面",
+      "fit": "contain",
+      "notes": "展示产品界面，讲解设计亮点"
+    },
+    {
+      "type": "list",
+      "title": "核心功能",
+      "fragments": true,
+      "items": [
+        "<span class=\"success\">✨</span> <span class=\"highlight\">{{功能一}}</span> - {{一句话描述}}",
+        "<span class=\"success\">✨</span> <span class=\"highlight\">{{功能二}}</span> - {{一句话描述}}",
+        "<span class=\"success\">✨</span> <span class=\"highlight\">{{功能三}}</span> - {{一句话描述}}",
+        "<span class=\"success\">✨</span> <span class=\"highlight\">{{功能四}}</span> - {{一句话描述}}",
+        "<span class=\"success\">✨</span> <span class=\"highlight\">{{功能五}}</span> - {{一句话描述}}"
+      ],
+      "notes": "逐个介绍核心功能"
+    },
+    {
+      "type": "two-column",
+      "title": "竞品对比",
+      "left": {
+        "title": "🥇 我们的产品",
+        "type": "list",
+        "items": [
+          "✅ {{优势一}}",
+          "✅ {{优势二}}",
+          "✅ {{优势三}}",
+          "✅ {{优势四}}"
+        ]
+      },
+      "right": {
+        "title": "其他产品",
+        "type": "list",
+        "items": [
+          "❌ {{劣势一}}",
+          "❌ {{劣势二}}",
+          "❌ {{劣势三}}",
+          "❌ {{劣势四}}"
+        ]
+      },
+      "notes": "突出竞争优势"
+    },
+    {
+      "type": "stats",
+      "title": "产品数据",
+      "description": "已经取得的成绩",
+      "stats": [
+        {
+          "icon": "👥",
+          "value": "{{数量}}",
+          "label": "活跃用户"
+        },
+        {
+          "icon": "⭐",
+          "value": "{{评分}}",
+          "label": "用户评分"
+        },
+        {
+          "icon": "📈",
+          "value": "{{增长率}}",
+          "label": "月增长率"
+        },
+        {
+          "icon": "🏆",
+          "value": "{{数量}}",
+          "label": "企业客户"
+        }
+      ],
+      "notes": "用数据证明产品价值"
+    },
+    {
+      "type": "list",
+      "title": "用户评价",
+      "items": [
+        "💬 \"{{用户评价一}}\" —— {{用户名/公司}}",
+        "💬 \"{{用户评价二}}\" —— {{用户名/公司}}",
+        "💬 \"{{用户评价三}}\" —— {{用户名/公司}}"
+      ],
+      "notes": "展示真实用户反馈"
+    },
+    {
+      "type": "grid",
+      "title": "定价方案",
+      "description": "选择适合你的版本",
+      "cards": [
+        {
+          "title": "🆓 免费版",
+          "type": "default",
+          "items": [
+            "基础功能",
+            "{{限制一}}",
+            "{{限制二}}",
+            "社区支持"
+          ]
+        },
+        {
+          "title": "⭐ 专业版",
+          "type": "positive",
+          "items": [
+            "全部功能",
+            "{{权益一}}",
+            "{{权益二}}",
+            "优先支持"
+          ]
+        },
+        {
+          "title": "🏢 企业版",
+          "type": "positive",
+          "items": [
+            "定制功能",
+            "{{权益一}}",
+            "{{权益二}}",
+            "专属客服"
+          ]
+        }
+      ],
+      "notes": "介绍定价策略"
+    },
+    {
+      "type": "timeline",
+      "title": "产品路线图",
+      "fragments": true,
+      "events": [
+        {
+          "date": "现在",
+          "title": "v1.0 发布",
+          "description": "核心功能上线"
+        },
+        {
+          "date": "Q2",
+          "title": "v1.5",
+          "description": "{{即将推出的功能}}"
+        },
+        {
+          "date": "Q3",
+          "title": "v2.0",
+          "description": "{{未来规划}}"
+        }
+      ],
+      "notes": "展示产品发展规划"
+    },
+    {
+      "type": "end",
+      "title": "立即体验",
+      "subtitle": "{{产品网址}}",
+      "author": "{{公司/团队}}",
+      "email": "{{联系邮箱}}",
+      "contact": "{{二维码/链接}}",
+      "notes": "引导用户行动"
+    }
+  ]
+}

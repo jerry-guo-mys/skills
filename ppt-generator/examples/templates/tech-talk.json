@@ -1,0 +1,176 @@
+{
+  "title": "技术分享模板",
+  "theme": {
+    "preset": "dark"
+  },
+  "style": "neon",
+  "slides": [
+    {
+      "type": "title",
+      "emoji": "⚡",
+      "title": "{{技术主题}}",
+      "subtitle": "{{副标题：一句话概括}}",
+      "author": "{{演讲者}}",
+      "year": "2026",
+      "notes": "开场白，自我介绍，引出话题"
+    },
+    {
+      "type": "list",
+      "title": "今天的议程",
+      "fragments": true,
+      "items": [
+        "<span class=\"success\">01</span> 背景与问题",
+        "<span class=\"success\">02</span> 技术方案",
+        "<span class=\"success\">03</span> 核心实现",
+        "<span class=\"success\">04</span> 效果与收益",
+        "<span class=\"success\">05</span> 总结与展望"
+      ],
+      "notes": "介绍整体结构，让听众有预期"
+    },
+    {
+      "type": "grid",
+      "title": "背景与问题",
+      "description": "我们面临的挑战",
+      "cards": [
+        {
+          "title": "😫 痛点一",
+          "type": "negative",
+          "items": [
+            "{{具体问题描述}}",
+            "{{影响范围}}",
+            "{{量化指标}}"
+          ]
+        },
+        {
+          "title": "😩 痛点二",
+          "type": "negative",
+          "items": [
+            "{{具体问题描述}}",
+            "{{影响范围}}",
+            "{{量化指标}}"
+          ]
+        }
+      ],
+      "notes": "详细描述问题，用数据说话"
+    },
+    {
+      "type": "mermaid",
+      "title": "技术架构",
+      "description": "整体解决方案",
+      "chart": "flowchart",
+      "code": "flowchart TB\n    subgraph Input[输入层]\n        A[数据源 A]\n        B[数据源 B]\n    end\n    subgraph Process[处理层]\n        C[核心服务]\n        D[缓存层]\n    end\n    subgraph Output[输出层]\n        E[API 接口]\n        F[消息队列]\n    end\n    A --> C\n    B --> C\n    C --> D\n    C --> E\n    C --> F\n    style Input fill:#1e1b4b,stroke:#8b5cf6\n    style Process fill:#0f172a,stroke:#06b6d4\n    style Output fill:#14231a,stroke:#10b981",
+      "notes": "讲解架构设计思路"
+    },
+    {
+      "type": "code",
+      "title": "核心代码实现",
+      "description": "关键算法 / 核心逻辑",
+      "filename": "core.ts",
+      "language": "typescript",
+      "code": "// {{替换为你的核心代码}}\nasync function processData<T>(input: T[]): Promise<Result<T>> {\n  const validated = await validate(input);\n  \n  if (!validated.success) {\n    return { error: validated.error };\n  }\n  \n  const result = await transform(validated.data);\n  \n  await cache.set(result.id, result);\n  \n  return { data: result };\n}",
+      "notes": "讲解核心代码，解释设计决策"
+    },
+    {
+      "type": "two-column",
+      "title": "Before vs After",
+      "left": {
+        "title": "❌ 优化前",
+        "type": "list",
+        "items": [
+          "响应时间 500ms",
+          "QPS 上限 1000",
+          "错误率 2%",
+          "资源占用高"
+        ]
+      },
+      "right": {
+        "title": "✅ 优化后",
+        "type": "list",
+        "items": [
+          "响应时间 50ms",
+          "QPS 上限 10000",
+          "错误率 0.01%",
+          "资源占用降低 60%"
+        ]
+      },
+      "notes": "用数据对比展示效果"
+    },
+    {
+      "type": "stats",
+      "title": "核心收益",
+      "description": "量化的改进效果",
+      "stats": [
+        {
+          "icon": "⚡",
+          "value": "10x",
+          "label": "性能提升"
+        },
+        {
+          "icon": "💰",
+          "value": "60%",
+          "label": "成本降低"
+        },
+        {
+          "icon": "🎯",
+          "value": "99.99%",
+          "label": "可用性"
+        },
+        {
+          "icon": "👥",
+          "value": "100万+",
+          "label": "用户受益"
+        }
+      ],
+      "notes": "强调核心收益数据"
+    },
+    {
+      "type": "list",
+      "title": "踩坑与经验",
+      "fragments": true,
+      "items": [
+        "<span class=\"warning\">⚠️</span> {{踩坑一}}：{{解决方案}}",
+        "<span class=\"warning\">⚠️</span> {{踩坑二}}：{{解决方案}}",
+        "<span class=\"warning\">⚠️</span> {{踩坑三}}：{{解决方案}}"
+      ],
+      "notes": "分享实践中的经验教训"
+    },
+    {
+      "type": "timeline",
+      "title": "后续规划",
+      "fragments": true,
+      "events": [
+        {
+          "date": "Q1",
+          "title": "阶段一",
+          "description": "{{短期目标}}"
+        },
+        {
+          "date": "Q2",
+          "title": "阶段二",
+          "description": "{{中期目标}}"
+        },
+        {
+          "date": "Q3-Q4",
+          "title": "阶段三",
+          "description": "{{长期目标}}"
+        }
+      ],
+      "notes": "介绍后续迭代计划"
+    },
+    {
+      "type": "quote",
+      "text": "技术的价值在于，",
+      "highlight": "解决真实的问题",
+      "notes": "金句收尾"
+    },
+    {
+      "type": "end",
+      "title": "Q & A",
+      "subtitle": "欢迎提问与交流",
+      "author": "{{演讲者}}",
+      "email": "{{邮箱}}",
+      "contact": "{{微信/GitHub}}",
+      "notes": "感谢听众，进入问答环节"
+    }
+  ]
+}

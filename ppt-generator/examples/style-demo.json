@@ -1,0 +1,103 @@
+{
+  "title": "风格演示 - Neon",
+  "theme": {
+    "preset": "dark"
+  },
+  "style": "neon",
+  "slides": [
+    {
+      "type": "title",
+      "emoji": "💫",
+      "title": "Neon 霓虹风格",
+      "subtitle": "炫酷发光效果，适合科技演示",
+      "author": "PPT Generator",
+      "year": "2026"
+    },
+    {
+      "type": "list",
+      "title": "可选风格",
+      "fragments": true,
+      "items": [
+        "<span class=\"success\">✦</span> <span class=\"highlight\">default</span> - 默认风格，平衡美观",
+        "<span class=\"success\">✦</span> <span class=\"highlight\">minimal</span> - 简约风格，无阴影无动画",
+        "<span class=\"success\">✦</span> <span class=\"highlight\">gradient</span> - 渐变风格，流动渐变色",
+        "<span class=\"success\">✦</span> <span class=\"highlight\">neon</span> - 霓虹风格，发光效果",
+        "<span class=\"success\">✦</span> <span class=\"highlight\">corporate</span> - 商务风格，专业简洁",
+        "<span class=\"success\">✦</span> <span class=\"highlight\">playful</span> - 活泼风格，有趣动感"
+      ]
+    },
+    {
+      "type": "grid",
+      "title": "风格 + 主题组合",
+      "description": "6 种风格 × 6 种主题 = 36 种组合",
+      "cards": [
+        {
+          "title": "🎨 内置主题",
+          "type": "positive",
+          "items": [
+            "dark - 深色",
+            "light - 亮色",
+            "ocean - 海洋",
+            "forest - 森林",
+            "sunset - 日落",
+            "mono - 单色"
+          ]
+        },
+        {
+          "title": "✨ 视觉风格",
+          "type": "default",
+          "items": [
+            "default - 默认",
+            "minimal - 简约",
+            "gradient - 渐变",
+            "neon - 霓虹",
+            "corporate - 商务",
+            "playful - 活泼"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "title": "配置方式",
+      "description": "在 JSON 中指定 theme 和 style",
+      "filename": "config.json",
+      "language": "json",
+      "code": "{\n  \"title\": \"我的演示\",\n  \"theme\": {\n    \"preset\": \"ocean\",\n    \"custom\": {\n      \"accent-cyan\": \"#00ff88\"\n    }\n  },\n  \"style\": \"neon\",\n  \"slides\": [...]\n}"
+    },
+    {
+      "type": "stats",
+      "title": "风格特性",
+      "stats": [
+        {
+          "icon": "🌙",
+          "value": "6",
+          "label": "主题预设"
+        },
+        {
+          "icon": "✨",
+          "value": "6",
+          "label": "视觉风格"
+        },
+        {
+          "icon": "🎨",
+          "value": "36+",
+          "label": "组合效果"
+        },
+        {
+          "icon": "🔧",
+          "value": "∞",
+          "label": "自定义颜色"
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "title": "选择你的风格",
+      "subtitle": "让演示更具个性",
+      "author": "PPT Generator",
+      "email": "ppt@example.com",
+      "contact": "GitHub: @openclaw"
+    }
+  ]
+}
