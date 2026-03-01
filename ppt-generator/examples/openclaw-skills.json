@@ -1,0 +1,170 @@
+{
+  "title": "OpenClaw Skills 技术分享",
+  "slides": [
+    {
+      "type": "title",
+      "emoji": "🚀",
+      "title": "OpenClaw Skills",
+      "subtitle": "让 AI 助手更强大的技能系统",
+      "author": "Jerry",
+      "year": "2026"
+    },
+    {
+      "type": "list",
+      "title": "什么是 Skills？",
+      "items": [
+        "<span class=\"highlight\">OpenClaw 的核心扩展机制</span>",
+        "<span class=\"success\">✓</span> 预定义的专业能力模块",
+        "<span class=\"success\">✓</span> 支持 20+ 编程语言分析",
+        "<span class=\"success\">✓</span> 可定制、可组合、可分享",
+        "<span class=\"success\">✓</span> 通过简单配置即可使用"
+      ]
+    },
+    {
+      "type": "mermaid",
+      "title": "Skills 架构",
+      "description": "技能系统的工作流程",
+      "chart": "flowchart",
+      "code": "flowchart LR\n    A[用户请求] --> B{Skill 匹配}\n    B -->|代码分析 | C[code-analyzer]\n    B -->|Java 审查 | D[java-code-review]\n    B -->|文档优化 | E[docs-improver]\n    B -->|PPT 生成 | F[ppt-generator]\n    C --> G[输出结果]\n    D --> G\n    E --> G\n    F --> G"
+    },
+    {
+      "type": "grid",
+      "title": "已创建的 Skills（10+）",
+      "description": "覆盖代码分析、文档、管理三大领域",
+      "cards": [
+        {
+          "title": "📊 代码分析类",
+          "type": "positive",
+          "items": [
+            "code-analyzer - 深度代码分析",
+            "java-code-review - Java 审查",
+            "java-debug-helper - 调试助手",
+            "java-sql-optimizer - SQL 优化",
+            "java-test-generator - 测试生成",
+            "java-performance-optimizer - 性能优化"
+          ]
+        },
+        {
+          "title": "📝 文档工具类",
+          "type": "positive",
+          "items": [
+            "docs-improver - 文档评估改进",
+            "solution-architect - PRD 转技术方案",
+            "ppt-generator - 演示文稿生成"
+          ]
+        },
+        {
+          "title": "🔧 管理类",
+          "type": "positive",
+          "items": [
+            "skill-manager - 技能管理改进",
+            "clawhub - 技能发布管理",
+            "github - GitHub 操作",
+            "gh-issues - Issue 自动修复"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mermaid",
+      "title": "代码分析能力",
+      "description": "支持 20+ 编程语言的深度分析",
+      "chart": "flowchart",
+      "code": "flowchart TD\n    A[code-analyzer] --> B[架构分析]\n    A --> C[执行流程]\n    A --> D[数据流分析]\n    A --> E[业务规则提取]\n    A --> F[外部依赖识别]\n    A --> G[DDD 模式识别]\n    G --> H[聚合根/实体/值对象]\n    G --> I[领域服务/仓储/事件]\n    G --> J[限界上下文]"
+    },
+    {
+      "type": "list",
+      "title": "核心特性",
+      "items": [
+        "<span class=\"highlight\">深度分析</span> - 不只是表面代码，理解业务逻辑",
+        "<span class=\"success\">✓</span> DDD 模式自动识别（聚合根、实体、值对象...）",
+        "<span class=\"success\">✓</span> 支持 Python/JS/TS/Rust/Java/Go 等 20+ 语言",
+        "<span class=\"success\">✓</span> 自动生成架构文档",
+        "<span class=\"success\">✓</span> 代码审查准备",
+        "<span class=\"success\">✓</span> 技术债务评估"
+      ]
+    },
+    {
+      "type": "mermaid",
+      "title": "使用流程",
+      "description": "简单的三步使用方式",
+      "chart": "sequenceDiagram",
+      "code": "sequenceDiagram\n    participant U as 用户\n    participant OC as OpenClaw\n    participant S as Skill\n    participant W as Workspace\n    \n    U->>OC: 自然语言请求\n    OC->>S: 匹配对应 Skill\n    S->>W: 读取工作区文件\n    S->>S: 执行分析/处理\n    S-->>OC: 返回结果\n    OC-->>U: 输出报告/建议"
+    },
+    {
+      "type": "tasks",
+      "title": "典型使用场景",
+      "tasks": [
+        {
+          "title": "新代码库熟悉",
+          "desc": "用 code-analyzer 快速理解项目架构、数据流、业务规则"
+        },
+        {
+          "title": "Code Review 准备",
+          "desc": "用 java-code-review 自动检查规范、异味、安全问题"
+        },
+        {
+          "title": "文档质量审计",
+          "desc": "用 docs-improver 评估完整性、准确性，生成缺失文档"
+        },
+        {
+          "title": "技术方案生成",
+          "desc": "用 solution-architect 从 PRD 生成完整技术方案"
+        },
+        {
+          "title": "演示文稿制作",
+          "desc": "用 ppt-generator 快速生成炫酷的技术分享 PPT"
+        }
+      ]
+    },
+    {
+      "type": "grid",
+      "title": "优势对比",
+      "description": "vs 传统开发工具",
+      "cards": [
+        {
+          "title": "✅ OpenClaw Skills",
+          "type": "positive",
+          "items": [
+            "自然语言交互",
+            "AI 驱动分析",
+            "自动文档生成",
+            "可组合扩展",
+            "持续学习改进"
+          ]
+        },
+        {
+          "title": "❌ 传统工具",
+          "type": "negative",
+          "items": [
+            "需要手动配置",
+            "规则固定死板",
+            "文档手动编写",
+            "功能孤立",
+            "无法自适应"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mermaid",
+      "title": "未来规划",
+      "description": "持续扩展中...",
+      "chart": "gantt",
+      "code": "gantt\n    title Skills 发展路线图\n    dateFormat  YYYY-MM\n    section 已完成\n    代码分析类 :done, 2026-02, 1m\n    文档工具类 :done, 2026-02, 1m\n    section 进行中\n    PPT 增强 :active, 2026-03, 1m\n    前端分析 :2026-03, 1m\n    section 计划中\n    Python 专项 :2026-04, 1m\n    安全审计 :2026-04, 1m\n    CI/CD 集成 :2026-05, 1m"
+    },
+    {
+      "type": "quote",
+      "text": "工具是手段，",
+      "highlight": "提升效率是目的"
+    },
+    {
+      "type": "end",
+      "title": "Thank You!",
+      "subtitle": "开始使用 OpenClaw Skills",
+      "author": "Jerry",
+      "email": "jerry@example.com",
+      "contact": "GitHub: @jerry-guo-mys"
+    }
+  ]
+}

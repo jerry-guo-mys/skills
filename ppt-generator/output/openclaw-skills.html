@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Skills 技术分享</title>
+    <style>
+        :root {
+            --bg-color-1: #0f172a;
+            --bg-color-2: #1e1b4b;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #f43f5e;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: radial-gradient(circle at center, var(--bg-color-2) 0%, var(--bg-color-1) 100%);
+            color: var(--text-main);
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+        }
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .slide {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            padding: 40px 8vw;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 { font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 24px; text-align: center; letter-spacing: 2px; }
+        h2 { font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 40px; text-align: center; letter-spacing: 1px; color: var(--accent-cyan); text-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+        ul, ol { font-size: clamp(1.2rem, 2vw, 1.6rem); line-height: 2; max-width: 1000px; }
+        li { margin-bottom: 16px; opacity: 0; animation: slideInRight 0.6s ease-out forwards; }
+        li:nth-child(1) { animation-delay: 0.2s; }
+        li:nth-child(2) { animation-delay: 0.35s; }
+        li:nth-child(3) { animation-delay: 0.5s; }
+        li:nth-child(4) { animation-delay: 0.65s; }
+        li:nth-child(5) { animation-delay: 0.8s; }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .highlight { color: var(--accent-warning); font-weight: bold; }
+        .success { color: var(--accent-green); }
+        .error { color: var(--accent-danger); }
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .quote {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 300;
+            text-align: center;
+            line-height: 1.6;
+            padding: 60px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), transparent);
+        }
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 6rem;
+            color: var(--accent-cyan);
+            opacity: 0.2;
+            position: absolute;
+            font-family: serif;
+        }
+        .quote::before { top: 10px; left: 20px; }
+        .quote::after { bottom: -30px; right: 20px; }
+        .page-number { position: absolute; bottom: 30px; left: 40px; font-size: 16px; color: var(--text-muted); letter-spacing: 2px; font-family: monospace; }
+        .progress-container { position: fixed; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.05); z-index: 1001; }
+        .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green)); box-shadow: 0 0 10px var(--accent-cyan); transition: width 0.4s ease-out; }
+        .emoji { font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); }
+        .gradient-text { background: linear-gradient(135deg, #e0e7ff 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 1400px; margin-top: 20px; }
+        .grid-layout h3 { font-size: 1.8rem; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+        .mermaid-wrapper { 
+            width: 100%; 
+            max-width: 1000px; 
+            margin: 10px auto; 
+            padding: 30px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+            max-height: 65vh;
+            overflow: visible;
+        }
+        .mermaid-wrapper svg { 
+            max-width: 100%; 
+            max-height: 60vh;
+            height: auto; 
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+        .controls-hint { position: fixed; bottom: 30px; right: 40px; font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 15px; z-index: 100; }
+        .key { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); font-family: monospace; }
+    </style>
+</head>
+<body>
+    <canvas id="particles"></canvas>
+    <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
+    
+    
+            <div class="slide">
+                <div class="emoji">🚀</div>
+                <h1 class="gradient-text">OpenClaw Skills</h1>
+                <h2>让 AI 助手更强大的技能系统</h2>
+                <div style="margin-top: 50px; text-align: center; color: var(--text-muted);">
+                    <p style="font-size: 1.5rem; color: #fff; margin-bottom: 8px;">Jerry</p>
+                    <p style="letter-spacing: 2px;">2026</p>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>什么是 Skills？</h2>
+                <div class="glass-card" style="width: 100%; max-width: 800px;">
+                    <ul style="list-style: none; padding: 0;"><li><span class="highlight">OpenClaw 的核心扩展机制</span></li><li><span class="success">✓</span> 预定义的专业能力模块</li><li><span class="success">✓</span> 支持 20+ 编程语言分析</li><li><span class="success">✓</span> 可定制、可组合、可分享</li><li><span class="success">✓</span> 通过简单配置即可使用</li></ul>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>Skills 架构</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    技能系统的工作流程
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
+flowchart LR
+    A[用户请求] --> B{Skill 匹配}
+    B -->|代码分析 | C[code-analyzer]
+    B -->|Java 审查 | D[java-code-review]
+    B -->|文档优化 | E[docs-improver]
+    B -->|PPT 生成 | F[ppt-generator]
+    C --> G[输出结果]
+    D --> G
+    E --> G
+    F --> G
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>已创建的 Skills（10+）</h2>
+                <p style="text-align: center; font-size: 1.4rem; color: var(--text-muted); margin-bottom: 30px;">
+                    覆盖代码分析、文档、管理三大领域
+                </p>
+                <div class="grid-layout" style="max-width: 1000px;">
+                <div class="glass-card" style="border-top: 4px solid var(--accent-success);">
+                    <h3 class="success">📊 代码分析类</h3>
+                    <ul><li>code-analyzer - 深度代码分析</li><li>java-code-review - Java 审查</li><li>java-debug-helper - 调试助手</li><li>java-sql-optimizer - SQL 优化</li><li>java-test-generator - 测试生成</li><li>java-performance-optimizer - 性能优化</li></ul>
+                </div>
+                
+                <div class="glass-card" style="border-top: 4px solid var(--accent-success);">
+                    <h3 class="success">📝 文档工具类</h3>
+                    <ul><li>docs-improver - 文档评估改进</li><li>solution-architect - PRD 转技术方案</li><li>ppt-generator - 演示文稿生成</li></ul>
+                </div>
+                
+                <div class="glass-card" style="border-top: 4px solid var(--accent-success);">
+                    <h3 class="success">🔧 管理类</h3>
+                    <ul><li>skill-manager - 技能管理改进</li><li>clawhub - 技能发布管理</li><li>github - GitHub 操作</li><li>gh-issues - Issue 自动修复</li></ul>
+                </div>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>代码分析能力</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    支持 20+ 编程语言的深度分析
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
+flowchart TD
+    A[code-analyzer] --> B[架构分析]
+    A --> C[执行流程]
+    A --> D[数据流分析]
+    A --> E[业务规则提取]
+    A --> F[外部依赖识别]
+    A --> G[DDD 模式识别]
+    G --> H[聚合根/实体/值对象]
+    G --> I[领域服务/仓储/事件]
+    G --> J[限界上下文]
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>核心特性</h2>
+                <div class="glass-card" style="width: 100%; max-width: 800px;">
+                    <ul style="list-style: none; padding: 0;"><li><span class="highlight">深度分析</span> - 不只是表面代码，理解业务逻辑</li><li><span class="success">✓</span> DDD 模式自动识别（聚合根、实体、值对象...）</li><li><span class="success">✓</span> 支持 Python/JS/TS/Rust/Java/Go 等 20+ 语言</li><li><span class="success">✓</span> 自动生成架构文档</li><li><span class="success">✓</span> 代码审查准备</li><li><span class="success">✓</span> 技术债务评估</li></ul>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>使用流程</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    简单的三步使用方式
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
+sequenceDiagram
+    participant U as 用户
+    participant OC as OpenClaw
+    participant S as Skill
+    participant W as Workspace
+    
+    U->>OC: 自然语言请求
+    OC->>S: 匹配对应 Skill
+    S->>W: 读取工作区文件
+    S->>S: 执行分析/处理
+    S-->>OC: 返回结果
+    OC-->>U: 输出报告/建议
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>典型使用场景</h2>
+                <div class="glass-card" style="width: 100%; max-width: 900px;">
+                    <ol style="padding-left: 20px;">
+                        <li style="margin-bottom: 30px;"><span class="highlight">新代码库熟悉</span><br><span style="font-size: 0.85em; color: var(--text-muted);">用 code-analyzer 快速理解项目架构、数据流、业务规则</span></li><li style="margin-bottom: 30px;"><span class="highlight">Code Review 准备</span><br><span style="font-size: 0.85em; color: var(--text-muted);">用 java-code-review 自动检查规范、异味、安全问题</span></li><li style="margin-bottom: 30px;"><span class="highlight">文档质量审计</span><br><span style="font-size: 0.85em; color: var(--text-muted);">用 docs-improver 评估完整性、准确性，生成缺失文档</span></li><li style="margin-bottom: 30px;"><span class="highlight">技术方案生成</span><br><span style="font-size: 0.85em; color: var(--text-muted);">用 solution-architect 从 PRD 生成完整技术方案</span></li><li style="margin-bottom: 30px;"><span class="highlight">演示文稿制作</span><br><span style="font-size: 0.85em; color: var(--text-muted);">用 ppt-generator 快速生成炫酷的技术分享 PPT</span></li>
+                    </ol>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>优势对比</h2>
+                <p style="text-align: center; font-size: 1.4rem; color: var(--text-muted); margin-bottom: 30px;">
+                    vs 传统开发工具
+                </p>
+                <div class="grid-layout" style="max-width: 1000px;">
+                <div class="glass-card" style="border-top: 4px solid var(--accent-success);">
+                    <h3 class="success">✅ OpenClaw Skills</h3>
+                    <ul><li>自然语言交互</li><li>AI 驱动分析</li><li>自动文档生成</li><li>可组合扩展</li><li>持续学习改进</li></ul>
+                </div>
+                
+                <div class="glass-card" style="border-top: 4px solid var(--accent-error);">
+                    <h3 class="error">❌ 传统工具</h3>
+                    <ul><li>需要手动配置</li><li>规则固定死板</li><li>文档手动编写</li><li>功能孤立</li><li>无法自适应</li></ul>
+                </div>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>未来规划</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    持续扩展中...
+                </p>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
+gantt
+    title Skills 发展路线图
+    dateFormat  YYYY-MM
+    section 已完成
+    代码分析类 :done, 2026-02, 1m
+    文档工具类 :done, 2026-02, 1m
+    section 进行中
+    PPT 增强 :active, 2026-03, 1m
+    前端分析 :2026-03, 1m
+    section 计划中
+    Python 专项 :2026-04, 1m
+    安全审计 :2026-04, 1m
+    CI/CD 集成 :2026-05, 1m
+                    </pre>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <div class="glass-card quote">
+                    <span style="display:block; margin-bottom: 20px; color: var(--text-main);">工具是手段，</span>
+                    <span class="gradient-text" style="font-weight: 600; font-size: 1.2em;">提升效率是目的</span>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <div class="emoji" style="font-size: 5rem;">🎉</div>
+                <h1 class="gradient-text">Thank You!</h1>
+                <h2 style="color: var(--text-muted); text-shadow: none;">开始使用 OpenClaw Skills</h2>
+                <div class="glass-card" style="margin-top: 40px; padding: 30px 60px; text-align: center;">
+                    <p style="font-size: 1.8rem; margin-bottom: 10px; font-weight: bold;">Jerry</p>
+                    <p style="color: var(--text-muted); margin-bottom: 10px;">📧 jerry@example.com</p>
+                    <p style="color: var(--accent-cyan);">💬 GitHub: @jerry-guo-mys</p>
+                </div>
+            </div>
+            
+    
+    <div class="page-number" id="pageCounter">1 / 12</div>
+    <div class="controls-hint">
+        <span>上一页：<span class="key">←</span> <span class="key">↑</span></span>
+        <span>下一页：<span class="key">→</span> <span class="key">↓</span> <span class="key">Space</span></span>
+        <span>全屏：<span class="key">F11</span></span>
+    </div>
+    
+    <!-- Mermaid 图表支持 -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        // 初始化 Mermaid
+        mermaid.initialize({ 
+            startOnLoad: false,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#06b6d4',
+                primaryTextColor: '#f8fafc',
+                primaryBorderColor: '#06b6d4',
+                lineColor: '#94a3b8',
+                secondaryColor: '#1e1b4b',
+                tertiaryColor: '#0f172a'
+            },
+            flowchart: {
+                curve: 'basis',
+                padding: 20
+            }
+        });
+    </script>
+    
+    <script>
+        // 初始化 Mermaid 图表
+        async function initMermaid() {
+            if (window.mermaid) {
+                // 只处理 pre.mermaid 元素
+                const elements = document.querySelectorAll('pre.mermaid');
+                for (let i = 0; i < elements.length; i++) {
+                    const element = elements[i];
+                    // 跳过已渲染的
+                    if (element.getAttribute('data-processed') === 'true') continue;
+                    
+                    const graphDefinition = element.textContent.trim();
+                    try {
+                        const { svg } = await mermaid.render('mermaid-' + i, graphDefinition);
+                        // 创建容器包裹 SVG
+                        const container = document.createElement('div');
+                        container.className = 'mermaid-wrapper';
+                        container.innerHTML = svg;
+                        container.style.display = 'flex';
+                        container.style.justifyContent = 'center';
+                        // 替换 pre 标签
+                        element.parentNode.replaceChild(container, element);
+                        element.setAttribute('data-processed', 'true');
+                    } catch (e) {
+                        console.error('Mermaid 渲染失败:', e);
+                        element.innerHTML = '<span class="error">图表渲染失败：' + e.message + '</span>';
+                        element.style.display = 'block';
+                    }
+                }
+            }
+        }
+        
+        // 神经网络粒子效果
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+        const particles = [];
+        const particleCount = Math.min(Math.floor(window.innerWidth / 15), 80);
+        const maxDistance = 150;
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(14, 165, 233, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < maxDistance) {
+                        const opacity = 1 - (distance / maxDistance);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(14, 165, 233, ${opacity * 0.2})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+        
+        // 幻灯片控制
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const progress = document.getElementById('progress');
+        const pageCounter = document.getElementById('pageCounter');
+        const totalSlides = slides.length;
+        
+        async function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) slide.classList.add('active');
+            });
+            const progressPercent = ((currentSlide + 1) / totalSlides) * 100;
+            progress.style.width = `${progressPercent}%`;
+            pageCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            // 初始化当前幻灯片的 Mermaid 图表
+            await initMermaid();
+        }
+        
+        function nextSlide() { if (currentSlide < totalSlides - 1) { currentSlide++; updateSlide(); } }
+        function prevSlide() { if (currentSlide > 0) { currentSlide--; updateSlide(); } }
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(`全屏请求被拒绝：${err.message}`));
+            } else { document.exitFullscreen(); }
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowDown') { e.preventDefault(); nextSlide(); }
+            else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
+            else if (e.key === 'F11') { e.preventDefault(); toggleFullscreen(); }
+        });
+        
+        document.addEventListener('click', (e) => {
+            if(e.target.tagName.toLowerCase() === 'a') return;
+            const clickX = e.clientX;
+            const screenWidth = window.innerWidth;
+            if (clickX > screenWidth * 0.7) nextSlide();
+            else if (clickX < screenWidth * 0.3) prevSlide();
+        });
+        
+        let scrollTimeout = false;
+        window.addEventListener('wheel', (e) => {
+            if (scrollTimeout) return;
+            if (e.deltaY > 0) nextSlide();
+            else if (e.deltaY < 0) prevSlide();
+            scrollTimeout = true;
+            setTimeout(() => { scrollTimeout = false; }, 500);
+        });
+        
+        let touchStartX = 0, touchEndX = 0;
+        window.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+        window.addEventListener('touchend', e => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); });
+        function handleSwipe() {
+            const threshold = 50;
+            if (touchEndX < touchStartX - threshold) nextSlide();
+            if (touchEndX > touchStartX + threshold) prevSlide();
+        }
+        
+        updateSlide();
+    </script>
+</body>
+</html>
