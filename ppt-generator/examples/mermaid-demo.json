@@ -1,0 +1,82 @@
+{
+  "title": "Mermaid 图表演示",
+  "slides": [
+    {
+      "type": "title",
+      "emoji": "📊",
+      "title": "Mermaid 图表集成",
+      "subtitle": "在 PPT 中绘制流程图、时序图、类图",
+      "author": "PPT Generator",
+      "year": "2026"
+    },
+    {
+      "type": "list",
+      "title": "支持的图表类型",
+      "items": [
+        "<span class=\"success\">✓</span> 流程图 (Flowchart)",
+        "<span class=\"success\">✓</span> 时序图 (Sequence Diagram)",
+        "<span class=\"success\">✓</span> 类图 (Class Diagram)",
+        "<span class=\"success\">✓</span> 状态图 (State Diagram)",
+        "<span class=\"success\">✓</span> 甘特图 (Gantt Chart)",
+        "<span class=\"success\">✓</span> 饼图 (Pie Chart)",
+        "<span class=\"success\">✓</span> 思维导图 (Mindmap)",
+        "<span class=\"success\">✓</span> 用户旅程图 (User Journey)"
+      ]
+    },
+    {
+      "type": "mermaid",
+      "title": "流程图示例",
+      "description": "系统架构流程图",
+      "chart": "flowchart",
+      "code": "flowchart TD\n    A[用户请求] --> B{认证？}\n    B -->|是 | C[API 网关]\n    B -->|否 | D[返回 401]\n    C --> E[微服务 A]\n    C --> F[微服务 B]\n    E --> G[数据库]\n    F --> G\n    G --> H[返回结果]"
+    },
+    {
+      "type": "mermaid",
+      "title": "时序图示例",
+      "description": "用户登录流程",
+      "chart": "sequenceDiagram",
+      "code": "sequenceDiagram\n    participant U as 用户\n    participant F as 前端\n    participant A as API\n    participant D as 数据库\n    \n    U->>F: 输入账号密码\n    F->>A: POST /login\n    A->>D: 查询用户\n    D-->>A: 返回用户信息\n    A-->>F: 返回 Token\n    F-->>U: 登录成功"
+    },
+    {
+      "type": "mermaid",
+      "title": "类图示例",
+      "description": "领域模型类图",
+      "chart": "classDiagram",
+      "code": "classDiagram\n    class User {\n        +String id\n        +String name\n        +String email\n        +login()\n        +logout()\n    }\n    class Order {\n        +String id\n        +Date createdAt\n        +List~Item~ items\n        +checkout()\n    }\n    class Item {\n        +String productId\n        +int quantity\n        +decimal price\n    }\n    User --> Order : places\n    Order --> Item : contains"
+    },
+    {
+      "type": "mermaid",
+      "title": "状态图示例",
+      "description": "订单状态流转",
+      "chart": "stateDiagram",
+      "code": "stateDiagram-v2\n    [*] --> Pending : 创建订单\n    Pending --> Paid : 支付成功\n    Pending --> Cancelled : 取消订单\n    Paid --> Shipping : 发货\n    Shipping --> Delivered : 签收\n    Delivered --> [*]\n    Paid --> Refunded : 申请退款\n    Refunded --> [*]"
+    },
+    {
+      "type": "mermaid",
+      "title": "甘特图示例",
+      "description": "项目进度计划",
+      "chart": "gantt",
+      "code": "gantt\n    title 项目开发计划\n    dateFormat  YYYY-MM-DD\n    section 需求\n    需求分析 :a1, 2026-03-01, 7d\n    原型设计 :after a1, 5d\n    section 开发\n    前端开发 :2026-03-10, 14d\n    后端开发 :2026-03-10, 14d\n    section 测试\n    单元测试 :2026-03-20, 7d\n    集成测试 :2026-03-25, 5d"
+    },
+    {
+      "type": "mermaid",
+      "title": "饼图示例",
+      "description": "时间分配比例",
+      "chart": "pie",
+      "code": "pie title 工作日时间分配\n    \"工作\" : 8\n    \"学习\" : 3\n    \"运动\" : 1\n    \"娱乐\" : 2\n    \"睡眠\" : 8\n    \"其他\" : 2"
+    },
+    {
+      "type": "quote",
+      "text": "图表胜千言，",
+      "highlight": "让数据可视化更简单"
+    },
+    {
+      "type": "end",
+      "title": "Thank You!",
+      "subtitle": "开始制作你的图表演示文稿",
+      "author": "PPT Generator",
+      "email": "ppt@example.com",
+      "contact": "GitHub: @openclaw"
+    }
+  ]
+}

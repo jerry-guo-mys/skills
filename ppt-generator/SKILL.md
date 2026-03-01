@@ -206,6 +206,96 @@ cp templates/ppt-template.html my-presentation.html
 }
 ```
 
+### 7. Mermaid 图表页 (mermaid) 🆕
+
+```json
+{
+  "type": "mermaid",
+  "title": "图表标题",
+  "description": "图表描述",
+  "chart": "flowchart",
+  "code": "flowchart TD\n    A[开始] --> B{条件？}\n    B -->|是 | C[执行]\n    B -->|否 | D[结束]"
+}
+```
+
+**支持的图表类型：**
+
+| 类型 | 说明 | 示例 |
+|------|------|------|
+| `flowchart` | 流程图 | 系统架构、业务流程 |
+| `sequenceDiagram` | 时序图 | 接口调用、用户交互 |
+| `classDiagram` | 类图 | 领域模型、代码结构 |
+| `stateDiagram` | 状态图 | 状态机、订单流转 |
+| `gantt` | 甘特图 | 项目计划、时间安排 |
+| `pie` | 饼图 | 数据占比、时间分配 |
+| `mindmap` | 思维导图 | 知识梳理、头脑风暴 |
+| `userJourney` | 用户旅程图 | 用户体验流程 |
+
+**参考示例：** `examples/mermaid-demo.json`
+
+---
+
+## 📊 Mermaid 语法速查
+
+### 流程图 (Flowchart)
+
+```mermaid
+flowchart TD
+    A[节点 A] --> B{判断}
+    B -->|是 | C[节点 C]
+    B -->|否 | D[节点 D]
+```
+
+### 时序图 (Sequence Diagram)
+
+```mermaid
+sequenceDiagram
+    participant A as 服务 A
+    participant B as 服务 B
+    A->>B: 请求
+    B-->>A: 响应
+```
+
+### 类图 (Class Diagram)
+
+```mermaid
+classDiagram
+    class User {
+        +String name
+        +login()
+    }
+```
+
+### 状态图 (State Diagram)
+
+```mermaid
+stateDiagram-v2
+    [*] --> 待处理
+    待处理 --> 已完成
+    已完成 --> [*]
+```
+
+### 甘特图 (Gantt)
+
+```mermaid
+gantt
+    title 项目计划
+    dateFormat  YYYY-MM-DD
+    section 阶段 1
+    任务 A :2026-03-01, 7d
+```
+
+### 饼图 (Pie)
+
+```mermaid
+pie title 时间分配
+    "工作" : 8
+    "学习" : 3
+    "休息" : 2
+```
+
+**完整语法参考：** https://mermaid.js.org/syntax/flowchart.html
+
 ---
 
 ## 🎨 CSS 类名
@@ -335,8 +425,10 @@ cp templates/ppt-template.html my-presentation.html
 ## 🔗 相关链接
 
 - [示例配置](examples/ai-survival-lesson1.json)
+- [Mermaid 演示](examples/mermaid-demo.json) 🆕
 - [HTML 模板](templates/ppt-template.html)
 - [生成脚本](scripts/generate-ppt.py)
+- [Mermaid 官方文档](https://mermaid.js.org/)
 
 ---
 

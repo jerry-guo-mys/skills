@@ -106,6 +106,21 @@ def generate_slides(content: list) -> str:
             </div>
             """
         
+        elif slide_type == 'mermaid':
+            chart_type = slide.get('chart', 'flowchart')
+            code = slide.get('code', '')
+            html = f"""
+            <div class="slide">
+                <h2>{slide.get('title', '')}</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    {slide.get('description', '')}
+                </p>
+                <div class="mermaid">
+{code}
+                </div>
+            </div>
+            """
+        
         else:
             # 默认类型
             html = f"""

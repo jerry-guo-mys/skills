@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{TITLE}}</title>
+    <title>Mermaid 图表演示</title>
     <style>
         :root {
             --bg-color-1: #0f172a;
@@ -127,9 +127,177 @@
     <canvas id="particles"></canvas>
     <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
     
-    <!-- SLIDES_PLACEHOLDER -->
     
-    <div class="page-number" id="pageCounter">1 / {{TOTAL_SLIDES}}</div>
+            <div class="slide">
+                <div class="emoji">📊</div>
+                <h1 class="gradient-text">Mermaid 图表集成</h1>
+                <h2>在 PPT 中绘制流程图、时序图、类图</h2>
+                <div style="margin-top: 50px; text-align: center; color: var(--text-muted);">
+                    <p style="font-size: 1.5rem; color: #fff; margin-bottom: 8px;">PPT Generator</p>
+                    <p style="letter-spacing: 2px;">2026</p>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>支持的图表类型</h2>
+                <div class="glass-card" style="width: 100%; max-width: 800px;">
+                    <ul style="list-style: none; padding: 0;"><li><span class="success">✓</span> 流程图 (Flowchart)</li><li><span class="success">✓</span> 时序图 (Sequence Diagram)</li><li><span class="success">✓</span> 类图 (Class Diagram)</li><li><span class="success">✓</span> 状态图 (State Diagram)</li><li><span class="success">✓</span> 甘特图 (Gantt Chart)</li><li><span class="success">✓</span> 饼图 (Pie Chart)</li><li><span class="success">✓</span> 思维导图 (Mindmap)</li><li><span class="success">✓</span> 用户旅程图 (User Journey)</li></ul>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>流程图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    系统架构流程图
+                </p>
+                <div class="mermaid">
+flowchart TD
+    A[用户请求] --> B{认证？}
+    B -->|是 | C[API 网关]
+    B -->|否 | D[返回 401]
+    C --> E[微服务 A]
+    C --> F[微服务 B]
+    E --> G[数据库]
+    F --> G
+    G --> H[返回结果]
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>时序图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    用户登录流程
+                </p>
+                <div class="mermaid">
+sequenceDiagram
+    participant U as 用户
+    participant F as 前端
+    participant A as API
+    participant D as 数据库
+    
+    U->>F: 输入账号密码
+    F->>A: POST /login
+    A->>D: 查询用户
+    D-->>A: 返回用户信息
+    A-->>F: 返回 Token
+    F-->>U: 登录成功
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>类图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    领域模型类图
+                </p>
+                <div class="mermaid">
+classDiagram
+    class User {
+        +String id
+        +String name
+        +String email
+        +login()
+        +logout()
+    }
+    class Order {
+        +String id
+        +Date createdAt
+        +List~Item~ items
+        +checkout()
+    }
+    class Item {
+        +String productId
+        +int quantity
+        +decimal price
+    }
+    User --> Order : places
+    Order --> Item : contains
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>状态图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    订单状态流转
+                </p>
+                <div class="mermaid">
+stateDiagram-v2
+    [*] --> Pending : 创建订单
+    Pending --> Paid : 支付成功
+    Pending --> Cancelled : 取消订单
+    Paid --> Shipping : 发货
+    Shipping --> Delivered : 签收
+    Delivered --> [*]
+    Paid --> Refunded : 申请退款
+    Refunded --> [*]
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>甘特图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    项目进度计划
+                </p>
+                <div class="mermaid">
+gantt
+    title 项目开发计划
+    dateFormat  YYYY-MM-DD
+    section 需求
+    需求分析 :a1, 2026-03-01, 7d
+    原型设计 :after a1, 5d
+    section 开发
+    前端开发 :2026-03-10, 14d
+    后端开发 :2026-03-10, 14d
+    section 测试
+    单元测试 :2026-03-20, 7d
+    集成测试 :2026-03-25, 5d
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <h2>饼图示例</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
+                    时间分配比例
+                </p>
+                <div class="mermaid">
+pie title 工作日时间分配
+    "工作" : 8
+    "学习" : 3
+    "运动" : 1
+    "娱乐" : 2
+    "睡眠" : 8
+    "其他" : 2
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <div class="glass-card quote">
+                    <span style="display:block; margin-bottom: 20px; color: var(--text-main);">图表胜千言，</span>
+                    <span class="gradient-text" style="font-weight: 600; font-size: 1.2em;">让数据可视化更简单</span>
+                </div>
+            </div>
+            
+
+            <div class="slide">
+                <div class="emoji" style="font-size: 5rem;">🎉</div>
+                <h1 class="gradient-text">Thank You!</h1>
+                <h2 style="color: var(--text-muted); text-shadow: none;">开始制作你的图表演示文稿</h2>
+                <div class="glass-card" style="margin-top: 40px; padding: 30px 60px; text-align: center;">
+                    <p style="font-size: 1.8rem; margin-bottom: 10px; font-weight: bold;">PPT Generator</p>
+                    <p style="color: var(--text-muted); margin-bottom: 10px;">📧 ppt@example.com</p>
+                    <p style="color: var(--accent-cyan);">💬 GitHub: @openclaw</p>
+                </div>
+            </div>
+            
+    
+    <div class="page-number" id="pageCounter">1 / 10</div>
     <div class="controls-hint">
         <span>上一页：<span class="key">←</span> <span class="key">↑</span></span>
         <span>下一页：<span class="key">→</span> <span class="key">↓</span> <span class="key">Space</span></span>
