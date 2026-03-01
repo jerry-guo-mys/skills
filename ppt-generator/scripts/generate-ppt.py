@@ -110,15 +110,18 @@ def generate_slides(content: list) -> str:
             chart_type = slide.get('chart', 'flowchart')
             code = slide.get('code', '')
             # 使用 pre 标签保持代码原样，避免浏览器解析
+            # 使用 mermaid-wrapper 提供足够的高度
             html = f"""
             <div class="slide">
                 <h2>{slide.get('title', '')}</h2>
                 <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px;">
                     {slide.get('description', '')}
                 </p>
-                <pre class="mermaid" style="display:none;">
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid" style="display:none;">
 {code}
-                </pre>
+                    </pre>
+                </div>
             </div>
             """
         

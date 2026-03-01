@@ -106,18 +106,27 @@
         .gradient-text { background: linear-gradient(135deg, #e0e7ff 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 1400px; margin-top: 20px; }
         .grid-layout h3 { font-size: 1.8rem; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
-        .mermaid { 
+        .mermaid-wrapper { 
             width: 100%; 
-            max-width: 900px; 
-            margin: 30px auto; 
-            padding: 20px;
-            background: var(--glass-bg);
+            max-width: 1000px; 
+            margin: 10px auto; 
+            padding: 30px;
+            background: rgba(15, 23, 42, 0.6);
             border-radius: 16px;
             border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+            max-height: 65vh;
+            overflow: visible;
         }
-        .mermaid svg { 
+        .mermaid-wrapper svg { 
             max-width: 100%; 
+            max-height: 60vh;
             height: auto; 
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
         .controls-hint { position: fixed; bottom: 30px; right: 40px; font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 15px; z-index: 100; }
         .key { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); font-family: monospace; }
@@ -174,7 +183,7 @@
                         const { svg } = await mermaid.render('mermaid-' + i, graphDefinition);
                         // 创建容器包裹 SVG
                         const container = document.createElement('div');
-                        container.className = 'mermaid';
+                        container.className = 'mermaid-wrapper';
                         container.innerHTML = svg;
                         container.style.display = 'flex';
                         container.style.justifyContent = 'center';
