@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 团队 - 61 个专业 Agent，完整的企业级 AI 代理机构</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 100px 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: #4a4a68;
+            margin-bottom: 40px;
+        }
+
+        .hero .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 80px 0;
+            margin: 40px 0;
+            border-radius: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: #6a6a8a;
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 100px 0;
+            margin: 40px 0;
+            border-radius: 50px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            color: #1a1a2e;
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .agent-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .agent-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .agent-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+
+        .agent-card ul {
+            list-style: none;
+            color: #6a6a8a;
+        }
+
+        .agent-card li {
+            padding: 5px 0;
+            font-size: 0.95rem;
+        }
+
+        .agent-card li::before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Comparison Section */
+        .comparison {
+            background: white;
+            padding: 100px 0;
+            margin: 40px 0;
+            border-radius: 50px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            background: #f8f9ff;
+        }
+
+        .comparison-table .check {
+            color: #10b981;
+            font-size: 1.5rem;
+        }
+
+        .comparison-table .cross {
+            color: #ef4444;
+            font-size: 1.5rem;
+        }
+
+        .comparison-table tr:hover {
+            background: #f8f9ff;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 100px 0;
+            margin: 40px 0;
+            border-radius: 50px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.featured {
+            border: 4px solid #667eea;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .pricing-card .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+
+        .pricing-card .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: #6a6a8a;
+        }
+
+        .pricing-card .features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-card .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #4a4a68;
+        }
+
+        .pricing-card .features li::before {
+            content: "✓ ";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: white;
+            padding: 100px 0;
+            margin: 40px 0;
+            border-radius: 50px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: #f8f9ff;
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 5px solid #667eea;
+        }
+
+        .testimonial-card p {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #4a4a68;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            margin: 40px 0;
+            border-radius: 50px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-section .btn {
+            background: white;
+            color: #667eea;
+        }
+
+        .cta-section .btn:hover {
+            background: #f8f9ff;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>🤖 AI Agent 团队</h1>
+            <p class="subtitle">61 个专业 Agent · 8 大部门 · 完整的企业级 AI 代理机构</p>
+            <div class="cta-buttons">
+                <a href="#pricing" class="btn btn-primary">立即订阅 ¥699/年</a>
+                <a href="#features" class="btn btn-secondary">了解功能</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>61</h3>
+                    <p>专业 Agent</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8</h3>
+                    <p>完整部门</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10x</h3>
+                    <p>效率提升</p>
+                </div>
+                <div class="stat-item">
+                    <h3>¥999</h3>
+                    <p>年费起</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">🎯 完整的 Agent 团队</h2>
+            <div class="agents-grid">
+                <div class="agent-card">
+                    <div class="icon">💻</div>
+                    <h4>技术部 (12 Agent)</h4>
+                    <ul>
+                        <li>CTO / 架构师</li>
+                        <li>前端 / 后端 / 移动端</li>
+                        <li>测试 / 运维 / 安全</li>
+                        <li>DBA / 数据 / AI 工程师</li>
+                    </ul>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">📦</div>
+                    <h4>产品部 (8 Agent)</h4>
+                    <ul>
+                        <li>CPO / 产品经理</li>
+                        <li>用户研究 / 交互设计</li>
+                        <li>视觉设计 / 数据分析</li>
+                        <li>增长 / 商业化</li>
+                    </ul>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">📢</div>
+                    <h4>市场部 (10 Agent)</h4>
+                    <ul>
+                        <li>CMO / 品牌 / 内容</li>
+                        <li>社交媒体 / SEO/SEM</li>
+                        <li>公关 / 广告 / 活动</li>
+                        <li>渠道 / 市场研究</li>
+                    </ul>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">⚙️</div>
+                    <h4>运营部 (9 Agent)</h4>
+                    <ul>
+                        <li>COO / 用户运营</li>
+                        <li>内容 / 活动 / 社群</li>
+                        <li>数据 / 商家运营</li>
+                        <li>品类 / 策略运营</li>
+                    </ul>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">💰</div>
+                    <h4>财务部 (6 Agent)</h4>
+                    <ul>
+                        <li>CFO / 会计 / 出纳</li>
+                        <li>财务分析</li>
+                        <li>税务 / 审计</li>
+                    </ul>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">👥</div>
+                    <h4>人力部 (5 Agent)</h4>
+                    <ul>
+                        <li>CHRO / 招聘</li>
+                        <li>培训 / 薪酬绩效</li>
+                        <li>员工关系</li>
+                    </ul>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">⚖️</div>
+                    <h4>法务部 (4 Agent)</h4>
+                    <ul>
+                        <li>法务总监</li>
+                        <li>合同 / 知识产权</li>
+                        <li>合规</li>
+                    </ul>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">🎧</div>
+                    <h4>客服部 (4 Agent)</h4>
+                    <ul>
+                        <li>客服总监</li>
+                        <li>售前 / 售后</li>
+                        <li>投诉处理</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison">
+        <div class="container">
+            <h2 class="section-title">📊 版本对比</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>功能</th>
+                        <th>免费版</th>
+                        <th>专业版</th>
+                        <th>企业版</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Agent 数量</td>
+                        <td>10 个</td>
+                        <td>61 个</td>
+                        <td>61 个 + 定制</td>
+                    </tr>
+                    <tr>
+                        <td>智能编排器</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span> 高级</td>
+                    </tr>
+                    <tr>
+                        <td>并发任务</td>
+                        <td>1</td>
+                        <td>5</td>
+                        <td>无限</td>
+                    </tr>
+                    <tr>
+                        <td>优先支持</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span> 专属</td>
+                    </tr>
+                    <tr>
+                        <td>定制开发</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>SLA 保障</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> 99.9%</td>
+                    </tr>
+                    <tr>
+                        <td>私有部署</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>价格</td>
+                        <td>¥0</td>
+                        <td>¥999/年</td>
+                        <td>¥9999/年</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">💰 选择你的方案</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>免费版</h3>
+                    <div class="price">¥0</div>
+                    <ul class="features">
+                        <li>10 个基础 Agent</li>
+                        <li>单任务执行</li>
+                        <li>社区支持</li>
+                        <li>基础文档</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">开始使用</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="badge">🔥 限时优惠 ¥699</div>
+                    <h3>专业版</h3>
+                    <div class="price">¥999<span>/年</span></div>
+                    <ul class="features">
+                        <li>61 个完整 Agent</li>
+                        <li>智能编排器</li>
+                        <li>5 个并发任务</li>
+                        <li>优先技术支持</li>
+                        <li>每月更新</li>
+                        <li>7 天无理由退款</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">立即订阅</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>企业版</h3>
+                    <div class="price">¥9999<span>/年</span></div>
+                    <ul class="features">
+                        <li>专业版全部功能</li>
+                        <li>无限并发任务</li>
+                        <li>专属客户经理</li>
+                        <li>定制 Agent (5 个/年)</li>
+                        <li>私有部署选项</li>
+                        <li>SLA 99.9% 保障</li>
+                        <li>培训服务 (2 次/年)</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">联系销售</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">⭐ 用户评价</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"以前做个产品方案要拉 5 个人开 3 天会，现在 5 分钟出完整方案。"</p>
+                    <div class="author">— 某互联网公司产品总监</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"一个人就是一个团队，这句话终于实现了。"</p>
+                    <div class="author">— 独立开发者</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"企业版部署后，我们的方案输出效率提升了 10 倍。"</p>
+                    <div class="author">— 某创业公司 CTO</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>🎁 首发限时优惠</h2>
+            <p>专业版 ¥699/年（立省 ¥300）| 企业版 ¥6999/年（立省 ¥3000）</p>
+            <p>前 100 名送 1 对 1 配置服务</p>
+            <a href="#pricing" class="btn">立即抢购</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Agency Agents. All rights reserved.</p>
+            <p style="margin-top: 10px;">
+                📧 hello@agency-agents.ai | 💬 Discord | 🐦 Twitter | 📱 微信
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
